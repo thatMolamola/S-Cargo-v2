@@ -1,0 +1,11 @@
+Welcome to S-Cargo! 
+
+You are a Snail Mail Delivery Snail, but unfortunately, you've got butterfingers,
+ and your mail has blown away! You must collect all of your lost mail and deliver 
+ it to its recipients as fast as you can! 
+
+ Use the arrow keys to control your snail's movement across all of the obstacles 
+ and walls in your way. Press the down arrow while grounded, and you can begin to 
+ roll, allowing you to traverse the level faster! Press X to jump over gaps and 
+ small hazards. Press R to restart the level if you've messed up.
+

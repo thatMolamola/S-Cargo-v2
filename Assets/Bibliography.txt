@@ -1,0 +1,97 @@
+S-Cargo was built atop of the framework of two previous assignments, parts 1A and 1B. As such, while the following resources were not directly used while working on S-Cargo, they nonetheless contributed to the overall project by helping me form that initial framework.   
+
+
+
+Works Consulted in a Previous Assignment:
+
+1. Consulted Youtube Videos: 
+"Unity Tutorial for Beginners - C# Coding" by Anson Alexander. This video was the first video I watched, and as such, taught me a lot: how to add components to the scene, how the Scene and Game tabs operate, how to organize my project folders, how to create functional button, among other things. You can watch the video at https://www.youtube.com/watch?v=7K2SMZQRKnw
+ 
+
+"How to fit your Unity Game on Different Screen Sizes! - Unity Anchors" by CryptoGrounds. I was facing MANY issues with my game's display, as I would place sprites and text in Unity, only to change the aspect ratio and watch it disappear or change in size. This video was essential in helping my understanding of anchors and how Unity places objects. You can watch the video at https://www.youtube.com/watch?v=jcw4cBJbvrc
+
+
+"Simple Saving and Loading with JSON to a File (Unity Tutorial for Beginners)" by Code Monkey. I had attempted a couple different ways of saving my variables to a JSON file, but couldn't use "ToJSON(this)" without also storing my public GameObjects in the JSON file as well. Using this video, I created a private class called SavedFields, and called the ToJSON function on the class instead. You can watch the video at https://www.youtube.com/watch?v=6uMFEM-napE
+
+
+"Unity: How to Add Music To Your Scene In LESS THAN ONE MINUTE | Unity Tutorial" by Sorcerer. I wanted to add my music to my game, so I found this instructional video on how to do so quickly. You can watch the video at https://www.youtube.com/watch?v=KOf3P5y19Bw 
+
+
+"I made a Video Game Theme in BeepBox.co" by Shady Cicada. I was using BeepBox.co as a means to create my own music, but was struggling to understand how to use the program. As such, I turned to this YouTube video which gave me some suggestions. You can watch the video at https://www.youtube.com/watch?v=0cfokZnWEa4
+
+
+2. Consulted Forum Posts
+
+"Get Slider value?" Question by awplays49. I was trying to access the slider's value to display it, but the documentation alone wasn't clear enough for me to understand. Using InvincibleCat's answer, I was able to use the slider value. You can access the forum post at https://answers.unity.com/questions/875959/get-slider-value.html
+
+"How to make buttons disappear and reappear in the background?" Question by josephleung78. I was trying to make my components disappear upon a button click, but couldn't find the documentation for any property that would enable me to do so. From Shippety's answer, I was able to learn that I was looking for the deactivate/activate property, and so I was able to make my GameObjects appear and disappear accordingly in MyStartScript.cs. You can access the forum post at https://answers.unity.com/questions/1203661/how-to-make-buttons-disappear-and-reappear-in-the.html
+
+"Random Number Generated within Array" Question by GhostDre. I was trying to get my five ability rolls into an array in RollDice.cs, but didn't know how to generate random numbers in Unity. Referring to darthtelle's answer, I was able to construct an array of random numbers using Random.Range(). You can access the forum post here: https://answers.unity.com/questions/743962/random-number-generated-within-array.html
+
+3. Consulted Articles
+
+"How to change a Sprite from a script in Unity (with examples)" by John French. In trying to update my class and race sprites, while I knew how to control a sprite's specific state within its own spritesheet, I didn't know how to switch sprites for an object entirely. Using John French's examples, I was able to understand and reconfigure my own sprites as needed. You can read the article at https://gamedevbeginner.com/how-to-change-a-sprite-from-a-script-in-unity-with-examples/ 
+
+
+
+
+
+Works Consulted During the Creation of S-Cargo:
+ 
+1. Consulted YouTube Videos
+
+"TILEMAPS in Unity" by the YouTuber Brackeys. I needed a refresher on how to access the palette for the tile maps, so I decided to just sit down and watch a tutorial on using TileMaps. I watched about half of the video, which was enough to understand how to access the tools at hand, and I messed around with TileMaps from there. You can access the video at https://www.youtube.com/watch?v=ryISV_nH8qw.    
+
+"How to fix player sticking to walls in unity! - unity tutorial." by Mike Scriven. While my character was supposed to stick to wall in certain situations, it was doing so even before I implemented my character's stickiness, and it was sticking on TileMap Cells. As such, I consulted this tutorial on how to stop my character from sticking to the blocks. In the end, I did not use this solution, but it was helpful in my understanding nonetheless. You can access the video at https://www.youtube.com/watch?v=k20DrVECNfo. 
+
+"HOLD JUMP KEY TO JUMP HIGHER - 2D PLATFORMER CONTROLLER - UNITY TUTORIAL" by YouTuber Blackthornprod. I wanted to include variable jump height into the platforms, so I heavily modified my jump system with the explanations from the video. You can access the video at https://www.youtube.com/watch?v=j111eKN8sJw
+
+2. Consulted Forum Posts 
+
+"The script don't inherit a native class that can manage a script" by Unity User joshuahalls13. My script was making the console angry. I realized with the help of this forum post that my script file name did not match the class name inside the file. You can access the forum post at https://forum.unity.com/threads/the-script-dont-inherit-a-native-class-that-can-manage-a-script.1011988/.
+
+"Milliseconds Timer Question" by Unity User Vuzok. I was trying to make a timer for the HUD, such that speedrunners could easily see their pace. However, I was having difficulty implementing milliseconds into my timer, which this post resolved for me. It turns out that you can just multiply your Time by a thousand and it works alright. You can access the forum post at https://answers.unity.com/questions/1210723/milliseconds-timer-question.html.  
+
+"git add . command not working" by StackExchange User DavidPostill. The git add command was getting angry at me, and I had no idea why. Turns out that my Gitignore file had somehow disappeared, and so the computer didn't like adding all of the crud we didn't need. You can access the forum post at https://superuser.com/questions/1419165/git-add-command-not-working  
+
+"Change audio clip through code" by Unity User Hogge. I wanted to implement several different music tracks in the game, but when I tried to implement it, the music would just stop playing entirely. As it turns out, you need to call the function audio.Play() to make your music play after switching the audio clip. You can access the forum post at https://answers.unity.com/questions/1335036/change-audio-clip-through-code.html. 
+
+"How to Make Characters Stick to Walls? 2D (c#)" by Unity User E_101. After I had solved the problem of my character sticking to individual tiles in my TileMap, I wanted to have my snail rotate and stick to surfaces. While the answer by Calesurf was helpful, it wasn't quite what I wanted, as I wanted my character to move along the surface it was stuck to. As such, I learned from his example and implemented my own solution. You can access the forum post at https://answers.unity.com/questions/1457679/how-to-make-characters-stick-to-walls-2d.html. 
+
+"How to smooth character movement that is jittery" by Unity User petediddy. After I had made my TileMap composite, my character movement was all jittery, and my character began clipping through surfaces. I checked out this forum post to see if anything could help me, but this forum post wasn't very relevant to my issue. You can access the forum post at https://forum.unity.com/threads/how-to-smooth-character-movement-that-is-jittery.322417/.
+
+"missing a using directive or an assembly reference?" By Unity User knuckles209cp. When I tried to build my game as a test, the console spat out some issues saying that I was "missing a using directive or an assembly reference." This article helped me somewhat understand why this could be happening, but was not enough for me to solve the problem on my own. As such, I waited for class to ask Professor Steve Price if he knew what was going on. You can access the forum post at https://answers.unity.com/questions/639348/missing-a-using-directive-or-an-assembly-reference.html. 
+
+"Destroy gameobject not working" by Unity user PelleFixar. I was trying to make my mail objects disappear when a user would collide with its collider, but my implementation just made the player pass right through the object without any effect and the console would spit out errors. As it turns out, I was trying to destroy the prefab instead of my instance of the prefab. A big thank you to Unity User LeftyRighty for this solution. You can access the forum post at https://forum.unity.com/threads/destroy-gameobject-not-working.596218/. 
+
+"(C#)How To Disable Gravity From Script?" By Unity User Dogg. I was trying to disable gravity so my character could stick to the ceiling, but didn't know how to access the gravity field. This answer by zharik86 gave me a quick and easy (albeit outdated) answer. You can access the forum post at https://answers.unity.com/questions/767287/chow-to-disable-gravity-from-script.html
+
+"It seems my tag detection does not work properly" by Unity User bbenoit2. I was having issues with my mailbox trigger, and through some debug.logs, realized that my player tag was coming up as null. With the help of this forum, I changed how I compared my tags, but that didn't solve my problem. I later solved the issue on my own. You can access the forum post at https://answers.unity.com/questions/1454376/it-seems-my-tag-detection-does-not-work-properly.html
+
+"How do I pass through certain colliders but detect all collisions?" By Unity User ITInnovationTeam.  My mailbox collider's was solid and not triggering upon collision with my player, so I turned to this forum post for help. I later solved the issue on my own. You can access the forum post at https://answers.unity.com/questions/944611/how-do-i-pass-through-certain-colliders-but-detect.html
+
+"How to make UI>Text appear above sprites" by Unity User krazykhris875. My text was appearing behind my panel sprite, and it was annoying. With viktorsan's answer, I added a canvas component to the sprite object, and overrode the sorting. You can access the forum post at https://answers.unity.com/questions/1171709/how-to-make-uitext-appear-above-sprites.html
+
+"How to animate a UI panel?" Bu Unity user kalley51. To get my credits to roll, I wanted to animate my panel, but didn't know about positional animations. This helped me understand what I could do to move my panel along. You can access the forum at https://answers.unity.com/questions/1354294/how-to-animate-a-ui-panel.html
+
+"Layers, collision and one-way platforms (a question)" by Unity User hiphish. I wanted to include some one-way platforms in the second and third levels. The user JGriffith offered an incredibly helpful solution to the problem of how to make the colliders work. You can access the forum at https://forum.unity.com/threads/layers-collision-and-one-way-platforms-a-question.71790/
+
+"Getting prefabs form project to another" by unity user oinkoinkflapflap. I accidentally modified a prefab and deleted some pieces of a level I needed, so I went back through my git commits and saved it in a different branch. With the help of this forum post, I was able to create a package and move the prefab back into the main branch. You can access the forum post at https://answers.unity.com/questions/27745/getting-prefabs-form-project-to-another.html
+
+"Player get's stuck on Tilemap Collider 2D" by Unity User Glenomat. My character was getting stuck on the Tilemap collider, and so I turned to Google for help. This forum post held the solution. You can access the forum post at https://answers.unity.com/questions/1760656/player-gets-stuck-on-tilemap-collider-2d.html
+
+"Can you rotate a tile in tilemap? By Reddit user eyueldk. I wanted to rotate some hazards, and this post informed me of the keyboard shortcut I needed. You can access the forum post at https://www.reddit.com/r/Unity3D/comments/at8sfj/can_you_rotate_a_tile_in_tilemap/
+
+"How to distinguish between multiple components of same type (C#)" by Unity User Mazgas. I had multiple BoxCollider2Ds on a single TileMap, and wanted to use particular ones as triggers, but didn't know how to distinguish between them. I perused this forum post, but ultimately made more GameObjects to hold the other BoxCollider2Ds. You can access the forum post at https://forum.unity.com/threads/how-to-distinguish-between-multiple-components-of-same-type-c.466431/
+
+3. Used assets. 
+
+The 2D Pixel Art - Deep Caves 16 x 16, created by Lifty. This asset pack was essential to my completion of this project, as most, if not all, of the tiles, backgrounds and decorations were used from this asset pack. 
+
+The Late Font family, created by Łukasz Dziedzic. This font was used on the About page, as it was more professional and legible, which is what I was going for. 
+
+The SF Pixelate Font, created by Shy Fonts. This font was used widely across my game, with practically all of the text being shown in this font. 
+
+
+
+  

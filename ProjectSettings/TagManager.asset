@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Instructions1
+  - Instructions2
+  - Instructions
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - Player
+  - Water
+  - UI
+  - Ground
+  - Platforms
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: First
+    uniqueID: 3837176249
+    locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Textbox3
+    uniqueID: 289460693
+    locked: 0
+  - name: Textbox2
+    uniqueID: 2839631073
+    locked: 0
+  - name: Textbox1
+    uniqueID: 2632820331
+    locked: 0
