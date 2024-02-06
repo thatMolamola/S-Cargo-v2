@@ -7,7 +7,8 @@ using UnityEngine.SceneManagement;
 // and those that need to be access by various scripts. 
 public class GlobalControl : MonoBehaviour
 {
-    public static GlobalControl Instance {get; private set;}
+    private static GlobalControl _instance; 
+    public static GlobalControl Instance {get{ return _instance; }}
 
     public bool musicState;
     public int musicTrack;
@@ -27,18 +28,13 @@ public class GlobalControl : MonoBehaviour
     public bool hasMoved;
     public bool pause;
 
-    void Awake ()   
-       {
-        if (Instance == null)
+    private void Awake()
+    {
+        if (_instance != null && _instance != this)
         {
-            DontDestroyOnLoad(gameObject);
-            Instance = this;
+            Destroy(this.gameObject);
+        } else {
+            _instance = this;
         }
-        else if (Instance != this)
-        {
-            Destroy (gameObject);
-        }
-       }
-
-    
+    }  
 }
