@@ -10,6 +10,8 @@ public class WorkLogChange : MonoBehaviour
     public Sprite LaylaChoice;
     public Sprite FernChoice;
     public Sprite TheoChoice;
+    public Sprite PierceChoice;
+    public Sprite SquirmyChoice;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +30,10 @@ public class WorkLogChange : MonoBehaviour
             spriteRenderer.sprite = FernChoice;
         } else if (globalController.snailChoice == 4) {
             spriteRenderer.sprite = TheoChoice;
+        } else if (globalController.snailChoice == 5) {
+            spriteRenderer.sprite = PierceChoice;
+        } else if (globalController.snailChoice == 6) {
+            spriteRenderer.sprite = SquirmyChoice;
         }
     }
 }

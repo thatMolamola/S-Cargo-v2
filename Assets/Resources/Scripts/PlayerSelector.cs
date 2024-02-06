@@ -20,6 +20,10 @@ public class PlayerSelector : MonoBehaviour
             player.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("Sprites & Animations/SnailFiles/FernandoFiles/Fernando");
         } else if (globalController.snailChoice == 4) {
             player.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("Sprites & Animations/SnailFiles/TheoFiles/Theo");
+        } else if (globalController.snailChoice == 5) {
+            player.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("Sprites & Animations/SnailFiles/PierceFiles/Pierce");   
+        } else if (globalController.snailChoice == 6) {
+            player.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("Sprites & Animations/SnailFiles/McSquirmyFiles/McSquirmy");   
         }
     }
 }

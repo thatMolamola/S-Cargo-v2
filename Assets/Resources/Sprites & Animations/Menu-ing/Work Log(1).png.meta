@@ -1,19 +1,25 @@
 fileFormatVersion: 2
-guid: 43c928af9830d48d98cfac9f3eab9380
+guid: f869adafa0af54b84814a5a6437e7f64
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2267331873609675899
-    second: Work Log 1_0
+      213: -4829182968039321251
+    second: Work Log(1)_0
   - first:
-      213: 1322486905554979396
-    second: Work Log 1_1
+      213: -6266203894836161868
+    second: Work Log(1)_1
   - first:
-      213: 7653573581414352780
-    second: Work Log 1_2
+      213: -129463267224888406
+    second: Work Log(1)_2
   - first:
-      213: -1512154832638680334
-    second: Work Log 1_3
+      213: 3646508878101769477
+    second: Work Log(1)_3
+  - first:
+      213: -4511492381564264892
+    second: Work Log(1)_4
+  - first:
+      213: -2494608976884554941
+    second: Work Log(1)_5
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -103,7 +109,70 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Work Log 1_0
+      name: Work Log(1)_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 96
+        width: 67
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5156aa3dab4bfcb0800000000000000
+      internalID: -4829182968039321251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Work Log(1)_1
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 96
+        width: 67
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b21f16e1c8f909a0800000000000000
+      internalID: -6266203894836161868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Work Log(1)_2
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 96
+        width: 67
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aab599928dd043ef0800000000000000
+      internalID: -129463267224888406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Work Log(1)_3
       rect:
         serializedVersion: 2
         x: 0
@@ -117,17 +186,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b74fc62835e277f10800000000000000
-      internalID: 2267331873609675899
+      spriteID: 50d609d21800b9230800000000000000
+      internalID: 3646508878101769477
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Work Log 1_1
+      name: Work Log(1)_4
       rect:
         serializedVersion: 2
-        x: 72
+        x: 67
         y: 0
         width: 67
         height: 96
@@ -138,17 +207,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 44ac5b175da6a5210800000000000000
-      internalID: 1322486905554979396
+      spriteID: 44e1bf5f495f361c0800000000000000
+      internalID: -4511492381564264892
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Work Log 1_2
+      name: Work Log(1)_5
       rect:
         serializedVersion: 2
-        x: 144
+        x: 134
         y: 0
         width: 67
         height: 96
@@ -159,29 +228,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c8744863f94f63a60800000000000000
-      internalID: 7653573581414352780
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Work Log 1_3
-      rect:
-        serializedVersion: 2
-        x: 216
-        y: 0
-        width: 67
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2f26e23013fb30be0800000000000000
-      internalID: -1512154832638680334
+      spriteID: 343ab4f3a5e516dd0800000000000000
+      internalID: -2494608976884554941
       vertices: []
       indices: 
       edges: []

@@ -7,7 +7,6 @@ using UnityEngine.UI;
 //this script is designed to load scenes for whatever buttons may be trying to do so
 public class SceneLoader : MonoBehaviour
 {
-
     private Scene thisScene;
     private GlobalControl globalController;
     private CutsceneControl cutsceneScript;

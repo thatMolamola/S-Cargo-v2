@@ -7,6 +7,7 @@ TagManager:
   - Instructions1
   - Instructions2
   - Instructions
+  - GlobalSingleton
   layers:
   - Default
   - TransparentFX

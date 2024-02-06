@@ -51,8 +51,11 @@ public class CharacterSelect : MonoBehaviour
                 } else if (privSnailChoice == 3) {
                     player.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("Sprites & Animations/SnailFiles/FernandoFiles/Fernando");
                 } else if (privSnailChoice == 4) {
-                    player.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("Sprites & Animations/SnailFiles/TheoFiles/Theo");
-                    
+                    player.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("Sprites & Animations/SnailFiles/TheoFiles/Theo");   
+                } else if (privSnailChoice == 5) {
+                    player.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("Sprites & Animations/SnailFiles/PierceFiles/Pierce");   
+                } else if (privSnailChoice == 6) {
+                    player.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("Sprites & Animations/SnailFiles/McSquirmyFiles/McSquirmy");   
                 }
                 changed = true;
             }
