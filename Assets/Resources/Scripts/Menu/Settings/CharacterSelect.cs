@@ -5,93 +5,52 @@ using UnityEngine.UI;
 
 
 //this script is designed to update the globalController integer snailChoice
-//based on the dropdown selection in the RollCharacter Scene 
+//based on the selection in the RollCharacter Scene 
 public class CharacterSelect : MonoBehaviour
 {
-    private Animator player;
-    private Animator SnailContainer;
-    private Animator Door;
-    private Dropdown CharacterDD;
-    private GlobalControl globalController;
-
-    public float timeLeft0;
-    public bool delay;
-    public bool changed;
+    [SerializeField] private Animator playerAnim, SnailContainer, Door;
+    [SerializeField] private RuntimeAnimatorController[] snailAnims;
+    private bool changed = false;
     private int privSnailChoice;
-    private Transform playerT;
 
-    void Start()
-        {
-        player = GameObject.Find("SnailSprite").GetComponent<Animator>();
-        playerT = GameObject.Find("SnailSprite").GetComponent<Transform>();
-        Door = GameObject.Find("DoorSprite").GetComponent<Animator>();
-        SnailContainer = GameObject.Find("SnailSpriteContainer").GetComponent<Animator>();
-        globalController = GameObject.Find("GameManager").GetComponent<GlobalControl>();
-        //CharacterDD = GameObject.Find("CharacterSelect").GetComponent<Dropdown>();
-        globalController.snailChoice = 1;
-        timeLeft0 = 4;
-        changed = false;
-        delay = false;
-    }
-
-    public void Update() {
-        if (delay) {
-            timeLeft0 -= Time.deltaTime;   
-            if (timeLeft0 > 2.2){
-                playerT.localScale = new Vector3(-100, 100, 1);
-            } 
-        }
-        if (timeLeft0 < 2.2) {
-            if (!changed) {
-                playerT.localScale = new Vector3(100, 100, 1);
-                if (privSnailChoice == 1) {
-                    player.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("Sprites & Animations/SnailFiles/HerbertFiles/HerbertControl");
-                } else if (privSnailChoice == 2) {
-                    player.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("Sprites & Animations/SnailFiles/LaylaFiles/Layla");
-                } else if (privSnailChoice == 3) {
-                    player.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("Sprites & Animations/SnailFiles/FernandoFiles/Fernando");
-                } else if (privSnailChoice == 4) {
-                    player.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("Sprites & Animations/SnailFiles/TheoFiles/Theo");   
-                } else if (privSnailChoice == 5) {
-                    player.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("Sprites & Animations/SnailFiles/PierceFiles/Pierce");   
-                } else if (privSnailChoice == 6) {
-                    player.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("Sprites & Animations/SnailFiles/McSquirmyFiles/McSquirmy");   
-                }
-                changed = true;
-            }
-        }
-        if (timeLeft0 < 1f) {
-            delay = false;
-            changed = false;    
-            SnailContainer.SetBool("charChange", false);
-            Door.SetBool("charChange", false);
-            player.SetBool("RollUp", false);
-            player.SetBool("ImRoll", false);
-            timeLeft0 = 4;
-        }
-    }
 
     public void OnCharacterChanged (int snailChosen) {
         if (snailChosen != privSnailChoice) {
+            StartCoroutine(SnailSwitch());
             if (changed) {
                 Door.SetBool("charChange", false);
                 SnailContainer.SetBool("charChange", false);
                 changed = false;
             }
             privSnailChoice = snailChosen;
-            globalController.snailChoice = snailChosen;
-            delay = true;
+            GlobalControl.Instance.snailChoice = snailChosen;
             Door.SetBool("charChange", true);
             SnailContainer.SetBool("charChange", true);
-            if (player.GetBool("RollUp")) {
-                player.SetBool("ImRoll", true);
+            if (playerAnim.GetBool("RollUp")) {
+                playerAnim.SetBool("ImRoll", true);
             }
         }
+    }
+
+    IEnumerator SnailSwitch() {
+        playerAnim.gameObject.GetComponent<Transform>().localScale = new Vector3(-100, 100, 1);
+        yield return new WaitForSeconds(1.8f);
+        if (!changed) {
+                playerAnim.gameObject.GetComponent<Transform>().localScale = new Vector3(100, 100, 1);
+                playerAnim.runtimeAnimatorController = snailAnims[privSnailChoice - 1];
+                changed = true;
+        }
+        yield return new WaitForSeconds(1.2f);
+        changed = false;    
+        SnailContainer.SetBool("charChange", false);
+        Door.SetBool("charChange", false);
+        playerAnim.SetBool("RollUp", false);
+        playerAnim.SetBool("ImRoll", false);
     }
 
     //a fun little bonus script to allow the user to click the snail on the charactee select screen
     // and have them roll up. 
     public void SnailClicked (){
-        player.SetBool("RollUp", true);
+        playerAnim.SetBool("RollUp", true);
     }
 }
