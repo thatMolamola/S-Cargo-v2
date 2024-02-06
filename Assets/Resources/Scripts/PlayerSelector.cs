@@ -6,24 +6,9 @@ using UnityEngine;
 // the globalController.snailChoice value
 public class PlayerSelector : MonoBehaviour
 {
-    private GlobalControl globalController;
-    public Animator player;
-
+    [SerializeField] private Animator playerAnim;
 
     void Start(){
-        globalController = GameObject.Find("GameManager").GetComponent<GlobalControl>();
-        if (globalController.snailChoice == 1) {
-            player.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("Sprites & Animations/SnailFiles/HerbertFiles/HerbertControl");
-        } else if (globalController.snailChoice == 2) {
-            player.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("Sprites & Animations/SnailFiles/LaylaFiles/Layla");
-        } else if (globalController.snailChoice == 3) {
-            player.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("Sprites & Animations/SnailFiles/FernandoFiles/Fernando");
-        } else if (globalController.snailChoice == 4) {
-            player.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("Sprites & Animations/SnailFiles/TheoFiles/Theo");
-        } else if (globalController.snailChoice == 5) {
-            player.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("Sprites & Animations/SnailFiles/PierceFiles/Pierce");   
-        } else if (globalController.snailChoice == 6) {
-            player.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("Sprites & Animations/SnailFiles/McSquirmyFiles/McSquirmy");   
-        }
+        playerAnim.runtimeAnimatorController = GlobalControl.Instance.snailAnims[GlobalControl.Instance.snailChoice - 1];
     }
 }

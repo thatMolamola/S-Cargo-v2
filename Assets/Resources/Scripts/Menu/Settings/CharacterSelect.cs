@@ -9,7 +9,6 @@ using UnityEngine.UI;
 public class CharacterSelect : MonoBehaviour
 {
     [SerializeField] private Animator playerAnim, SnailContainer, Door;
-    [SerializeField] private RuntimeAnimatorController[] snailAnims;
     private bool changed = false;
     private int privSnailChoice;
 
@@ -37,7 +36,7 @@ public class CharacterSelect : MonoBehaviour
         yield return new WaitForSeconds(1.8f);
         if (!changed) {
                 playerAnim.gameObject.GetComponent<Transform>().localScale = new Vector3(100, 100, 1);
-                playerAnim.runtimeAnimatorController = snailAnims[privSnailChoice - 1];
+                playerAnim.runtimeAnimatorController = GlobalControl.Instance.snailAnims[privSnailChoice - 1];
                 changed = true;
         }
         yield return new WaitForSeconds(1.2f);

@@ -919,6 +919,7 @@ MonoBehaviour:
   canMove: 1
   hasMoved: 0
   pause: 0
+  snailAnims: []
 --- !u!82 &418650692
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1197,7 +1198,7 @@ GameObject:
   - component: {fileID: 583524221}
   - component: {fileID: 583524220}
   m_Layer: 5
-  m_Name: SnailClick
+  m_Name: SnailSpriteClick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1971,9 +1972,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fa44936ae07445d78c9ddf72a9caeec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeLeft0: 0
-  delay: 0
-  changed: 0
+  playerAnim: {fileID: 787888465}
+  SnailContainer: {fileID: 630163871}
+  Door: {fileID: 1119443530}
 --- !u!114 &1023173586
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -28,6 +28,8 @@ public class GlobalControl : MonoBehaviour
     public bool hasMoved;
     public bool pause;
 
+    public RuntimeAnimatorController[] snailAnims;
+
     private void Awake()
     {
         if (_instance != null && _instance != this)
