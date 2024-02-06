@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class GlobalControl : MonoBehaviour
 {
     private static GlobalControl _instance; 
-    public static GlobalControl Instance {get{ return _instance; }}
+    public static GlobalControl Instance {get; private set;}
 
     public bool musicState;
     public int musicTrack;
@@ -30,13 +30,12 @@ public class GlobalControl : MonoBehaviour
 
     public RuntimeAnimatorController[] snailAnims;
 
-    private void Awake()
-    {
-        if (_instance != null && _instance != this)
-        {
-            Destroy(this.gameObject);
-        } else {
-            _instance = this;
+    private void Awake(){
+        if (Instance == null) {
+            DontDestroyOnLoad(gameObject);
+            Instance = this;
+        } else if (Instance != this) {
+            Destroy (gameObject);
         }
-    }  
+    }
 }
