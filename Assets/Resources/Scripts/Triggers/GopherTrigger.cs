@@ -6,8 +6,7 @@ using UnityEngine;
 //Animator if the player enters or exits a collision with it 
 public class GopherTrigger : MonoBehaviour
 {
-    [SerializeField]
-    private Animator myAnimationController;
+    [SerializeField] private Animator myAnimationController;
 
     void OnTriggerEnter2D(Collider2D other)
     {

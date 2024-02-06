@@ -7,18 +7,15 @@ using UnityEngine;
 public class MailboxTrigger : MonoBehaviour
 {
     private CutsceneControl cutsceneScript;
-    private GlobalControl globalController;
 
     void Start()
     {
-        cutsceneScript =
-            GameObject.Find("EventSystem").GetComponent<CutsceneControl>();
-            globalController = GameObject.Find("GameManager").GetComponent<GlobalControl>();
+        cutsceneScript = GameObject.Find("EventSystem").GetComponent<CutsceneControl>();
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (globalController.allMailCollected)
+        if (GlobalControl.Instance.allMailCollected)
         {
             if (other.CompareTag("Player"))
             {

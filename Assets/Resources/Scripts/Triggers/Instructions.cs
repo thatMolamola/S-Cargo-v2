@@ -6,24 +6,15 @@ using UnityEngine;
 // the script updates the globalController.instructionStep, and then de-activates the gameObject
 public class Instructions : MonoBehaviour
 {
-    public int triggerNumber; 
+    [SerializeField] private int triggerNumber; 
 
-    private GlobalControl globalController;
-
-    void Start()
-    {
-        globalController =
-            GameObject.Find("GameManager").GetComponent<GlobalControl>();
-    }
-
-    
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
             if (this.CompareTag("Instructions"))
             {
-                globalController.instructionsStep = triggerNumber;
+                GlobalControl.Instance.instructionsStep = triggerNumber;
                 this.gameObject.SetActive(false);
             }
         }

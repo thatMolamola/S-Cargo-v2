@@ -7,10 +7,7 @@ using UnityEngine.UI;
 // a collision between the player and the mail.
 public class CollectMail : MonoBehaviour
 {
-
     private Text MailCount;
-
-    private GlobalControl globalController;
 
     //this MailCount is the same throughout all three levels, 
     //as all the levels have 3 pieces of mail
@@ -20,19 +17,16 @@ public class CollectMail : MonoBehaviour
     void Start()
     {
         MailCount = GameObject.Find("Letters Collected").GetComponent<Text>();
-        globalController =
-                GameObject.Find("GameManager").GetComponent<GlobalControl>();
-        UpdateMailCount();
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            globalController.lettersCollected++;
+            GlobalControl.Instance.lettersCollected++;
             UpdateMailCount();
-            if (globalController.lettersCollected == MailCount1) {
-            globalController.allMailCollected = true;
+            if (GlobalControl.Instance.lettersCollected == MailCount1) {
+            GlobalControl.Instance.allMailCollected = true;
             }
             Destroy (this.gameObject);
         }
@@ -41,6 +35,6 @@ public class CollectMail : MonoBehaviour
     void UpdateMailCount()
     {  
         MailCount.GetComponent<Text>().text =
-            "Letters Collected: " + globalController.lettersCollected + "/" + MailCount1;
+            "Letters Collected: " + GlobalControl.Instance.lettersCollected + "/" + MailCount1;
     }
 }
