@@ -7,44 +7,40 @@ using UnityEngine.UI;
 // with the corresponding values stored in GlobalController.
 public class LevelSelectTimes : MonoBehaviour
 {
-    private GlobalControl globalController;
-    private Text timerText1;
-    private Text timerText2;
-    private Text timerText3;
+    [SerializeField] private Text timerText1, timerText2, timerText3;
 
     void Start()
     {
-        globalController =
-            GameObject.Find("GameManager").GetComponent<GlobalControl>();
-        timerText1 = GameObject.Find("Speed1").GetComponent<Text>();
-        timerText2 = GameObject.Find("Speed2").GetComponent<Text>();
-        timerText3 = GameObject.Find("Speed3").GetComponent<Text>();
-        if (globalController.lowestTime1 < 10000000000000){
+        float time1 = GlobalControl.Instance.lowestTime1;
+        float time2 = GlobalControl.Instance.lowestTime2;
+        float time3 = GlobalControl.Instance.lowestTime3;
+
+        if (time1 < 10000000000000){
             timerText1.text =
                     "Best time: " +
-                    (int)(globalController.lowestTime1 / 60f) +
+                    (int)(time1 / 60f) +
                     ":" +
-                    (int)(globalController.lowestTime1 % 60f) +
+                    (int)(time1 % 60f) +
                     ":" +
-                    (int)(globalController.lowestTime1 * 1000f) % 1000;
+                    (int)(time1 * 1000f) % 1000;
         }
-        if (globalController.lowestTime2 < 10000000000000){
+        if (time2 < 10000000000000){
             timerText2.text =
                     "Best time: " +
-                    (int)(globalController.lowestTime2 / 60f) +
+                    (int)(time2 / 60f) +
                     ":" +
-                    (int)(globalController.lowestTime2 % 60f) +
+                    (int)(time2 % 60f) +
                     ":" +
-                    (int)(globalController.lowestTime2 * 1000f) % 1000;
+                    (int)(time2 * 1000f) % 1000;
         }
-        if (globalController.lowestTime3 < 10000000000000){
+        if (time3 < 10000000000000){
             timerText3.text =
                     "Best time: " +
-                    (int)(globalController.lowestTime3 / 60f) +
+                    (int)(time3 / 60f) +
                     ":" +
-                    (int)(globalController.lowestTime3 % 60f) +
+                    (int)(time3 % 60f) +
                     ":" +
-                    (int)(globalController.lowestTime3 * 1000f) % 1000;
+                    (int)(time3 * 1000f) % 1000;
         }
     }
 }
