@@ -367,7 +367,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1276249919}
         m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
         m_MethodName: LoadPlayLevel1_1
         m_Mode: 1
@@ -579,7 +579,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1276249919}
         m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
         m_MethodName: LoadPlayLevel3
         m_Mode: 1
@@ -892,7 +892,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1276249919}
         m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
         m_MethodName: LoadRollChar
         m_Mode: 1
@@ -985,6 +985,7 @@ MonoBehaviour:
   canMove: 0
   hasMoved: 0
   pause: 0
+  snailAnims: []
 --- !u!4 &757341162
 Transform:
   m_ObjectHideFlags: 0
@@ -1082,7 +1083,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1276249919}
         m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
         m_MethodName: LoadPlayLevel2
         m_Mode: 1

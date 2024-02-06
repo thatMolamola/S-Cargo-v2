@@ -11,6 +11,6 @@ public class WorkLogChange : MonoBehaviour
     // Update is called once per frame
     public void onEmployeeClick()
     {
-        spriteRenderer.sprite = workLogSelectSprites[GlobalControl.Instance.snailChoice - 1];
+        spriteRenderer.sprite = workLogSelectSprites[GlobalControl.Instance.snailChoice];
     }
 }

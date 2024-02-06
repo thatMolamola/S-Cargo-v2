@@ -9,6 +9,6 @@ public class PlayerSelector : MonoBehaviour
     [SerializeField] private Animator playerAnim;
 
     void Start(){
-        playerAnim.runtimeAnimatorController = GlobalControl.Instance.snailAnims[GlobalControl.Instance.snailChoice - 1];
+        playerAnim.runtimeAnimatorController = GlobalControl.Instance.snailAnims[GlobalControl.Instance.snailChoice];
     }
 }
