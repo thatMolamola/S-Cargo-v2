@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class WorkLogChange : MonoBehaviour
 {
-    private GlobalControl globalController;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Sprite[] workLogSelectSprites;
 

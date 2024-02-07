@@ -2842,7 +2842,6 @@ GameObject:
   - component: {fileID: 2143986794}
   - component: {fileID: 2143986795}
   - component: {fileID: 2143986796}
-  - component: {fileID: 2143986797}
   m_Layer: 5
   m_Name: BackgroundCanvas
   m_TagString: Untagged
@@ -2977,16 +2976,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonCutscene: {fileID: 1168361201}
+  buttonInstruct: {fileID: 956087870}
   cutsceneText: {fileID: 1590048102}
---- !u!114 &2143986797
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2143986789}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a898c8abff86d43c7b316c2d38c0a3b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  instructText: {fileID: 694505278}
