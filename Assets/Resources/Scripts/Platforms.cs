@@ -7,14 +7,13 @@ using UnityEngine;
 // such that the platforms act as one-way platforms
 public class Platforms : MonoBehaviour
 {
-    private Rigidbody2D rb;
+    [SerializeField] private Rigidbody2D rb;
     private BoxCollider2D platformCollider;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        rb = GameObject.Find("Player1").GetComponent<Rigidbody2D>();
         platformCollider = this.GetComponent<BoxCollider2D>();
     }
 

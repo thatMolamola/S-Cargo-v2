@@ -1502,6 +1502,7 @@ MonoBehaviour:
   lettersCollected: 0
   snailChoice: 0
   allMailCollected: 0
+  finishedDelivery: 0
   lowestTime1: 0
   lowestTime2: 0
   lowestTime3: 0
@@ -2975,6 +2976,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1e48fcb1c93649b5aa2f3eb2ed2bfc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonCutscene: {fileID: 1168361201}
+  cutsceneText: {fileID: 1590048102}
 --- !u!114 &2143986797
 MonoBehaviour:
   m_ObjectHideFlags: 0

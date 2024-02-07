@@ -7,26 +7,21 @@ using UnityEngine.UI;
 // globalController.cutsceneEnabled value from the Settings screen.
 public class CutsceneButton : MonoBehaviour
 {
-
-    private GlobalControl globalController;
-    private Button buttonCutscene;
-    private Text cutsceneText;
+    [SerializeField ]private Button buttonCutscene;
+    [SerializeField] private Text cutsceneText;
 
     // Start is called before the first frame update
     void Start()
     {
-        buttonCutscene = GameObject.Find("CutScene Button").GetComponent<Button>();
-        cutsceneText = GameObject.Find("CutsceneText").GetComponent<Text>();
-        globalController = GameObject.Find("GameManager").GetComponent<GlobalControl>();
         buttonCutscene.onClick.AddListener( () => {ChangeCutsceneState(); }  );
     }
 
     void ChangeCutsceneState() {
-        if (globalController.cutsceneEnabled) {
+        if (GlobalControl.Instance.cutsceneEnabled) {
             cutsceneText.text = "Enable Cutscenes"; 
         } else {
             cutsceneText.text = "Disable Cutscenes";
         }
-        globalController.cutsceneEnabled = !globalController.cutsceneEnabled;
+        GlobalControl.Instance.cutsceneEnabled = !GlobalControl.Instance.cutsceneEnabled;
     }
 }
