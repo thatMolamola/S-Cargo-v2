@@ -13,6 +13,7 @@ public class LevelControl : MonoBehaviour
 
     private float timerP, timerI;
     private bool canOpenClose = true;
+    [SerializeField] private Rigidbody2D rb;
 
     // Update is called once per frame
     void Update()
@@ -52,10 +53,12 @@ public class LevelControl : MonoBehaviour
                 GlobalControl.Instance.pause = false;
                 pausePanel.SetActive(false);
                 instructionsPanel.SetActive(false);
+                rb.bodyType = RigidbodyType2D.Dynamic;
             } else {
                 GlobalControl.Instance.pause = true;
                 instructionsPanel.SetActive(false);
                 pausePanel.SetActive(true);
+                rb.bodyType = RigidbodyType2D.Static;
             }
     }
 

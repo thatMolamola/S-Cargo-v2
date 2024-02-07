@@ -46165,6 +46165,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pausePanel: {fileID: 1981105779}
   instructionsPanel: {fileID: 1579900312}
+  rb: {fileID: 1898989463}
 --- !u!114 &1756709127
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -8,26 +8,22 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
 
     private BoxCollider2D snailBoxCollider;
-
     private CircleCollider2D snailCircleColliderLeft;
 
     private Vector2 moveBy;
-
     private float moveFactor = 5f;
 
     [SerializeField]
     private Animator myAnimationController;
 
-    private GlobalControl globalController;
-
     //snail movement booleans
-    public bool isGrounded;
+    public bool isGrounded = true;
 
     private bool isShelled;
 
-    public bool canJump;
+    public bool canJump = true;
 
-    public bool isJumping;
+    public bool isJumping = false;
 
     public bool isRolling;
 
@@ -37,18 +33,10 @@ public class PlayerController : MonoBehaviour
 
     private float jumpHeight = 12.0f;
 
-    private float timeToJump;
-
     private float jumpTimeCounter;
 
     //snail orientation booleans
-    public bool upsideUp;
-
-    public bool upsideDown;
-
-    public bool upsideRight;
-
-    public bool upsideLeft;
+    public bool upsideUp, upsideDown, upsideRight, upsideLeft;
 
     public bool isStickingRight;
 
@@ -57,15 +45,9 @@ public class PlayerController : MonoBehaviour
     //snail-to-tile sticking state checks
     public LayerMask whatIsGround;
 
-    public Transform groundCheck1;
+    public Transform groundCheck1, groundCheck2;
 
-    public Transform groundCheck2;
-
-    public Transform leftCheck;
-
-    public Transform rightCheck;
-
-    public Transform topCheck;
+    public Transform leftCheck, rightCheck, topCheck;
 
     private float surroundCheckRadius;
 
@@ -73,24 +55,19 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        globalController =
-            GameObject.Find("GameManager").GetComponent<GlobalControl>();
         snailBoxCollider = GetComponent<BoxCollider2D>();
         snailCircleColliderLeft = GetComponent<CircleCollider2D>();
         rb.gravityScale = 3.0f;
         surroundCheckRadius = .125f;
-        isGrounded = true;
         upsideUp = true;
-        canJump = true;
-        isJumping = false;
     }
 
     public void Update()
     {   
         //if the character can move and moves, then they have moved. 
-        if (!globalController.hasMoved)
+        if (!GlobalControl.Instance.hasMoved)
         {
-            if (globalController.canMove)
+            if (GlobalControl.Instance.canMove)
             {
                 if (
                     Input.GetKey(KeyCode.UpArrow) ||
@@ -99,155 +76,120 @@ public class PlayerController : MonoBehaviour
                     Input.GetKey(KeyCode.LeftArrow)
                 )
                 {
-                    globalController.hasMoved = true;
+                    GlobalControl.Instance.hasMoved = true;
                 }
             }
         }
 
         if (isShelled) {
-                snailBoxCollider.enabled = false;
-                snailCircleColliderLeft.enabled = true;
-            } else {
-                snailBoxCollider.enabled = true;
-                snailCircleColliderLeft.enabled = false;
-            }
+            snailBoxCollider.enabled = false;
+            snailCircleColliderLeft.enabled = true;
+        } else {
+            snailBoxCollider.enabled = true;
+            snailCircleColliderLeft.enabled = false;
+        }
+    }
+
+    IEnumerator JumpAllowDelay() {
+        yield return new WaitForSeconds(.7f);
+        canJump = true;
     }
 
     void FixedUpdate() {
-        if (!globalController.pause){
-            rb.bodyType = RigidbodyType2D.Dynamic;
+        if (!GlobalControl.Instance.pause){
             //update the player's state based on its positional sensors
             isGrounded =
-            Physics2D
-                .OverlapCircle(groundCheck1.position,
-                surroundCheckRadius,
-                whatIsGround)
-            ||
-            Physics2D
-                .OverlapCircle(groundCheck2.position,
-                surroundCheckRadius,
-                whatIsGround);
-        isStickingRight =
-            Physics2D
-                .OverlapCircle(rightCheck.position,
-                surroundCheckRadius,
-                whatIsGround);
-        isStickingTop =
-            Physics2D
-                .OverlapCircle(topCheck.position,
-                surroundCheckRadius,
-                whatIsGround);
-        if (globalController.canMove)
-        {
-            moveBy.x = Input.GetAxisRaw("Horizontal");
-            moveBy.y = Input.GetAxisRaw("Vertical");
-
-            //timer on when the player can jump again
-            if (!canJump)
-            {
-                timeToJump += Time.deltaTime;
-                if (timeToJump > .69) //nice
-                {
-                    canJump = true;
-                }
-            }
-            //the player will be in one of 4 states: upsideUp, upsideLeft, upsideRight, or upsideDown
-            if (upsideUp)
-            {
+                Physics2D.OverlapCircle(groundCheck1.position, surroundCheckRadius, whatIsGround)
+                ||
+                Physics2D.OverlapCircle(groundCheck2.position, surroundCheckRadius, whatIsGround);
+            isStickingRight =
+                Physics2D.OverlapCircle(rightCheck.position, surroundCheckRadius, whatIsGround);
+            isStickingTop =
+                Physics2D.OverlapCircle(topCheck.position, surroundCheckRadius, whatIsGround);
+            if (GlobalControl.Instance.canMove){
+                moveBy.x = Input.GetAxisRaw("Horizontal");
+                moveBy.y = Input.GetAxisRaw("Vertical");
+                //the player will be in one of 4 states: upsideUp, upsideLeft, upsideRight, or upsideDown
+                if (upsideUp) {
                 rb.velocity = new Vector2(moveBy.x * moveFactor, rb.velocity.y);
-                if (!isRolling)
-                {
-                    rb.gravityScale = 3.0f;
-                    moveFactor = 5f / 1.2f;
+                    if (!isRolling) {
+                        rb.gravityScale = 3.0f;
+                        moveFactor = 5f / 1.2f;
 
-                    //flip the snail sprite based on movement
-                    if (moveBy.x < 0)
-                    {
-                        transform.localScale = new Vector3(-1, 1, 1);
-                    }
-                    else if (moveBy.x > 0)
-                    {
-                        transform.localScale = new Vector3(1, 1, 1);
-                    }
+                        //flip the snail sprite based on movement
+                        if (moveBy.x < 0) {
+                            transform.localScale = new Vector3(-1, 1, 1);
+                        } else if (moveBy.x > 0) {
+                            transform.localScale = new Vector3(1, 1, 1);
+                        }
 
-                    //this jumping script allows for variable jump heights
-                    if (Input.GetKey(KeyCode.X) && isJumping)
-                        {
+                        //this jumping script allows for variable jump heights
+                        if (Input.GetKey(KeyCode.X) && isJumping) {
                             if (jumpTimeCounter > 0) {
                                 rb.velocity = Vector2.up * jumpHeight;
                                 jumpTimeCounter -= Time.deltaTime;
-                            } else{
+                            } else {
                                 isJumping = false;
                             } 
                         }
                     
-                    if (Input.GetKeyUp(KeyCode.X))
+                        if (Input.GetKeyUp(KeyCode.X))
+                            {
+                                isJumping = false; 
+                            }
+
+                        if (isGrounded)
                         {
-                            isJumping = false; 
+                            //snail jumping
+                            if (Input.GetKeyDown(KeyCode.X))
+                            {
+                                    rb.velocity = Vector2.up * 2 * jumpHeight / 3;
+                                    isJumping = true;
+                                    jumpTimeCounter = .15f;
+                            }
+
+                            //snail retreating
+                            if (Input.GetKey(KeyCode.S))
+                            {
+                                myAnimationController.SetBool("RollUp", true);
+                                isShelled = true;
+                                GlobalControl.Instance.canMove = false;
+                                timeToRoll = 1.5f;
+                            }
                         }
 
-                    if (isGrounded)
-                    {
-                        //snail jumping
-                        if (Input.GetKeyDown(KeyCode.X))
-                        {
-                                rb.velocity = Vector2.up * 2 * jumpHeight / 3;
-                                isJumping = true;
-                                jumpTimeCounter = .15f;
-                                timeToJump = 0;
+                        //snail rolling
+                        if ((Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow)) && isShelled) {
+                            myAnimationController.SetBool("Moving", true);
+                            isRolling = true;
                         }
 
-                        
-
-                        //snail retreating
-                        if (Input.GetKey(KeyCode.S))
+                        //change the snail orientation states
+                        //flip upside down
+                        if (Input.GetKey(KeyCode.UpArrow) && isStickingTop)
                         {
-                            myAnimationController.SetBool("RollUp", true);
-                            isShelled = true;
-                            globalController.canMove = false;
-                            timeToRoll = 1.5f;
+                            transform.rotation = Quaternion.Euler(0, 0, 180);
+                            upsideDown = true;
+                            upsideUp = false;
+                            upsideRight = false;
+                            upsideLeft = false;
                         }
-                    }
 
-                    //snail rolling
-                    if (
-                        (
-                        Input.GetKey(KeyCode.LeftArrow) ||
-                        Input.GetKey(KeyCode.RightArrow)
-                        ) &
-                        isShelled
-                    )
-                    {
-                        myAnimationController.SetBool("Moving", true);
-                        isRolling = true;
-                    }
+                        //flip upside right
+                        if (Input.GetKey(KeyCode.LeftArrow) && isStickingRight)
+                        {
+                            transform.rotation = Quaternion.Euler(0, 0, 270);
+                            upsideRight = true;
+                            upsideUp = false;
+                        }
 
-                    //change the snail orientation states
-                    //flip upside down
-                    if (Input.GetKey(KeyCode.UpArrow) && isStickingTop)
-                    {
-                        transform.rotation = Quaternion.Euler(0, 0, 180);
-                        upsideDown = true;
-                        upsideUp = false;
-                        upsideRight = false;
-                        upsideLeft = false;
-                    }
-
-                    //flip upside right
-                    if (Input.GetKey(KeyCode.LeftArrow) && isStickingRight)
-                    {
-                        transform.rotation = Quaternion.Euler(0, 0, 270);
-                        upsideRight = true;
-                        upsideUp = false;
-                    }
-
-                    //flip upside left
-                    if (Input.GetKey(KeyCode.RightArrow) && isStickingRight)
-                    {
-                        transform.rotation = Quaternion.Euler(0, 0, 90);
-                        upsideLeft = true;
-                        upsideUp = false;
-                    }
+                        //flip upside left
+                        if (Input.GetKey(KeyCode.RightArrow) && isStickingRight)
+                        {
+                            transform.rotation = Quaternion.Euler(0, 0, 90);
+                            upsideLeft = true;
+                            upsideUp = false;
+                        }
                 }
                 else //if rolling
                 {
@@ -270,7 +212,7 @@ public class PlayerController : MonoBehaviour
                             rb.velocity = Vector2.up * jumpHeight;
                             isGrounded = false;
                             canJump = false;
-                            timeToJump = 0;
+                            StartCoroutine(JumpAllowDelay());
                         }
                     }
                     if (
@@ -354,7 +296,7 @@ public class PlayerController : MonoBehaviour
                         rb.velocity = new Vector2(80, 15);
                         isGrounded = false;
                         canJump = false;
-                        timeToJump = 0;
+                        StartCoroutine(JumpAllowDelay());
                     }
                 }
 
@@ -407,7 +349,7 @@ public class PlayerController : MonoBehaviour
                         rb.velocity = new Vector2(-80, 15);
                         isGrounded = false;
                         canJump = false;
-                        timeToJump = 0;
+                        StartCoroutine(JumpAllowDelay());
                     }
                 }
 
@@ -453,22 +395,19 @@ public class PlayerController : MonoBehaviour
                 upsideRight = false;
                 upsideDown = false;
             }
-        }
-        else
-        {  //if you can't move, stop movement except for gravity
-            rb.velocity = new Vector2(0, rb.velocity.y);
-            if (isShelled)
-            {
-                timeToRoll -= Time.deltaTime;
-                if (timeToRoll < 0)
+            }
+            else
+            {  //if you can't move, stop movement except for gravity
+                rb.velocity = new Vector2(0, rb.velocity.y);
+                if (isShelled)
                 {
-                    globalController.canMove = true;
+                    timeToRoll -= Time.deltaTime;
+                    if (timeToRoll < 0)
+                    {
+                        GlobalControl.Instance.canMove = true;
+                    }
                 }
             }
-        }
-
-        } else { //if paused, make the character static
-            rb.bodyType = RigidbodyType2D.Static;
         }
     }    
 }

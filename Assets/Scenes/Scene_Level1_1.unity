@@ -1126,6 +1126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pausePanel: {fileID: 725907659}
   instructionsPanel: {fileID: 1940592077}
+  rb: {fileID: 5728727930302787966}
 --- !u!1 &670860506
 GameObject:
   m_ObjectHideFlags: 0
@@ -94928,6 +94929,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e5068f2e23d34e1c9448e8219e6917e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!50 &5728727930302787966 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 336274302781810246, guid: d4d9a19a9cc69434aa46c5e9c8017f8f, type: 3}
+  m_PrefabInstance: {fileID: 5728727930302787964}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6051241775004713175
 PrefabInstance:
   m_ObjectHideFlags: 0
