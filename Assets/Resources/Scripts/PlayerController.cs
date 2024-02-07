@@ -91,6 +91,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    IEnumerator shellToRollDelay(){
+        yield return new WaitForSeconds(1.5f);
+        GlobalControl.Instance.canMove = true;
+    }
+
     void FixedUpdate() {
         if (!GlobalControl.Instance.pause){
             //update the player's state based on its positional sensors
@@ -148,7 +153,6 @@ public class PlayerController : MonoBehaviour
                                 snailBoxCollider.enabled = false;
                                 snailCircleColliderLeft.enabled = true;
                                 GlobalControl.Instance.canMove = false;
-                                timeToRoll = 1.5f;
                             }
                         }
 
@@ -339,11 +343,7 @@ public class PlayerController : MonoBehaviour
                 rb.velocity = new Vector2(0, rb.velocity.y);
                 if (isShelled)
                 {
-                    timeToRoll -= Time.deltaTime;
-                    if (timeToRoll < 0)
-                    {
-                        GlobalControl.Instance.canMove = true;
-                    }
+                    shellToRollDelay();
                 }
             }
         }
