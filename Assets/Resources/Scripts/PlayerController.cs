@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//this script controls the player movement. It's complicated, buckle up. 
+//this script controls the player movement. 
+public enum SnailOrient{UP, DOWN, LEFT, RIGHT}
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rb;
@@ -21,8 +22,6 @@ public class PlayerController : MonoBehaviour
 
     private bool isShelled;
 
-    public bool canJump = true;
-
     public bool isJumping = false;
 
     public bool isRolling;
@@ -36,7 +35,8 @@ public class PlayerController : MonoBehaviour
     private float jumpTimeCounter;
 
     //snail orientation booleans
-    public bool upsideUp, upsideDown, upsideRight, upsideLeft;
+
+    public SnailOrient orientPlayer; 
 
     public bool isStickingRight;
 
@@ -59,7 +59,7 @@ public class PlayerController : MonoBehaviour
         snailCircleColliderLeft = GetComponent<CircleCollider2D>();
         rb.gravityScale = 3.0f;
         surroundCheckRadius = .125f;
-        upsideUp = true;
+        orientPlayer = SnailOrient.UP;
     }
 
     public void Update()
@@ -80,19 +80,15 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
-
-        if (isShelled) {
-            snailBoxCollider.enabled = false;
-            snailCircleColliderLeft.enabled = true;
-        } else {
-            snailBoxCollider.enabled = true;
-            snailCircleColliderLeft.enabled = false;
-        }
     }
 
-    IEnumerator JumpAllowDelay() {
-        yield return new WaitForSeconds(.7f);
-        canJump = true;
+    void snailFlip() {
+        //flip the snail sprite based on movement
+        if (moveBy.x < 0) {
+            transform.localScale = new Vector3(-1, 1, 1);
+        } else if (moveBy.x > 0) {
+            transform.localScale = new Vector3(1, 1, 1);
+        }
     }
 
     void FixedUpdate() {
@@ -109,19 +105,15 @@ public class PlayerController : MonoBehaviour
             if (GlobalControl.Instance.canMove){
                 moveBy.x = Input.GetAxisRaw("Horizontal");
                 moveBy.y = Input.GetAxisRaw("Vertical");
-                //the player will be in one of 4 states: upsideUp, upsideLeft, upsideRight, or upsideDown
-                if (upsideUp) {
+                //the player will be in one of 4 states defined by the snailOrient
+                if (orientPlayer == SnailOrient.UP) {
                 rb.velocity = new Vector2(moveBy.x * moveFactor, rb.velocity.y);
+                transform.rotation = Quaternion.Euler(0, 0, 0);
                     if (!isRolling) {
                         rb.gravityScale = 3.0f;
                         moveFactor = 5f / 1.2f;
 
-                        //flip the snail sprite based on movement
-                        if (moveBy.x < 0) {
-                            transform.localScale = new Vector3(-1, 1, 1);
-                        } else if (moveBy.x > 0) {
-                            transform.localScale = new Vector3(1, 1, 1);
-                        }
+                        snailFlip();
 
                         //this jumping script allows for variable jump heights
                         if (Input.GetKey(KeyCode.X) && isJumping) {
@@ -153,6 +145,8 @@ public class PlayerController : MonoBehaviour
                             {
                                 myAnimationController.SetBool("RollUp", true);
                                 isShelled = true;
+                                snailBoxCollider.enabled = false;
+                                snailCircleColliderLeft.enabled = true;
                                 GlobalControl.Instance.canMove = false;
                                 timeToRoll = 1.5f;
                             }
@@ -168,52 +162,30 @@ public class PlayerController : MonoBehaviour
                         //flip upside down
                         if (Input.GetKey(KeyCode.UpArrow) && isStickingTop)
                         {
-                            transform.rotation = Quaternion.Euler(0, 0, 180);
-                            upsideDown = true;
-                            upsideUp = false;
-                            upsideRight = false;
-                            upsideLeft = false;
+                            orientPlayer = SnailOrient.DOWN;
                         }
 
                         //flip upside right
                         if (Input.GetKey(KeyCode.LeftArrow) && isStickingRight)
                         {
-                            transform.rotation = Quaternion.Euler(0, 0, 270);
-                            upsideRight = true;
-                            upsideUp = false;
+                            orientPlayer = SnailOrient.RIGHT;
                         }
 
                         //flip upside left
                         if (Input.GetKey(KeyCode.RightArrow) && isStickingRight)
                         {
-                            transform.rotation = Quaternion.Euler(0, 0, 90);
-                            upsideLeft = true;
-                            upsideUp = false;
+                            orientPlayer = SnailOrient.LEFT;
                         }
                 }
                 else //if rolling
                 {
                     rb.gravityScale = 4.0f;
                     moveFactor = 8f;
-
-                    //flip the snail sprite based on movement
-                    if (moveBy.x < 0)
-                    {
-                        transform.localScale = new Vector3(-1, 1, 1);
-                    }
-                    if (moveBy.x > 0)
-                    {
-                        transform.localScale = new Vector3(1, 1, 1);
-                    }
+                    snailFlip();
                     if (Input.GetKey(KeyCode.X) && isGrounded)
                     {
-                        if (canJump)
-                        {
-                            rb.velocity = Vector2.up * jumpHeight;
-                            isGrounded = false;
-                            canJump = false;
-                            StartCoroutine(JumpAllowDelay());
-                        }
+                        rb.velocity = Vector2.up * jumpHeight;
+                        isGrounded = false;
                     }
                     if (
                         moveBy.x == 0 &&
@@ -227,10 +199,12 @@ public class PlayerController : MonoBehaviour
                         myAnimationController.SetBool("RollUp", false);
                         isRolling = false;
                         isShelled = false;
+                        snailBoxCollider.enabled = true;
+                        snailCircleColliderLeft.enabled = false;
                     }
                 }
             }
-            else if (upsideDown)
+            else if (orientPlayer == SnailOrient.DOWN)
             {
                 transform.rotation = Quaternion.Euler(0, 0, 180);
                 rb.velocity =
@@ -249,30 +223,22 @@ public class PlayerController : MonoBehaviour
                 //adjust the snail orientation states
                 if (!isGrounded)
                 {
-                    transform.rotation = Quaternion.Euler(0, 0, 0);
-                    upsideUp = true;
-                    upsideDown = false;
+                    orientPlayer = SnailOrient.UP;
                 }
                 if (Input.GetKey(KeyCode.LeftArrow) && isStickingRight)
                 {
-                    transform.rotation = Quaternion.Euler(0, 0, 270);
-                    upsideRight = true;
-                    upsideDown = false;
+                    orientPlayer = SnailOrient.RIGHT;
                 }
                 if (Input.GetKey(KeyCode.RightArrow) && isStickingRight)
                 {
-                    transform.rotation = Quaternion.Euler(0, 0, 90);
-                    upsideLeft = true;
-                    upsideDown = false;
+                    orientPlayer = SnailOrient.LEFT;
                 }
                 if (Input.GetKey(KeyCode.DownArrow) && isStickingTop)
-                    {
-                        transform.rotation = Quaternion.Euler(0, 0, 0);
-                        upsideDown = false;
-                        upsideUp = true;
-                    }
+                {
+                    orientPlayer = SnailOrient.UP;
+                }
             }
-            else if (upsideRight)
+            else if (orientPlayer == SnailOrient.RIGHT)
             {
                 transform.rotation = Quaternion.Euler(0, 0, 270);
 
@@ -291,13 +257,8 @@ public class PlayerController : MonoBehaviour
                 //snail walljumping
                 if (Input.GetKey(KeyCode.X) && isGrounded)
                 {
-                    if (canJump)
-                    {
-                        rb.velocity = new Vector2(80, 15);
-                        isGrounded = false;
-                        canJump = false;
-                        StartCoroutine(JumpAllowDelay());
-                    }
+                    rb.velocity = new Vector2(80, 15);
+                    isGrounded = false;
                 }
 
                 //adjust the snail orientation states
@@ -309,25 +270,16 @@ public class PlayerController : MonoBehaviour
                     isStickingRight
                 )
                 {
-                    transform.rotation = Quaternion.Euler(0, 0, 0);
-                    upsideUp = true;
-                    upsideRight = false;
+                    orientPlayer = SnailOrient.UP;
                 }
-                if (Input.GetKey(KeyCode.UpArrow) && isStickingRight)
-                {
-                    transform.rotation = Quaternion.Euler(0, 0, 180);
-                    upsideDown = true;
-                    upsideRight = false;
+                if (Input.GetKey(KeyCode.UpArrow) && isStickingRight) {
+                    orientPlayer = SnailOrient.DOWN;
                 }
-                if (Input.GetKey(KeyCode.RightArrow) && isStickingTop)
-                {
-                    transform.rotation = Quaternion.Euler(0, 0, 90);
-                    upsideLeft = true;
-                    upsideRight = false;
+                if (Input.GetKey(KeyCode.RightArrow) && isStickingTop) {
+                    orientPlayer = SnailOrient.LEFT;
                 }
             }
-            else if (upsideLeft)
-            {
+            else if (orientPlayer == SnailOrient.LEFT) {
                 transform.rotation = Quaternion.Euler(0, 0, 90);
                 rb.velocity =
                     new Vector2(moveBy.x * moveFactor, moveBy.y * moveFactor);
@@ -344,13 +296,8 @@ public class PlayerController : MonoBehaviour
                 //snail walljumping
                 if (Input.GetKey(KeyCode.X) && isGrounded)
                 {
-                    if (canJump)
-                    {
-                        rb.velocity = new Vector2(-80, 15);
-                        isGrounded = false;
-                        canJump = false;
-                        StartCoroutine(JumpAllowDelay());
-                    }
+                    rb.velocity = new Vector2(-80, 15);
+                    isGrounded = false;
                 }
 
                 //adjust the snail orientation states
@@ -362,21 +309,16 @@ public class PlayerController : MonoBehaviour
                     isStickingRight
                 )
                 {
-                    transform.rotation = Quaternion.Euler(0, 0, 0);
-                    upsideUp = true;
-                    upsideLeft = false;
+                    
+                    orientPlayer = SnailOrient.UP;
                 }
                 if (Input.GetKey(KeyCode.UpArrow) && isStickingRight)
                 {
-                    transform.rotation = Quaternion.Euler(0, 0, 180);
-                    upsideDown = true;
-                    upsideLeft = false;
+                    orientPlayer = SnailOrient.DOWN;
                 }
                 if (Input.GetKey(KeyCode.LeftArrow) && isStickingTop)
                 {
-                    transform.rotation = Quaternion.Euler(0, 0, 90);
-                    upsideRight = true;
-                    upsideLeft = false;
+                    orientPlayer = SnailOrient.RIGHT;
                 }
             }
             if (
@@ -384,16 +326,12 @@ public class PlayerController : MonoBehaviour
                 !isStickingTop &&
                 !isStickingRight
             )
-            { //if airborne, reorient to upsideUp
+            { //if airborne, reorient to UP
                 rb.velocity =
                     new Vector2(moveBy.x * moveFactor + rb.velocity.x/2,
                         rb.velocity.y);
-                transform.rotation = Quaternion.Euler(0, 0, 0);
                 rb.gravityScale = 3.0f;
-                upsideUp = true;
-                upsideLeft = false;
-                upsideRight = false;
-                upsideDown = false;
+                orientPlayer = SnailOrient.UP;
             }
             }
             else
@@ -411,4 +349,3 @@ public class PlayerController : MonoBehaviour
         }
     }    
 }
-
