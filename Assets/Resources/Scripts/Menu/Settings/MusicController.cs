@@ -7,38 +7,31 @@ using UnityEngine.UI;
 // and mute the music if so desired, all from the Settings scene.
 public class MusicController : MonoBehaviour
 {
-    private AudioSource audioSource;
-    private Button buttonMute;
-    private Text muteButtonText;
-    private GlobalControl globalController;
-    private Dropdown musicDropdown;
-    public AudioClip Track1;
-    public AudioClip Track2; 
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private Button buttonMute;
+    [SerializeField] private Text muteButtonText;
+    [SerializeField] private Dropdown musicDropdown;
+    [SerializeField] private AudioClip Track1, Track2; 
 
     void Start () {
-        audioSource = GameObject.Find("GameManager").GetComponent<AudioSource>();
-        buttonMute = GameObject.Find("MuteButton").GetComponent<Button>();
-        muteButtonText = GameObject.Find("MuteText").GetComponent<Text>();
-        globalController = GameObject.Find("GameManager").GetComponent<GlobalControl>();
-        musicDropdown = GameObject.Find("MusicTracks").GetComponent<Dropdown>();
         buttonMute.onClick.AddListener( () => {ChangeMusicState(); }  );
         musicDropdown.onValueChanged.AddListener(delegate {
             changeMusicTrack();});
     }
     
-    void ChangeMusicState() {
-        if (globalController.musicState) {
+    private void ChangeMusicState() {
+        if (GlobalControl.Instance.musicState) {
             muteButtonText.text = "Enable Music";
         } else {
             muteButtonText.text = "Disable Music";
         }
-        globalController.musicState = !globalController.musicState;
+        GlobalControl.Instance.musicState = !GlobalControl.Instance.musicState;
         audioSource.mute = !audioSource.mute;
     }
 
-    public void changeMusicTrack() {
-        globalController.musicTrack = musicDropdown.value;
-        if (globalController.musicTrack == 0) {
+    private void changeMusicTrack() {
+        GlobalControl.Instance.musicTrack = musicDropdown.value;
+        if (GlobalControl.Instance.musicTrack == 0) {
             audioSource.clip = Track1;
             audioSource.Play();
         } else {

@@ -5,14 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class SplashScript : MonoBehaviour
 {
-    private float timer = 3.5f;
+    void Start() {
+        StartCoroutine(Splash());
+    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        timer -= Time.deltaTime;
-        if (timer < 0) {
-            SceneManager.LoadScene("Scene_Menu");
-        }
+    IEnumerator Splash() {
+        yield return new WaitForSeconds(3.5f);
+        SceneManager.LoadScene("Scene_Menu");
     }
 }
