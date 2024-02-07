@@ -7,6 +7,7 @@ using UnityEngine;
 public class MailboxTrigger : MonoBehaviour
 {
     [SerializeField] private CutsceneControl cutsceneScript;
+    [SerializeField] private TimerScript timer;
     [SerializeField] private GameObject iDisplay;
 
     void OnTriggerEnter2D(Collider2D other)

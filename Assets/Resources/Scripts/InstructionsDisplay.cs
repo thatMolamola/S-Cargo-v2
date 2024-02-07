@@ -36,9 +36,4 @@ public class InstructionsDisplay : MonoBehaviour
         yield return new WaitForSeconds(5f);
         textbox.SetActive(false);
     }
-
-    private IEnumerator CloseAllInstructions() {
-        textbox.SetActive(false);
-        yield return new WaitForSeconds(.25f);
-    }
 }

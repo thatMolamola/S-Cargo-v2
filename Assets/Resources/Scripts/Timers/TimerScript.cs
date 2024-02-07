@@ -7,23 +7,21 @@ using UnityEngine.UI;
 // and the Level Complete panel in the first level
 public class TimerScript : MonoBehaviour 
 {
-    private Text timerText;
-    private Text highScore;
+    [SerializeField] private Text timerText;
+    [SerializeField] private Text highScore;
 
-    public Text LCtimerText;
-    public Text LChighscore;
-
+    [SerializeField] private Text LCtimerText;
+    [SerializeField] private Text LChighscore;
+    [SerializeField] private int levelNum;
+    private int minutes, seconds, milliseconds;
+    private float startTime;
+    [SerializeField] private CutsceneControl cutsceneScript;
     private float timeSinceMove = 0f;
-    private float milliseconds;
-    private float seconds;
-    private float minutes;
-
 
     void Start()
     {
-        timerText = GameObject.Find("TimerText").GetComponent<Text>();
-        highScore = GameObject.Find("HighScoreText").GetComponent<Text>();
-        if (GlobalControl.Instance.lowestTime1 < 10000000000000){
+        if (levelNum == 1) {
+            if (GlobalControl.Instance.lowestTime1 < 10000000000000){
             highScore.text =
                     "Best time: " +
                     (int)(GlobalControl.Instance.lowestTime1 / 60f) +
@@ -31,7 +29,29 @@ public class TimerScript : MonoBehaviour
                     (int)(GlobalControl.Instance.lowestTime1 % 60f) +
                     ":" +
                     (int)(GlobalControl.Instance.lowestTime1 * 1000f) % 1000;
+            }
+        } else if (levelNum == 2) {
+            if (GlobalControl.Instance.lowestTime2 < 10000000000000){
+            highScore.text =
+                    "Best time: " +
+                    (int)(GlobalControl.Instance.lowestTime2 / 60f) +
+                    ":" +
+                    (int)(GlobalControl.Instance.lowestTime2 % 60f) +
+                    ":" +
+                    (int)(GlobalControl.Instance.lowestTime2 * 1000f) % 1000;
+            }
+        } else if (levelNum == 3) {
+            if (GlobalControl.Instance.lowestTime3 < 10000000000000){
+            highScore.text =
+                    "Best time: " +
+                    (int)(GlobalControl.Instance.lowestTime3 / 60f) +
+                    ":" +
+                    (int)(GlobalControl.Instance.lowestTime3 % 60f) +
+                    ":" +
+                    (int)(GlobalControl.Instance.lowestTime3 * 1000f) % 1000;
+            }
         }
+        
     }
 
     void Update()
@@ -40,16 +60,38 @@ public class TimerScript : MonoBehaviour
         {
             if (GlobalControl.Instance.hasMoved)
             {
-                if (GlobalControl.Instance.lowestTime1 < 10000000000000){
-                highScore.text =
+                if (levelNum == 1) {
+                    if (GlobalControl.Instance.lowestTime1 < 10000000000000){
+                        highScore.text =
                     "Best time: " +
                     (int)(GlobalControl.Instance.lowestTime1 / 60f) +
                     ":" +
                     (int)(GlobalControl.Instance.lowestTime1 % 60f) +
                     ":" +
                     (int)(GlobalControl.Instance.lowestTime1 * 1000f) % 1000;
+                    }
+                } else if (levelNum == 2) {
+                    if (GlobalControl.Instance.lowestTime2 < 10000000000000){
+                        highScore.text =
+                    "Best time: " +
+                    (int)(GlobalControl.Instance.lowestTime2 / 60f) +
+                    ":" +
+                    (int)(GlobalControl.Instance.lowestTime2 % 60f) +
+                    ":" +
+                    (int)(GlobalControl.Instance.lowestTime2 * 1000f) % 1000;
+                    }
+                } else if (levelNum == 3) {
+                    if (GlobalControl.Instance.lowestTime3 < 10000000000000){
+                        highScore.text =
+                    "Best time: " +
+                    (int)(GlobalControl.Instance.lowestTime3 / 60f) +
+                    ":" +
+                    (int)(GlobalControl.Instance.lowestTime3 % 60f) +
+                    ":" +
+                    (int)(GlobalControl.Instance.lowestTime3 * 1000f) % 1000;
+                    }
                 }
-                if (GlobalControl.Instance.finishedDelivery) //mailbox scene trigger
+                if (!cutsceneScript.mailboxTrigger)
                 {
                     timeSinceMove += Time.deltaTime;
                     minutes = (int)(timeSinceMove / 60f);
@@ -64,19 +106,55 @@ public class TimerScript : MonoBehaviour
                 }
                 else
                 {
-                    if (GlobalControl.Instance.lowestTime1 < 10000000000000){
-                    highScore.text =
-                        "Best time: " +
-                        ((int)(GlobalControl.Instance.lowestTime1 / 60f)).ToString("00") +
-                        ":" +
-                        ((int)(GlobalControl.Instance.lowestTime1 % 60f)).ToString("00") +
-                        ":" +
-                        ((int)(GlobalControl.Instance.lowestTime1 * 1000f) % 1000).ToString("000");
+                    if (levelNum == 1) {
+                        if (GlobalControl.Instance.lowestTime1 < 10000000000000){
+                        highScore.text =
+                                "Best time: " +
+                                (int)(GlobalControl.Instance.lowestTime1 / 60f) +
+                                ":" +
+                                (int)(GlobalControl.Instance.lowestTime1 % 60f) +
+                                ":" +
+                                (int)(GlobalControl.Instance.lowestTime1 * 1000f) % 1000;
+                        }
+                    } else if (levelNum == 2) {
+                        if (GlobalControl.Instance.lowestTime2 < 10000000000000){
+                        highScore.text =
+                                "Best time: " +
+                                (int)(GlobalControl.Instance.lowestTime2 / 60f) +
+                                ":" +
+                                (int)(GlobalControl.Instance.lowestTime2 % 60f) +
+                                ":" +
+                                (int)(GlobalControl.Instance.lowestTime2 * 1000f) % 1000;
+                        }
+                    } else if (levelNum == 3) {
+                        if (GlobalControl.Instance.lowestTime3 < 10000000000000){
+                        highScore.text =
+                                "Best time: " +
+                                (int)(GlobalControl.Instance.lowestTime3 / 60f) +
+                                ":" +
+                                (int)(GlobalControl.Instance.lowestTime3 % 60f) +
+                                ":" +
+                                (int)(GlobalControl.Instance.lowestTime3 * 1000f) % 1000;
+                        }
                     }
-                    if (timeSinceMove <= GlobalControl.Instance.lowestTime1)
-                    {
-                        GlobalControl.Instance.lowestTime1 = timeSinceMove;
+
+                    if (levelNum == 1) {
+                        if (timeSinceMove <= GlobalControl.Instance.lowestTime1)
+                        {
+                            GlobalControl.Instance.lowestTime1 = timeSinceMove;
+                        } 
+                    } else if (levelNum == 2) {
+                        if (timeSinceMove <= GlobalControl.Instance.lowestTime2)
+                        {
+                            GlobalControl.Instance.lowestTime2 = timeSinceMove;
+                        } 
+                    } else if (levelNum == 3) {
+                        if (timeSinceMove <= GlobalControl.Instance.lowestTime3)
+                        {
+                            GlobalControl.Instance.lowestTime3 = timeSinceMove;
+                        } 
                     }
+                    
                     LCtimerText.text = "Your time: " + timerText.text;
                     LChighscore.text = highScore.text;
                 }

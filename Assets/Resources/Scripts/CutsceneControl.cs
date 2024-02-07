@@ -10,6 +10,8 @@ public class CutsceneControl : MonoBehaviour
     public GameObject ohNo;
     public GameObject blackLight;
 
+    public bool mailboxTrigger = false;
+
     public GameObject speechBubble; 
     public GameObject closingText1; 
     public GameObject closingText2; 
@@ -43,6 +45,7 @@ public class CutsceneControl : MonoBehaviour
 
     public IEnumerator MailboxCutscene() {
         GlobalControl.Instance.canMove = false;
+        mailboxTrigger = true;
         if (GlobalControl.Instance.cutsceneEnabled){
             speechBubble.SetActive (true);
             closingText1.SetActive (true);
@@ -63,5 +66,6 @@ public class CutsceneControl : MonoBehaviour
         }
         LevelComplete.SetActive(true); 
         yield return new WaitForSeconds(.25f); 
+        mailboxTrigger = false;
     }
 }
