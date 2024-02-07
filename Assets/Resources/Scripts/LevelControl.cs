@@ -9,23 +9,10 @@ public class LevelControl : MonoBehaviour
 {
     private Scene thisScene;
 
-    private GlobalControl globalController;
+    public GameObject pausePanel, instructionsPanel;
 
-    public GameObject pausePanel;
-
-    public GameObject instructionsPanel;
-
-    private float timerP;
-    private float timerI;
-    private bool canOpenClose;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        globalController =
-            GameObject.Find("GameManager").GetComponent<GlobalControl>();
-            canOpenClose = true; 
-    }
+    private float timerP, timerI;
+    private bool canOpenClose = true;
 
     // Update is called once per frame
     void Update()
@@ -34,10 +21,10 @@ public class LevelControl : MonoBehaviour
         {
             thisScene = SceneManager.GetActiveScene();
             SceneManager.LoadScene(thisScene.name);
-            globalController.lettersCollected = 0;
-            globalController.allMailCollected = false;
-            globalController.hasMoved = false;
-            globalController.canMove = true;
+            GlobalControl.Instance.lettersCollected = 0;
+            GlobalControl.Instance.allMailCollected = false;
+            GlobalControl.Instance.hasMoved = false;
+            GlobalControl.Instance.canMove = true;
         }
         if (Input.GetKey(KeyCode.P) && canOpenClose)
         {
@@ -61,12 +48,12 @@ public class LevelControl : MonoBehaviour
     }
     public void unpause() {
         canOpenClose = false; 
-            if(globalController.pause) {
-                globalController.pause = false;
+            if(GlobalControl.Instance.pause) {
+                GlobalControl.Instance.pause = false;
                 pausePanel.SetActive(false);
                 instructionsPanel.SetActive(false);
             } else {
-                globalController.pause = true;
+                GlobalControl.Instance.pause = true;
                 instructionsPanel.SetActive(false);
                 pausePanel.SetActive(true);
             }
@@ -74,12 +61,12 @@ public class LevelControl : MonoBehaviour
 
     public void instructions() {
         canOpenClose = false; 
-            if(globalController.pause) {
-                globalController.pause = false;
+            if(GlobalControl.Instance.pause) {
+                GlobalControl.Instance.pause = false;
                 instructionsPanel.SetActive(false);
                 pausePanel.SetActive(false);
             } else {
-                globalController.pause = true;
+                GlobalControl.Instance.pause = true;
                 instructionsPanel.SetActive(true);
                 pausePanel.SetActive(false);
             }
