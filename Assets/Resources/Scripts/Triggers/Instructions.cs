@@ -7,15 +7,17 @@ using UnityEngine;
 public class Instructions : MonoBehaviour
 {
     [SerializeField] private int triggerNumber; 
+    [SerializeField] private InstructionsDisplay iD; 
+    private bool coroutineStarted = false;
 
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            if (this.CompareTag("Instructions"))
+            if (this.CompareTag("Instructions") && !coroutineStarted)
             {
-                GlobalControl.Instance.instructionsStep = triggerNumber;
-                this.gameObject.SetActive(false);
+                coroutineStarted = true;
+                StartCoroutine(iD.ShowTriggerInstructions(triggerNumber));
             }
         }
     }

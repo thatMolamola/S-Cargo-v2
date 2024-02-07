@@ -7,14 +7,12 @@ using UnityEngine.SceneManagement;
 //after 22 seconds. 
 public class CreditScript : MonoBehaviour
 {
-    private float timer = 22f;
+    void Start() {
+        StartCoroutine(LoadMenu());
+    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        timer -= Time.deltaTime;
-        if (timer < 0) {
-            SceneManager.LoadScene("Scene_Menu");
-        }
+    IEnumerator LoadMenu(){
+        yield return new WaitForSeconds(22f);
+        SceneManager.LoadScene("Scene_Menu");
     }
 }

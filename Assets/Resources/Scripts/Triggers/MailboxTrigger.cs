@@ -6,12 +6,8 @@ using UnityEngine;
 // a collision between the player and the mailbox if all mail has been collected.
 public class MailboxTrigger : MonoBehaviour
 {
-    private CutsceneControl cutsceneScript;
-
-    void Start()
-    {
-        cutsceneScript = GameObject.Find("EventSystem").GetComponent<CutsceneControl>();
-    }
+    [SerializeField] private CutsceneControl cutsceneScript;
+    [SerializeField] private GameObject iDisplay;
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -19,7 +15,8 @@ public class MailboxTrigger : MonoBehaviour
         {
             if (other.CompareTag("Player"))
             {
-                cutsceneScript.mailboxTrigger = true;
+                StartCoroutine(cutsceneScript.MailboxCutscene());
+                iDisplay.SetActive(false);
             }
         }
     }

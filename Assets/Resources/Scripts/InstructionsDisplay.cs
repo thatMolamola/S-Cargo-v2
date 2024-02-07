@@ -1,69 +1,44 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 //this script is designed to show the instructions on the first level when the 
 //instructionsStep integer is at the right value.
 public class InstructionsDisplay : MonoBehaviour
 {
-    [SerializeField] private GameObject text0, text1, text2, text3;
-    private float timeLeft1, timeLeft2, timeLeft3;
-
+    [SerializeField] private Text text;
+    [SerializeField] private GameObject textbox;
+    
     void Start()
     {
-            timeLeft1 = 10f; 
-            timeLeft2 = 10f;
-            timeLeft3 = 5f;
-            StartCoroutine(ShowInstructions());
+        StartCoroutine(ShowOpenInstructions());
     }
 
-    IEnumerator ShowInstructions() {
+    IEnumerator ShowOpenInstructions() {
         if (GlobalControl.Instance.cutsceneEnabled) {
             yield return new WaitForSeconds(8f);
         } else {
             yield return new WaitForSeconds(3f);
         }
-        text0.SetActive(true);
-        yield return new WaitForSeconds(8f);
-        text0.SetActive (false);
-        text1.SetActive (true);
-        yield return new WaitForSeconds(8f);
-        text1.SetActive (false);
+        textbox.SetActive(true);
+        text.text = "Hey kid, use the arrow keys to move, and the x key to jump.";
+        yield return new WaitForSeconds(5f);
+        textbox.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (GlobalControl.Instance.instructionsStep == 1) {
-            text0.SetActive (false);
-            text1.SetActive (true);
-            text2.SetActive (false);
-            text3.SetActive (false);
-            timeLeft1 -= Time.deltaTime; 
-            if (timeLeft1 < 0) {
-                GlobalControl.Instance.instructionsStep = 0;
-            }
+    public IEnumerator ShowTriggerInstructions(int passedNum) { 
+        textbox.SetActive(true);
+        if (passedNum == 1) {
+             text.text = "Hey kid. To stick to a surface, like a wall or ceiling, press the arrow key pointing into the surface. It's pretty easy.";
+        } else if (passedNum == 2) {text.text = "Avoid the spikes, kid. Do I have to tell you everything myself? For more help, press the i key.";}
+        else if (passedNum == 3) {text.text = "Hey kid. Make sure you collect ALL the mail before delivering it. Check the cave to your right.";}
+        yield return new WaitForSeconds(5f);
+        textbox.SetActive(false);
+    }
 
-        }
-        if (GlobalControl.Instance.instructionsStep == 2) {
-            text0.SetActive (false);
-            text1.SetActive (false);
-            text2.SetActive (true);
-            text3.SetActive (false);
-            timeLeft2 -= Time.deltaTime; 
-            if (timeLeft2 < 0) {
-                GlobalControl.Instance.instructionsStep = 0;
-            }
-        }
-        if (GlobalControl.Instance.instructionsStep == 3) {
-            text0.SetActive (false);
-            text1.SetActive (false);
-            text2.SetActive (false);
-            text3.SetActive (true);
-            timeLeft3 -= Time.deltaTime; 
-            if (timeLeft3 < 0) {
-                GlobalControl.Instance.instructionsStep = 0;
-            }
-        }
+    private IEnumerator CloseAllInstructions() {
+        textbox.SetActive(false);
+        yield return new WaitForSeconds(.25f);
     }
 }

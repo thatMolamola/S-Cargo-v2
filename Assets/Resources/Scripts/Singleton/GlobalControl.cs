@@ -17,6 +17,7 @@ public class GlobalControl : MonoBehaviour
     public int snailChoice;
     
     public bool allMailCollected;
+    public bool finishedDelivery;
     public float lowestTime1;
     public float lowestTime2;
     public float lowestTime3;

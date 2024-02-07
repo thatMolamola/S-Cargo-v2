@@ -8,60 +8,48 @@ using UnityEngine.UI;
 public class TimerScript : MonoBehaviour 
 {
     private Text timerText;
-
     private Text highScore;
 
     public Text LCtimerText;
-
     public Text LChighscore;
 
     private float timeSinceMove = 0f;
-
     private float milliseconds;
-
     private float seconds;
-
     private float minutes;
 
-    private GlobalControl globalController;
-
-    private CutsceneControl cutsceneScript;
 
     void Start()
     {
-        globalController =
-            GameObject.Find("GameManager").GetComponent<GlobalControl>();
         timerText = GameObject.Find("TimerText").GetComponent<Text>();
         highScore = GameObject.Find("HighScoreText").GetComponent<Text>();
-        cutsceneScript =
-            GameObject.Find("EventSystem").GetComponent<CutsceneControl>();
-        if (globalController.lowestTime1 < 10000000000000){
+        if (GlobalControl.Instance.lowestTime1 < 10000000000000){
             highScore.text =
                     "Best time: " +
-                    (int)(globalController.lowestTime1 / 60f) +
+                    (int)(GlobalControl.Instance.lowestTime1 / 60f) +
                     ":" +
-                    (int)(globalController.lowestTime1 % 60f) +
+                    (int)(GlobalControl.Instance.lowestTime1 % 60f) +
                     ":" +
-                    (int)(globalController.lowestTime1 * 1000f) % 1000;
+                    (int)(GlobalControl.Instance.lowestTime1 * 1000f) % 1000;
         }
     }
 
     void Update()
     {
-        if (!globalController.pause)
+        if (!GlobalControl.Instance.pause)
         {
-            if (globalController.hasMoved)
+            if (GlobalControl.Instance.hasMoved)
             {
-                if (globalController.lowestTime1 < 10000000000000){
+                if (GlobalControl.Instance.lowestTime1 < 10000000000000){
                 highScore.text =
                     "Best time: " +
-                    (int)(globalController.lowestTime1 / 60f) +
+                    (int)(GlobalControl.Instance.lowestTime1 / 60f) +
                     ":" +
-                    (int)(globalController.lowestTime1 % 60f) +
+                    (int)(GlobalControl.Instance.lowestTime1 % 60f) +
                     ":" +
-                    (int)(globalController.lowestTime1 * 1000f) % 1000;
+                    (int)(GlobalControl.Instance.lowestTime1 * 1000f) % 1000;
                 }
-                if (!cutsceneScript.mailboxTrigger)
+                if (GlobalControl.Instance.finishedDelivery) //mailbox scene trigger
                 {
                     timeSinceMove += Time.deltaTime;
                     minutes = (int)(timeSinceMove / 60f);
@@ -76,18 +64,18 @@ public class TimerScript : MonoBehaviour
                 }
                 else
                 {
-                    if (globalController.lowestTime1 < 10000000000000){
+                    if (GlobalControl.Instance.lowestTime1 < 10000000000000){
                     highScore.text =
                         "Best time: " +
-                        ((int)(globalController.lowestTime1 / 60f)).ToString("00") +
+                        ((int)(GlobalControl.Instance.lowestTime1 / 60f)).ToString("00") +
                         ":" +
-                        ((int)(globalController.lowestTime1 % 60f)).ToString("00") +
+                        ((int)(GlobalControl.Instance.lowestTime1 % 60f)).ToString("00") +
                         ":" +
-                        ((int)(globalController.lowestTime1 * 1000f) % 1000).ToString("000");
+                        ((int)(GlobalControl.Instance.lowestTime1 * 1000f) % 1000).ToString("000");
                     }
-                    if (timeSinceMove <= globalController.lowestTime1)
+                    if (timeSinceMove <= GlobalControl.Instance.lowestTime1)
                     {
-                        globalController.lowestTime1 = timeSinceMove;
+                        GlobalControl.Instance.lowestTime1 = timeSinceMove;
                     }
                     LCtimerText.text = "Your time: " + timerText.text;
                     LChighscore.text = highScore.text;

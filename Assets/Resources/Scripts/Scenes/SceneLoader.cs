@@ -7,14 +7,7 @@ using UnityEngine.UI;
 //this script is designed to load scenes for whatever buttons may be trying to do so
 public class SceneLoader : MonoBehaviour
 {
-    private Scene thisScene;
-    private GlobalControl globalController;
     private CutsceneControl cutsceneScript;
-
-    void Start()
-    {
-        globalController = GameObject.Find("GameManager").GetComponent<GlobalControl>();
-    }
     
     public void LoadMenu()
     {
@@ -23,46 +16,38 @@ public class SceneLoader : MonoBehaviour
 
     public void LoadPlayLevel1_1()
     {
-        globalController.allMailCollected = false;
-        globalController.lettersCollected = 0;
-        globalController.hasMoved = false;
-        globalController.canMove = true; 
+        GlobalControl.Instance.allMailCollected = false;
+        GlobalControl.Instance.lettersCollected = 0;
+        GlobalControl.Instance.hasMoved = false;
+        GlobalControl.Instance.canMove = true; 
         SceneManager.LoadScene("Scene_Level1_1"); 
-        cutsceneScript = GameObject.Find("EventSystem").GetComponent<CutsceneControl>();
-        cutsceneScript.mailboxTrigger = false;
     }
 
     public void LoadPlayLevel1_2()
     {
-        globalController.allMailCollected = false;
-        globalController.lettersCollected = 0;
-        globalController.hasMoved = false;
-        globalController.canMove = true;  
+        GlobalControl.Instance.allMailCollected = false;
+        GlobalControl.Instance.lettersCollected = 0;
+        GlobalControl.Instance.hasMoved = false;
+        GlobalControl.Instance.canMove = true;  
         SceneManager.LoadScene("Scene_Level1_2"); 
-        cutsceneScript = GameObject.Find("EventSystem").GetComponent<CutsceneControl>();
-        cutsceneScript.mailboxTrigger = false;
     }
 
     public void LoadPlayLevel2()
     {
-        globalController.allMailCollected = false;
-        globalController.lettersCollected = 0;
-        globalController.hasMoved = false;
-        globalController.canMove = true;
+        GlobalControl.Instance.allMailCollected = false;
+        GlobalControl.Instance.lettersCollected = 0;
+        GlobalControl.Instance.hasMoved = false;
+        GlobalControl.Instance.canMove = true;
         SceneManager.LoadScene("Scene_Level2_1");
-        cutsceneScript = GameObject.Find("EventSystem").GetComponent<CutsceneControl>();
-        cutsceneScript.mailboxTrigger = false;
     }
 
      public void LoadPlayLevel3()
     {
-        globalController.allMailCollected = false;
-        globalController.lettersCollected = 0;
-        globalController.hasMoved = false;
-        globalController.canMove = true;
+        GlobalControl.Instance.allMailCollected = false;
+        GlobalControl.Instance.lettersCollected = 0;
+        GlobalControl.Instance.hasMoved = false;
+        GlobalControl.Instance.canMove = true;
         SceneManager.LoadScene("Scene_Level3_1");
-        cutsceneScript = GameObject.Find("EventSystem").GetComponent<CutsceneControl>();
-        cutsceneScript.mailboxTrigger = false;
     }
 
     public void LoadRollChar()
@@ -82,29 +67,28 @@ public class SceneLoader : MonoBehaviour
 
     public void LoadLevelSelect()
     {
-        globalController.allMailCollected = false;
-        globalController.lettersCollected = 0;
-        globalController.hasMoved = false;
-        globalController.canMove = true;
+        GlobalControl.Instance.allMailCollected = false;
+        GlobalControl.Instance.lettersCollected = 0;
+        GlobalControl.Instance.hasMoved = false;
+        GlobalControl.Instance.canMove = true;
         SceneManager.LoadScene("Scene_LevelSelect");
     }
 
     public void ReloadThisScene(){
-        globalController.allMailCollected = false;
-        globalController.lettersCollected = 0;
-        globalController.hasMoved = false;
-        globalController.canMove = true;
-        thisScene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(thisScene.name);
+        GlobalControl.Instance.allMailCollected = false;
+        GlobalControl.Instance.lettersCollected = 0;
+        GlobalControl.Instance.hasMoved = false;
+        GlobalControl.Instance.canMove = true;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     //When the Exit button is clicked, quit the application.
     public void doExitGame()
     {
-#if UNITY_EDITOR
+        #if UNITY_EDITOR
           UnityEditor.EditorApplication.isPlaying = false;   
-#else  
+        #else  
           Application.Quit();
-#endif
+        #endif
     }
 }

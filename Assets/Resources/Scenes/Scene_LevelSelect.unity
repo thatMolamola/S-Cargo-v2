@@ -974,8 +974,9 @@ MonoBehaviour:
   musicState: 0
   musicTrack: 0
   lettersCollected: 0
-  snailChoice: 0
+  snailChoice: 1
   allMailCollected: 0
+  finishedDelivery: 0
   lowestTime1: 0
   lowestTime2: 0
   lowestTime3: 0
@@ -985,7 +986,13 @@ MonoBehaviour:
   canMove: 0
   hasMoved: 0
   pause: 0
-  snailAnims: []
+  snailAnims:
+  - {fileID: 9100000, guid: 2190c6144c8954c4ab583a3830f32e4e, type: 2}
+  - {fileID: 9100000, guid: d3b6453538d0c48298c1630a22c2c881, type: 2}
+  - {fileID: 9100000, guid: ba9a2d9ae9d4845bba90792aee836fec, type: 2}
+  - {fileID: 9100000, guid: 90ec60403a01b4e1aadefa8fdf3d449c, type: 2}
+  - {fileID: 9100000, guid: 1a4147ca3f690409599523b99efd42cb, type: 2}
+  - {fileID: 9100000, guid: 73b00947968834713b6f0ed0191dff08, type: 2}
 --- !u!4 &757341162
 Transform:
   m_ObjectHideFlags: 0
