@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     //snail movement booleans
     public bool isGrounded = true;
 
-    private bool isShelled;
+    public bool isShelled;
 
     public bool isJumping = false;
 
@@ -28,11 +28,7 @@ public class PlayerController : MonoBehaviour
 
     //jumping and rolling float values
 
-    private float timeToRoll;
-
     private float jumpHeight = 12.0f;
-
-    private float jumpTimeCounter;
 
     //snail orientation booleans
 
@@ -96,6 +92,12 @@ public class PlayerController : MonoBehaviour
         GlobalControl.Instance.canMove = true;
     }
 
+    IEnumerator VariableJump() {
+        rb.velocity = Vector2.up * jumpHeight;
+        yield return new WaitForSeconds(0.25f);
+        isJumping = false;
+    }
+
     void FixedUpdate() {
         if (!GlobalControl.Instance.pause){
             //update the player's state based on its positional sensors
@@ -116,18 +118,12 @@ public class PlayerController : MonoBehaviour
                 transform.rotation = Quaternion.Euler(0, 0, 0);
                     if (!isRolling) {
                         rb.gravityScale = 3.0f;
-                        moveFactor = 5f / 1.2f;
-
+                        moveFactor = 4.2f;
                         snailFlip();
 
                         //this jumping script allows for variable jump heights
                         if (Input.GetKey(KeyCode.X) && isJumping) {
-                            if (jumpTimeCounter > 0) {
-                                rb.velocity = Vector2.up * jumpHeight;
-                                jumpTimeCounter -= Time.deltaTime;
-                            } else {
-                                isJumping = false;
-                            } 
+                            StartCoroutine(VariableJump());
                         }
                     
                         if (Input.GetKeyUp(KeyCode.X))
@@ -142,7 +138,6 @@ public class PlayerController : MonoBehaviour
                             {
                                     rb.velocity = Vector2.up * 2 * jumpHeight / 3;
                                     isJumping = true;
-                                    jumpTimeCounter = .15f;
                             }
 
                             //snail retreating
@@ -325,25 +320,25 @@ public class PlayerController : MonoBehaviour
                     orientPlayer = SnailOrient.RIGHT;
                 }
             }
-            if (
-                !isGrounded &&
-                !isStickingTop &&
-                !isStickingRight
-            )
-            { //if airborne, reorient to UP
-                rb.velocity =
-                    new Vector2(moveBy.x * moveFactor + rb.velocity.x/2,
-                        rb.velocity.y);
-                rb.gravityScale = 3.0f;
-                orientPlayer = SnailOrient.UP;
-            }
+                if (
+                    !isGrounded &&
+                    !isStickingTop &&
+                    !isStickingRight
+                )
+                { //if airborne, reorient to UP
+                    rb.velocity =
+                        new Vector2(moveBy.x * moveFactor + rb.velocity.x/2,
+                            rb.velocity.y);
+                    rb.gravityScale = 3.0f;
+                    orientPlayer = SnailOrient.UP;
+                }
             }
             else
             {  //if you can't move, stop movement except for gravity
                 rb.velocity = new Vector2(0, rb.velocity.y);
                 if (isShelled)
                 {
-                    shellToRollDelay();
+                    StartCoroutine(shellToRollDelay());
                 }
             }
         }
