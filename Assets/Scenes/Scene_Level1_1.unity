@@ -470,15 +470,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: -4802990570011083647, guid: 7be92697f1c3b4e4aa2df7ad00f64b7b, type: 3}
+  m_Sprite: {fileID: -4802990570011083647, guid: 8d8d3d133c58b4d07a860ff66f282bbc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.32, y: 2.08}
+  m_Size: {x: 2.4166667, y: 2.1666667}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &359772645
@@ -92614,7 +92614,7 @@ Animator:
   m_GameObject: {fileID: 1383539787}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0a6b35064710d4e069fcd571cecaf832, type: 2}
+  m_Controller: {fileID: 9100000, guid: 6a38298919d634473b0e9f1ee32039c2, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -95298,7 +95298,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7534380738126879736, guid: 156b055a12731421dabd8e69d0ffca39, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7534380738126879740, guid: 156b055a12731421dabd8e69d0ffca39, type: 3}
       propertyPath: m_Pivot.x
