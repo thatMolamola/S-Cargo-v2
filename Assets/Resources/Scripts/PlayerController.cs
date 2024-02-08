@@ -155,6 +155,7 @@ public class PlayerController : MonoBehaviour
                                 snailBoxCollider.enabled = false;
                                 snailCircleColliderLeft.enabled = true;
                                 GlobalControl.Instance.canMove = false;
+                                StartCoroutine(shellToRollDelay());
                             }
                         }
 
@@ -366,14 +367,8 @@ public class PlayerController : MonoBehaviour
                     rb.gravityScale = 3.0f;
                     orientPlayer = SnailOrient.UP;
                 }
-            }
-            else
-            {  //if you can't move, stop movement except for gravity
-                rb.velocity = new Vector2(0, rb.velocity.y);
-                if (isShelled)
-                {
-                    StartCoroutine(shellToRollDelay());
-                }
+            } else{
+                rb.velocity = new Vector2(0,0);
             }
         }
     }    
