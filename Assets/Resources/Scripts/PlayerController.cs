@@ -26,6 +26,8 @@ public class PlayerController : MonoBehaviour
 
     public bool isRolling;
 
+    private bool newOrientDelayDone = true;
+
     //jumping and rolling float values
 
     private float jumpHeight = 12.0f;
@@ -98,6 +100,11 @@ public class PlayerController : MonoBehaviour
         isJumping = false;
     }
 
+    IEnumerator newOrient() {
+        yield return new WaitForSeconds(0.35f);
+        newOrientDelayDone = true;
+    }
+
     void FixedUpdate() {
         if (!GlobalControl.Instance.pause){
             //update the player's state based on its positional sensors
@@ -159,22 +166,31 @@ public class PlayerController : MonoBehaviour
 
                         //change the snail orientation states
                         //flip upside down
-                        if (Input.GetKey(KeyCode.UpArrow) && isStickingTop)
-                        {
-                            orientPlayer = SnailOrient.DOWN;
+                        if (newOrientDelayDone){
+                            if (Input.GetKey(KeyCode.UpArrow) && isStickingTop)
+                            {
+                                newOrientDelayDone = false;
+                                orientPlayer = SnailOrient.DOWN;
+                                StartCoroutine(newOrient());
+                            }
+
+                            //flip upside right
+                            if (Input.GetKey(KeyCode.LeftArrow) && isStickingRight)
+                            {
+                                newOrientDelayDone = false;
+                                orientPlayer = SnailOrient.RIGHT;
+                                StartCoroutine(newOrient());
+                            }
+
+                            //flip upside left
+                            if (Input.GetKey(KeyCode.RightArrow) && isStickingRight)
+                            {
+                                newOrientDelayDone = false;
+                                orientPlayer = SnailOrient.LEFT;
+                                StartCoroutine(newOrient());
+                            }
                         }
 
-                        //flip upside right
-                        if (Input.GetKey(KeyCode.LeftArrow) && isStickingRight)
-                        {
-                            orientPlayer = SnailOrient.RIGHT;
-                        }
-
-                        //flip upside left
-                        if (Input.GetKey(KeyCode.RightArrow) && isStickingRight)
-                        {
-                            orientPlayer = SnailOrient.LEFT;
-                        }
                 }
                 else //if rolling
                 {
@@ -207,7 +223,7 @@ public class PlayerController : MonoBehaviour
             {
                 transform.rotation = Quaternion.Euler(0, 0, 180);
                 rb.velocity =
-                    new Vector2(moveBy.x * moveFactor, moveBy.y * moveFactor);
+                    new Vector2(moveBy.x * moveFactor, moveBy.y);
                 rb.gravityScale = 0.0f;
                 // flip the snail sprite based on movement
                 if (moveBy.x < 0)
@@ -217,25 +233,38 @@ public class PlayerController : MonoBehaviour
                 if (moveBy.x > 0)
                 {
                     transform.localScale = new Vector3(-1, 1, 1);
-                }
+                }                
 
-                //adjust the snail orientation states
-                if (!isGrounded)
-                {
-                    orientPlayer = SnailOrient.UP;
+                if (newOrientDelayDone){
+                    //adjust the snail orientation states
+                    if (!isGrounded)
+                    {
+                        newOrientDelayDone = false;
+                        orientPlayer = SnailOrient.UP;
+                        StartCoroutine(newOrient());
+                    }
+
+                    if (Input.GetKey(KeyCode.LeftArrow) && isStickingRight)
+                        {
+                        newOrientDelayDone = false;
+                        orientPlayer = SnailOrient.RIGHT;
+                        StartCoroutine(newOrient());
+                        }
+                    if (Input.GetKey(KeyCode.RightArrow) && isStickingRight)
+                        {
+                        newOrientDelayDone = false;
+                        orientPlayer = SnailOrient.LEFT;
+                        StartCoroutine(newOrient());
+                        }
+            
+                    if (Input.GetKey(KeyCode.DownArrow) && isStickingTop)
+                        {
+                        newOrientDelayDone = false;
+                        orientPlayer = SnailOrient.UP;
+                        StartCoroutine(newOrient());
+                        }
                 }
-                if (Input.GetKey(KeyCode.LeftArrow) && isStickingRight)
-                {
-                    orientPlayer = SnailOrient.RIGHT;
-                }
-                if (Input.GetKey(KeyCode.RightArrow) && isStickingRight)
-                {
-                    orientPlayer = SnailOrient.LEFT;
-                }
-                if (Input.GetKey(KeyCode.DownArrow) && isStickingTop)
-                {
-                    orientPlayer = SnailOrient.UP;
-                }
+                
             }
             else if (orientPlayer == SnailOrient.RIGHT)
             {
@@ -260,22 +289,25 @@ public class PlayerController : MonoBehaviour
                     isGrounded = false;
                 }
 
-                //adjust the snail orientation states
-                if (
-                    (
-                    Input.GetKey(KeyCode.DownArrow) ||
-                    Input.GetKey(KeyCode.RightArrow)
-                    ) &&
-                    isStickingRight
-                )
-                {
-                    orientPlayer = SnailOrient.UP;
-                }
-                if (Input.GetKey(KeyCode.UpArrow) && isStickingRight) {
-                    orientPlayer = SnailOrient.DOWN;
-                }
-                if (Input.GetKey(KeyCode.RightArrow) && isStickingTop) {
-                    orientPlayer = SnailOrient.LEFT;
+                if (newOrientDelayDone){
+                    if ((Input.GetKey(KeyCode.DownArrow) ||Input.GetKey(KeyCode.RightArrow)) 
+                        &&
+                        isStickingRight)
+                    {
+                        newOrientDelayDone = false;
+                        orientPlayer = SnailOrient.UP;
+                        StartCoroutine(newOrient());
+                    }
+                    if (Input.GetKey(KeyCode.UpArrow) && isStickingRight) {
+                        newOrientDelayDone = false;
+                        orientPlayer = SnailOrient.DOWN;
+                        StartCoroutine(newOrient());
+                    }
+                    if (Input.GetKey(KeyCode.RightArrow) && isStickingTop) {
+                        newOrientDelayDone = false;
+                        orientPlayer = SnailOrient.LEFT;
+                        StartCoroutine(newOrient());
+                    }
                 }
             }
             else if (orientPlayer == SnailOrient.LEFT) {
@@ -298,26 +330,28 @@ public class PlayerController : MonoBehaviour
                     rb.velocity = new Vector2(-80, 15);
                     isGrounded = false;
                 }
-
-                //adjust the snail orientation states
-                if (
-                    (
-                    Input.GetKey(KeyCode.DownArrow) ||
-                    Input.GetKey(KeyCode.LeftArrow)
-                    ) &&
-                    isStickingRight
-                )
-                {
-                    
-                    orientPlayer = SnailOrient.UP;
-                }
-                if (Input.GetKey(KeyCode.UpArrow) && isStickingRight)
-                {
-                    orientPlayer = SnailOrient.DOWN;
-                }
-                if (Input.GetKey(KeyCode.LeftArrow) && isStickingTop)
-                {
-                    orientPlayer = SnailOrient.RIGHT;
+                
+                if (newOrientDelayDone){
+                    if ((Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.LeftArrow)) 
+                        &&
+                        isStickingRight)
+                    {
+                        newOrientDelayDone = false;
+                        orientPlayer = SnailOrient.UP;
+                        StartCoroutine(newOrient());
+                    }
+                    if (Input.GetKey(KeyCode.UpArrow) && isStickingRight)
+                    {
+                        newOrientDelayDone = false;
+                        orientPlayer = SnailOrient.DOWN;
+                        StartCoroutine(newOrient());
+                    }
+                    if (Input.GetKey(KeyCode.LeftArrow) && isStickingTop)
+                    {
+                        newOrientDelayDone = false;
+                        orientPlayer = SnailOrient.RIGHT;
+                        StartCoroutine(newOrient());
+                    }
                 }
             }
                 if (
