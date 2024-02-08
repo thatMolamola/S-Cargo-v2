@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1632510549}
     m_Modifications:
+    - target: {fileID: 6051241773526577072, guid: 154c1527c5b954607a7b8dbb9a1dd2ea, type: 3}
+      propertyPath: MailCount
+      value: 
+      objectReference: {fileID: 1641678927}
     - target: {fileID: 6051241773526577074, guid: 154c1527c5b954607a7b8dbb9a1dd2ea, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -44593,6 +44597,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1632510549}
     m_Modifications:
+    - target: {fileID: 6051241773526577072, guid: 154c1527c5b954607a7b8dbb9a1dd2ea, type: 3}
+      propertyPath: MailCount
+      value: 
+      objectReference: {fileID: 1641678927}
     - target: {fileID: 6051241773526577074, guid: 154c1527c5b954607a7b8dbb9a1dd2ea, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -45581,6 +45589,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1632510549}
     m_Modifications:
+    - target: {fileID: 6051241773526577072, guid: 154c1527c5b954607a7b8dbb9a1dd2ea, type: 3}
+      propertyPath: MailCount
+      value: 
+      objectReference: {fileID: 1641678927}
     - target: {fileID: 6051241773526577074, guid: 154c1527c5b954607a7b8dbb9a1dd2ea, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -45781,6 +45793,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: MoleText3
       objectReference: {fileID: 0}
+    - target: {fileID: 7534380737313137825, guid: 156b055a12731421dabd8e69d0ffca39, type: 3}
+      propertyPath: m_Size.x
+      value: 330.9091
+      objectReference: {fileID: 0}
+    - target: {fileID: 7534380737313137825, guid: 156b055a12731421dabd8e69d0ffca39, type: 3}
+      propertyPath: m_Size.y
+      value: 162.90909
+      objectReference: {fileID: 0}
+    - target: {fileID: 7534380737313137825, guid: 156b055a12731421dabd8e69d0ffca39, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9caa392ce190c464dbd68474fcbb4579, type: 3}
+    - target: {fileID: 7534380737313137825, guid: 156b055a12731421dabd8e69d0ffca39, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7534380737313137827, guid: 156b055a12731421dabd8e69d0ffca39, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -45948,6 +45976,17 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 7534380738728578177, guid: 156b055a12731421dabd8e69d0ffca39, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 156b055a12731421dabd8e69d0ffca39, type: 3}
+--- !u!114 &1641678927 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7534380737874543370, guid: 156b055a12731421dabd8e69d0ffca39, type: 3}
+  m_PrefabInstance: {fileID: 1641678926}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1663193888 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7534380737635409620, guid: 156b055a12731421dabd8e69d0ffca39, type: 3}

@@ -7,17 +7,11 @@ using UnityEngine.UI;
 // a collision between the player and the mail.
 public class CollectMail : MonoBehaviour
 {
-    private Text MailCount;
+    [SerializeField] private Text MailCount;
 
     //this MailCount is the same throughout all three levels, 
     //as all the levels have 3 pieces of mail
     private int MailCount1 = 3;
-
-
-    void Start()
-    {
-        MailCount = GameObject.Find("Letters Collected").GetComponent<Text>();
-    }
 
     void OnTriggerEnter2D(Collider2D other)
     {

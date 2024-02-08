@@ -92532,6 +92532,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 74525692}
     m_Modifications:
+    - target: {fileID: 6051241773526577072, guid: 154c1527c5b954607a7b8dbb9a1dd2ea, type: 3}
+      propertyPath: MailCount
+      value: 
+      objectReference: {fileID: 2066632849}
     - target: {fileID: 6051241773526577074, guid: 154c1527c5b954607a7b8dbb9a1dd2ea, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -92811,6 +92815,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 74525692}
     m_Modifications:
+    - target: {fileID: 6051241773526577072, guid: 154c1527c5b954607a7b8dbb9a1dd2ea, type: 3}
+      propertyPath: MailCount
+      value: 
+      objectReference: {fileID: 2066632849}
     - target: {fileID: 6051241773526577074, guid: 154c1527c5b954607a7b8dbb9a1dd2ea, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -93160,7 +93168,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cutsceneScript: {fileID: 648891962}
-  timer: {fileID: 0}
   iDisplay: {fileID: 1926341206}
 --- !u!50 &1801368337
 Rigidbody2D:
