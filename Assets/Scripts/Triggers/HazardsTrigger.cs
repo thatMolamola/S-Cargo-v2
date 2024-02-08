@@ -18,6 +18,7 @@ public class HazardsTrigger : MonoBehaviour
             {
                 if (PC.isRolling) {
                     inShell = true;
+                    immune = true;
                 } else {
                     inShell = false;
                 }
