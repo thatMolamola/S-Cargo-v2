@@ -95163,8 +95163,24 @@ PrefabInstance:
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7534380737313137825, guid: 156b055a12731421dabd8e69d0ffca39, type: 3}
+      propertyPath: m_Size.x
+      value: 330.9091
+      objectReference: {fileID: 0}
+    - target: {fileID: 7534380737313137825, guid: 156b055a12731421dabd8e69d0ffca39, type: 3}
+      propertyPath: m_Size.y
+      value: 162.90909
+      objectReference: {fileID: 0}
+    - target: {fileID: 7534380737313137825, guid: 156b055a12731421dabd8e69d0ffca39, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9caa392ce190c464dbd68474fcbb4579, type: 3}
+    - target: {fileID: 7534380737313137825, guid: 156b055a12731421dabd8e69d0ffca39, type: 3}
       propertyPath: m_SortingOrder
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7534380737313137825, guid: 156b055a12731421dabd8e69d0ffca39, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7534380737313137827, guid: 156b055a12731421dabd8e69d0ffca39, type: 3}
       propertyPath: m_IsActive
@@ -95279,6 +95295,10 @@ PrefabInstance:
     - target: {fileID: 7534380738126879736, guid: 156b055a12731421dabd8e69d0ffca39, type: 3}
       propertyPath: m_Name
       value: HUD
+      objectReference: {fileID: 0}
+    - target: {fileID: 7534380738126879736, guid: 156b055a12731421dabd8e69d0ffca39, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7534380738126879740, guid: 156b055a12731421dabd8e69d0ffca39, type: 3}
       propertyPath: m_Pivot.x

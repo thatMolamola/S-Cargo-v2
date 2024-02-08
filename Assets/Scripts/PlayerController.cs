@@ -41,11 +41,11 @@ public class PlayerController : MonoBehaviour
     public bool isStickingTop;
 
     //snail-to-tile sticking state checks
-    public LayerMask whatIsGround;
+    [SerializeField] private LayerMask whatIsGround;
 
-    public Transform groundCheck1, groundCheck2;
+    [SerializeField] private Transform groundCheck1, groundCheck2, groundCheck3;
 
-    public Transform leftCheck, rightCheck, topCheck;
+    [SerializeField] private Transform rightCheck, topCheck;
 
     private float surroundCheckRadius;
 
@@ -159,7 +159,7 @@ public class PlayerController : MonoBehaviour
                             }
                         }
 
-                        //snail rolling
+                        //snail start rolling
                         if ((Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow)) && isShelled) {
                             myAnimationController.SetBool("Moving", true);
                             isRolling = true;
@@ -198,6 +198,7 @@ public class PlayerController : MonoBehaviour
                     rb.gravityScale = 4.0f;
                     moveFactor = 8f;
                     snailFlip();
+                    isGrounded = Physics2D.OverlapCircle(groundCheck3.position, surroundCheckRadius, whatIsGround);
                     if (Input.GetKey(KeyCode.X) && isGrounded)
                     {
                         rb.velocity = Vector2.up * jumpHeight;

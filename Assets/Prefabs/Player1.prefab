@@ -174,12 +174,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myAnimationController: {fileID: 336274302781810267}
   isGrounded: 0
-  canJump: 0
+  isShelled: 0
   isJumping: 0
-  upsideUp: 0
-  upsideDown: 0
-  upsideRight: 0
-  upsideLeft: 0
+  isRolling: 0
+  orientPlayer: 0
   isStickingRight: 0
   isStickingTop: 0
   whatIsGround:
@@ -187,6 +185,7 @@ MonoBehaviour:
     m_Bits: 64
   groundCheck1: {fileID: 7868459318854665834}
   groundCheck2: {fileID: 5728727929440780670}
+  groundCheck3: {fileID: 8480802781623141066}
   leftCheck: {fileID: 0}
   rightCheck: {fileID: 8111953048144295301}
   topCheck: {fileID: 5331621125342938739}
@@ -206,6 +205,36 @@ CircleCollider2D:
   m_Offset: {x: -0.024225235, y: -0.21478856}
   serializedVersion: 2
   m_Radius: 0.4063053
+--- !u!1 &2270228658751550213
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8480802781623141066}
+  m_Layer: 0
+  m_Name: groundCheck3
+  m_TagString: Untagged
+  m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8480802781623141066
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2270228658751550213}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.6, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5728727930809344365}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5728727929440780669
 GameObject:
   m_ObjectHideFlags: 0
@@ -267,6 +296,7 @@ RectTransform:
   - {fileID: 7868459318854665834}
   - {fileID: 5331621125342938739}
   - {fileID: 8111953048144295301}
+  - {fileID: 8480802781623141066}
   m_Father: {fileID: 336274302781810265}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
