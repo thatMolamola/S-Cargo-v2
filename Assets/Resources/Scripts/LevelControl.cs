@@ -9,7 +9,7 @@ public class LevelControl : MonoBehaviour
 {
     private Scene thisScene;
 
-    public GameObject pausePanel, instructionsPanel;
+    [SerializeField] private GameObject pausePanel, instructionsPanel;
 
     private float timerP, timerI;
     private bool canOpenClose = true;
@@ -47,7 +47,7 @@ public class LevelControl : MonoBehaviour
                 }
             }     
     }
-    public void unpause() {
+    private void unpause() {
         canOpenClose = false; 
             if(GlobalControl.Instance.pause) {
                 GlobalControl.Instance.pause = false;
@@ -62,16 +62,18 @@ public class LevelControl : MonoBehaviour
             }
     }
 
-    public void instructions() {
+    private void instructions() {
         canOpenClose = false; 
             if(GlobalControl.Instance.pause) {
-                GlobalControl.Instance.pause = false;
+                GlobalControl.Instance.pause = false;   
                 instructionsPanel.SetActive(false);
                 pausePanel.SetActive(false);
+                rb.bodyType = RigidbodyType2D.Dynamic;
             } else {
                 GlobalControl.Instance.pause = true;
                 instructionsPanel.SetActive(true);
                 pausePanel.SetActive(false);
+                rb.bodyType = RigidbodyType2D.Static;
             }
     }
 }
