@@ -45785,6 +45785,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7534380737380536789, guid: 156b055a12731421dabd8e69d0ffca39, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9caa392ce190c464dbd68474fcbb4579, type: 3}
+    - target: {fileID: 7534380737380536789, guid: 156b055a12731421dabd8e69d0ffca39, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7534380737635409620, guid: 156b055a12731421dabd8e69d0ffca39, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -45928,6 +45936,14 @@ PrefabInstance:
     - target: {fileID: 7534380738977034085, guid: 156b055a12731421dabd8e69d0ffca39, type: 3}
       propertyPath: m_LocalScale.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7534380738977034086, guid: 156b055a12731421dabd8e69d0ffca39, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: acac00c42074641aca6cfacbd8a0f076, type: 3}
+    - target: {fileID: 7534380738977034086, guid: 156b055a12731421dabd8e69d0ffca39, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7534380738728578177, guid: 156b055a12731421dabd8e69d0ffca39, type: 3}
