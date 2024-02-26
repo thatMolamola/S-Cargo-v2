@@ -49,6 +49,8 @@ public class PlayerController : MonoBehaviour
 
     private float surroundCheckRadius;
 
+    private bool fJumpTrigger;
+
 
     void Start()
     {
@@ -59,26 +61,6 @@ public class PlayerController : MonoBehaviour
         rb.gravityScale = 3.0f;
         surroundCheckRadius = .125f;
         orientPlayer = SnailOrient.UP;
-    }
-
-    public void Update()
-    {   
-        //if the character can move and moves, then they have moved. 
-        if (!GlobalControl.Instance.hasMoved)
-        {
-            if (GlobalControl.Instance.canMove)
-            {
-                if (
-                    Input.GetKey(KeyCode.UpArrow) ||
-                    Input.GetKey(KeyCode.DownArrow) ||
-                    Input.GetKey(KeyCode.RightArrow) ||
-                    Input.GetKey(KeyCode.LeftArrow)
-                )
-                {
-                    GlobalControl.Instance.hasMoved = true;
-                }
-            }
-        }
     }
 
     void snailFlip() {
@@ -106,17 +88,26 @@ public class PlayerController : MonoBehaviour
         newOrientDelayDone = true;
     }
 
-    void FixedUpdate() {
+//this handles the player inputs
+    public void Update() {
+        //if the character can move and moves, then they have moved. 
+        if (!GlobalControl.Instance.hasMoved)
+        {
+            if (GlobalControl.Instance.canMove)
+            {
+                if (
+                    Input.GetKey(KeyCode.UpArrow) ||
+                    Input.GetKey(KeyCode.DownArrow) ||
+                    Input.GetKey(KeyCode.RightArrow) ||
+                    Input.GetKey(KeyCode.LeftArrow)
+                )
+                {
+                    GlobalControl.Instance.hasMoved = true;
+                }
+            }
+        }
+        
         if (!GlobalControl.Instance.pause){
-            //update the player's state based on its positional sensors
-            isGrounded =
-                Physics2D.OverlapCircle(groundCheck1.position, surroundCheckRadius, whatIsGround)
-                ||
-                Physics2D.OverlapCircle(groundCheck2.position, surroundCheckRadius, whatIsGround);
-            isStickingRight =
-                Physics2D.OverlapCircle(rightCheck.position, surroundCheckRadius, whatIsGround);
-            isStickingTop =
-                Physics2D.OverlapCircle(topCheck.position, surroundCheckRadius, whatIsGround);
             if (GlobalControl.Instance.canMove){
                 moveBy.x = Input.GetAxisRaw("Horizontal");
                 moveBy.y = Input.GetAxisRaw("Vertical");
@@ -125,10 +116,10 @@ public class PlayerController : MonoBehaviour
                 rb.velocity = new Vector2(moveBy.x * moveFactor, rb.velocity.y);
                 transform.rotation = Quaternion.Euler(0, 0, 0);
                     if (!isRolling) {
-                        rb.gravityScale = 3.0f;
                         moveFactor = 4.2f;
                         snailFlip();
 
+                        //Update Jump Inputs
                         //this jumping script allows for variable jump heights
                         if (Input.GetKey(KeyCode.X) && isJumping) {
                             StartCoroutine(VariableJump());
@@ -144,8 +135,7 @@ public class PlayerController : MonoBehaviour
                             //snail jumping
                             if (Input.GetKeyDown(KeyCode.X))
                             {
-                                    rb.velocity = Vector2.up * 2 * jumpHeight / 3;
-                                    isJumping = true;
+                                fJumpTrigger = true;
                             }
 
                             //snail retreating
@@ -196,14 +186,12 @@ public class PlayerController : MonoBehaviour
                 }
                 else //if rolling
                 {
-                    rb.gravityScale = 4.0f;
                     moveFactor = 8f;
                     snailFlip();
                     isGrounded = Physics2D.OverlapCircle(groundCheck3.position, surroundCheckRadius, whatIsGround);
                     if (Input.GetKey(KeyCode.X) && isGrounded)
                     {
-                        rb.velocity = Vector2.up * jumpHeight;
-                        isGrounded = false;
+                        fJumpTrigger = true;
                     }
                     if (
                         moveBy.x == 0 &&
@@ -288,8 +276,7 @@ public class PlayerController : MonoBehaviour
                 //snail walljumping
                 if (Input.GetKey(KeyCode.X) && isGrounded)
                 {
-                    rb.velocity = new Vector2(80, 15);
-                    isGrounded = false;
+                    fJumpTrigger = true;
                 }
 
                 if (newOrientDelayDone){
@@ -330,8 +317,7 @@ public class PlayerController : MonoBehaviour
                 //snail walljumping
                 if (Input.GetKey(KeyCode.X) && isGrounded)
                 {
-                    rb.velocity = new Vector2(-80, 15);
-                    isGrounded = false;
+                    fJumpTrigger = true;
                 }
                 
                 if (newOrientDelayDone){
@@ -355,6 +341,109 @@ public class PlayerController : MonoBehaviour
                         orientPlayer = SnailOrient.RIGHT;
                         StartCoroutine(newOrient());
                     }
+                    }
+                }
+            }
+        }
+    }    
+
+    void FixedUpdate() {
+        if (!GlobalControl.Instance.pause){
+            //update the player's state based on its positional sensors
+            isGrounded =
+                Physics2D.OverlapCircle(groundCheck1.position, surroundCheckRadius, whatIsGround)
+                ||
+                Physics2D.OverlapCircle(groundCheck2.position, surroundCheckRadius, whatIsGround);
+            isStickingRight =
+                Physics2D.OverlapCircle(rightCheck.position, surroundCheckRadius, whatIsGround);
+            isStickingTop =
+                Physics2D.OverlapCircle(topCheck.position, surroundCheckRadius, whatIsGround);
+            if (GlobalControl.Instance.canMove){
+                //the player will be in one of 4 states defined by the snailOrient
+                if (orientPlayer == SnailOrient.UP) {
+                rb.velocity = new Vector2(moveBy.x * moveFactor, rb.velocity.y);
+                transform.rotation = Quaternion.Euler(0, 0, 0);
+                    if (!isRolling) {
+                        rb.gravityScale = 3.0f;
+                        if (isGrounded)
+                        {
+                            //snail jumping
+                            if (fJumpTrigger)
+                            {
+                                rb.velocity = Vector2.up * 2 * jumpHeight / 3;
+                                isJumping = true;
+                                fJumpTrigger = false;
+                            }
+                        }
+                }
+                else //if rolling
+                {
+                    rb.gravityScale = 4.0f;
+                    isGrounded = Physics2D.OverlapCircle(groundCheck3.position, surroundCheckRadius, whatIsGround);
+                    if (fJumpTrigger)
+                    {
+                        rb.velocity = Vector2.up * jumpHeight;
+                        isGrounded = false;
+                        fJumpTrigger = false;
+                    }
+                }
+            }
+            else if (orientPlayer == SnailOrient.DOWN)
+            {
+                rb.velocity =
+                    new Vector2(moveBy.x * moveFactor, moveBy.y);
+                rb.gravityScale = 0.0f;
+                // flip the snail sprite based on movement
+                if (moveBy.x < 0)
+                {
+                    transform.localScale = new Vector3(1, 1, 1);
+                }
+                if (moveBy.x > 0)
+                {
+                    transform.localScale = new Vector3(-1, 1, 1);
+                }                
+            }
+            else if (orientPlayer == SnailOrient.RIGHT)
+            {
+                rb.velocity =
+                    new Vector2(moveBy.x * moveFactor, moveBy.y * moveFactor);
+                rb.gravityScale = 3.0f;
+                if (moveBy.y < 0)
+                {
+                    transform.localScale = new Vector3(1, 1, 1);
+                }
+                if (moveBy.y > 0)
+                {
+                    transform.localScale = new Vector3(-1, 1, 1);
+                }
+
+                //snail walljumping
+                if (fJumpTrigger)
+                {
+                    rb.velocity = new Vector2(80, 15);
+                    isGrounded = false;
+                    fJumpTrigger = false;
+                }
+
+            } else if (orientPlayer == SnailOrient.LEFT) {
+                rb.velocity =
+                    new Vector2(moveBy.x * moveFactor, moveBy.y * moveFactor);
+                rb.gravityScale = 3.0f;
+                if (moveBy.y < 0)
+                {
+                    transform.localScale = new Vector3(-1, 1, 1);
+                }
+                if (moveBy.y > 0)
+                {
+                    transform.localScale = new Vector3(1, 1, 1);
+                }
+
+                //snail walljumping
+                if (fJumpTrigger)
+                {
+                    rb.velocity = new Vector2(-80, 15);
+                    isGrounded = false;
+                    fJumpTrigger = false;
                 }
             }
                 if (
