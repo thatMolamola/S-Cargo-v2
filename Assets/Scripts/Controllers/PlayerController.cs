@@ -55,6 +55,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         snailBoxCollider = GetComponent<BoxCollider2D>();
         snailCircleColliderLeft = GetComponent<CircleCollider2D>();
+        snailCircleColliderLeft.enabled = false;
         rb.gravityScale = 3.0f;
         surroundCheckRadius = .125f;
         orientPlayer = SnailOrient.UP;
