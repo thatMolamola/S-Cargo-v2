@@ -369,7 +369,7 @@ public class PlayerController : MonoBehaviour
                     orientPlayer = SnailOrient.UP;
                 }
             } else{
-                rb.velocity = new Vector2(0,0);
+                rb.velocity = new Vector2(0,rb.velocity.y);
             }
         }
     }    
