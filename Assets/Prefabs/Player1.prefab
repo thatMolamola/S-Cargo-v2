@@ -186,7 +186,6 @@ MonoBehaviour:
   groundCheck1: {fileID: 7868459318854665834}
   groundCheck2: {fileID: 5728727929440780670}
   groundCheck3: {fileID: 8480802781623141066}
-  leftCheck: {fileID: 0}
   rightCheck: {fileID: 8111953048144295301}
   topCheck: {fileID: 5331621125342938739}
 --- !u!58 &336274302781810261
@@ -459,7 +458,7 @@ GameObject:
   m_Layer: 3
   m_Name: topCheck
   m_TagString: Untagged
-  m_Icon: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -471,8 +470,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7868459319192900495}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.20000005, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0.2, z: 0}
+  m_LocalScale: {x: 3.25, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 5728727930809344365}
   m_RootOrder: 2
