@@ -94721,7 +94721,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4466283553201821835, guid: d4731258d7295421ea33598b90543ec8, type: 3}
       propertyPath: pause
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4466283553201821835, guid: d4731258d7295421ea33598b90543ec8, type: 3}
       propertyPath: canMove
@@ -94761,7 +94761,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4466283553201821835, guid: d4731258d7295421ea33598b90543ec8, type: 3}
       propertyPath: cutsceneEnabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4466283553201821835, guid: d4731258d7295421ea33598b90543ec8, type: 3}
       propertyPath: highScoreMilli1
@@ -95277,7 +95277,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7534380737999967126, guid: 156b055a12731421dabd8e69d0ffca39, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7534380738079992330, guid: 156b055a12731421dabd8e69d0ffca39, type: 3}
       propertyPath: m_SortingOrder

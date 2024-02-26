@@ -12,10 +12,10 @@ public class PlayerController : MonoBehaviour
     private CircleCollider2D snailCircleColliderLeft;
 
     private Vector2 moveBy;
-    private float moveFactor = 5f;
+    private float moveFactor1 = 5f;
+    private float moveFactor2 = 7.5f;
 
-    [SerializeField]
-    private Animator myAnimationController;
+    [SerializeField] private Animator myAnimationController;
 
     //snail movement booleans
     public bool isGrounded = true;
@@ -84,7 +84,7 @@ public class PlayerController : MonoBehaviour
     }
 
     IEnumerator newOrient() {
-        yield return new WaitForSeconds(0.35f);
+        yield return new WaitForSeconds(.125f);
         newOrientDelayDone = true;
     }
 
@@ -113,10 +113,8 @@ public class PlayerController : MonoBehaviour
                 moveBy.y = Input.GetAxisRaw("Vertical");
                 //the player will be in one of 4 states defined by the snailOrient
                 if (orientPlayer == SnailOrient.UP) {
-                rb.velocity = new Vector2(moveBy.x * moveFactor, rb.velocity.y);
                 transform.rotation = Quaternion.Euler(0, 0, 0);
                     if (!isRolling) {
-                        moveFactor = 4.2f;
                         snailFlip();
 
                         //Update Jump Inputs
@@ -186,9 +184,8 @@ public class PlayerController : MonoBehaviour
                 }
                 else //if rolling
                 {
-                    moveFactor = 8f;
                     snailFlip();
-                    isGrounded = Physics2D.OverlapCircle(groundCheck3.position, surroundCheckRadius, whatIsGround);
+                    
                     if (Input.GetKey(KeyCode.X) && isGrounded)
                     {
                         fJumpTrigger = true;
@@ -213,8 +210,6 @@ public class PlayerController : MonoBehaviour
             else if (orientPlayer == SnailOrient.DOWN)
             {
                 transform.rotation = Quaternion.Euler(0, 0, 180);
-                rb.velocity =
-                    new Vector2(moveBy.x * moveFactor, moveBy.y);
                 rb.gravityScale = 0.0f;
                 // flip the snail sprite based on movement
                 if (moveBy.x < 0)
@@ -224,17 +219,10 @@ public class PlayerController : MonoBehaviour
                 if (moveBy.x > 0)
                 {
                     transform.localScale = new Vector3(-1, 1, 1);
-                }                
+                }            
 
                 if (newOrientDelayDone){
                     //adjust the snail orientation states
-                    if (!isGrounded)
-                    {
-                        newOrientDelayDone = false;
-                        orientPlayer = SnailOrient.UP;
-                        StartCoroutine(newOrient());
-                    }
-
                     if (Input.GetKey(KeyCode.LeftArrow) && isStickingRight)
                         {
                         newOrientDelayDone = false;
@@ -260,10 +248,6 @@ public class PlayerController : MonoBehaviour
             else if (orientPlayer == SnailOrient.RIGHT)
             {
                 transform.rotation = Quaternion.Euler(0, 0, 270);
-
-                rb.velocity =
-                    new Vector2(moveBy.x * moveFactor, moveBy.y * moveFactor);
-                rb.gravityScale = 3.0f;
                 if (moveBy.y < 0)
                 {
                     transform.localScale = new Vector3(1, 1, 1);
@@ -302,9 +286,6 @@ public class PlayerController : MonoBehaviour
             }
             else if (orientPlayer == SnailOrient.LEFT) {
                 transform.rotation = Quaternion.Euler(0, 0, 90);
-                rb.velocity =
-                    new Vector2(moveBy.x * moveFactor, moveBy.y * moveFactor);
-                rb.gravityScale = 3.0f;
                 if (moveBy.y < 0)
                 {
                     transform.localScale = new Vector3(-1, 1, 1);
@@ -347,6 +328,8 @@ public class PlayerController : MonoBehaviour
         }
     }    
 
+
+//Fixed Update should handle all physics changes
     void FixedUpdate() {
         if (!GlobalControl.Instance.pause){
             //update the player's state based on its positional sensors
@@ -361,9 +344,9 @@ public class PlayerController : MonoBehaviour
             if (GlobalControl.Instance.canMove){
                 //the player will be in one of 4 states defined by the snailOrient
                 if (orientPlayer == SnailOrient.UP) {
-                rb.velocity = new Vector2(moveBy.x * moveFactor, rb.velocity.y);
                 transform.rotation = Quaternion.Euler(0, 0, 0);
                     if (!isRolling) {
+                        rb.velocity = new Vector2(moveBy.x * moveFactor1, rb.velocity.y);
                         rb.gravityScale = 3.0f;
                         if (isGrounded)
                         {
@@ -378,6 +361,7 @@ public class PlayerController : MonoBehaviour
                 }
                 else //if rolling
                 {
+                    rb.velocity = new Vector2(moveBy.x * moveFactor2, rb.velocity.y);
                     rb.gravityScale = 4.0f;
                     isGrounded = Physics2D.OverlapCircle(groundCheck3.position, surroundCheckRadius, whatIsGround);
                     if (fJumpTrigger)
@@ -391,7 +375,7 @@ public class PlayerController : MonoBehaviour
             else if (orientPlayer == SnailOrient.DOWN)
             {
                 rb.velocity =
-                    new Vector2(moveBy.x * moveFactor, moveBy.y);
+                    new Vector2(moveBy.x * moveFactor1, moveBy.y);
                 rb.gravityScale = 0.0f;
                 // flip the snail sprite based on movement
                 if (moveBy.x < 0)
@@ -401,12 +385,12 @@ public class PlayerController : MonoBehaviour
                 if (moveBy.x > 0)
                 {
                     transform.localScale = new Vector3(-1, 1, 1);
-                }                
+                }          
             }
             else if (orientPlayer == SnailOrient.RIGHT)
             {
                 rb.velocity =
-                    new Vector2(moveBy.x * moveFactor, moveBy.y * moveFactor);
+                    new Vector2(moveBy.x * moveFactor1, moveBy.y * moveFactor1);
                 rb.gravityScale = 3.0f;
                 if (moveBy.y < 0)
                 {
@@ -427,7 +411,7 @@ public class PlayerController : MonoBehaviour
 
             } else if (orientPlayer == SnailOrient.LEFT) {
                 rb.velocity =
-                    new Vector2(moveBy.x * moveFactor, moveBy.y * moveFactor);
+                    new Vector2(moveBy.x * moveFactor1, moveBy.y * moveFactor1);
                 rb.gravityScale = 3.0f;
                 if (moveBy.y < 0)
                 {
@@ -446,17 +430,18 @@ public class PlayerController : MonoBehaviour
                     fJumpTrigger = false;
                 }
             }
-                if (
-                    !isGrounded &&
-                    !isStickingTop &&
-                    !isStickingRight
-                )
-                { //if airborne, reorient to UP
-                    rb.velocity =
-                        new Vector2(moveBy.x * moveFactor + rb.velocity.x/2,
-                            rb.velocity.y);
-                    rb.gravityScale = 3.0f;
-                    orientPlayer = SnailOrient.UP;
+                if (!isGrounded)
+                { 
+                    if (newOrientDelayDone){
+                        //if airborne, reorient to UP
+                        newOrientDelayDone = false;
+                        rb.velocity =
+                            new Vector2(moveBy.x * moveFactor1 + rb.velocity.x/2,
+                                rb.velocity.y);
+                        rb.gravityScale = 3.0f;
+                        orientPlayer = SnailOrient.UP;
+                        StartCoroutine(newOrient());
+                    }
                 }
             } else{
                 rb.velocity = new Vector2(0,rb.velocity.y);
