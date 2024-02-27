@@ -27,7 +27,7 @@ public class GlobalControl : MonoBehaviour
     public int instructionsStep;
     public bool canMove;
     public bool hasMoved;
-    public bool pause;
+    public bool paused;
 
     public RuntimeAnimatorController[] snailAnims;
 

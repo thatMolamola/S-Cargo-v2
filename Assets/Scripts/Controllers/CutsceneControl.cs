@@ -31,7 +31,7 @@ public class CutsceneControl : MonoBehaviour
     }
 
     IEnumerator OpeningCutsceneCall() {
-        GlobalControl.Instance.pause = true;
+        GlobalControl.Instance.paused = true;
         GlobalControl.Instance.canMove = false;
         yield return new WaitForSeconds(5.3f);
         ohNo.SetActive(true);
@@ -40,7 +40,7 @@ public class CutsceneControl : MonoBehaviour
         mail.SetActive (false);
         blackLight.SetActive (false);
         GlobalControl.Instance.canMove = true;
-        GlobalControl.Instance.pause = false;
+        GlobalControl.Instance.paused = false;
     }
 
     public IEnumerator MailboxCutscene() {
@@ -65,6 +65,7 @@ public class CutsceneControl : MonoBehaviour
             LevelComplete.SetActive(true);
         }
         LevelComplete.SetActive(true); 
+        GlobalControl.Instance.paused = true;
         yield return new WaitForSeconds(.25f); 
         mailboxTrigger = false;
     }

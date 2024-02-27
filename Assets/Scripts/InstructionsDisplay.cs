@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 //this script is designed to show the instructions on the first level when the 
 //instructionsStep integer is at the right value.
+
+//TO-DO: CHANGE THIS ENTIRE SCRIPT
 public class InstructionsDisplay : MonoBehaviour
 {
     [SerializeField] private Text text;

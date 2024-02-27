@@ -49,13 +49,13 @@ public class LevelControl : MonoBehaviour
     }
     private void unpause() {
         canOpenClose = false; 
-            if(GlobalControl.Instance.pause) {
-                GlobalControl.Instance.pause = false;
+            if(GlobalControl.Instance.paused) {
+                GlobalControl.Instance.paused = false;
                 pausePanel.SetActive(false);
                 instructionsPanel.SetActive(false);
                 rb.bodyType = RigidbodyType2D.Dynamic;
             } else {
-                GlobalControl.Instance.pause = true;
+                GlobalControl.Instance.paused = true;
                 instructionsPanel.SetActive(false);
                 pausePanel.SetActive(true);
                 rb.bodyType = RigidbodyType2D.Static;
@@ -64,13 +64,13 @@ public class LevelControl : MonoBehaviour
 
     private void instructions() {
         canOpenClose = false; 
-            if(GlobalControl.Instance.pause) {
-                GlobalControl.Instance.pause = false;   
+            if(GlobalControl.Instance.paused) {
+                GlobalControl.Instance.paused = false;   
                 instructionsPanel.SetActive(false);
                 pausePanel.SetActive(false);
                 rb.bodyType = RigidbodyType2D.Dynamic;
             } else {
-                GlobalControl.Instance.pause = true;
+                GlobalControl.Instance.paused = true;
                 instructionsPanel.SetActive(true);
                 pausePanel.SetActive(false);
                 rb.bodyType = RigidbodyType2D.Static;

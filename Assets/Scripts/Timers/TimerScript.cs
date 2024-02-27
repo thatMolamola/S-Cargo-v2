@@ -56,7 +56,7 @@ public class TimerScript : MonoBehaviour
 
     void Update()
     {
-        if (!GlobalControl.Instance.pause)
+        if (!GlobalControl.Instance.paused)
         {
             if (GlobalControl.Instance.hasMoved)
             {

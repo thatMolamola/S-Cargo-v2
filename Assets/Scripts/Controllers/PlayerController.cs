@@ -76,7 +76,7 @@ public class PlayerController : MonoBehaviour
             }
         }
         
-        if (!GlobalControl.Instance.pause && GlobalControl.Instance.canMove){
+        if (!GlobalControl.Instance.paused && GlobalControl.Instance.canMove){
             moveBy.x = Input.GetAxisRaw("Horizontal");
             moveBy.y = Input.GetAxisRaw("Vertical");
             //the player will be in one of 4 states defined by the snailOrient
@@ -273,7 +273,7 @@ public class PlayerController : MonoBehaviour
 
 //Fixed Update should handle all physics changes
     void FixedUpdate() {
-        if (!GlobalControl.Instance.pause){
+        if (!GlobalControl.Instance.paused){
             //update the player's state based on its positional sensors
             isGrounded =
                 Physics2D.OverlapCircle(groundCheck1.position, surroundCheckRadius, whatIsGround)

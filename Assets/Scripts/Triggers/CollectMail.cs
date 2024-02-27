@@ -29,6 +29,6 @@ public class CollectMail : MonoBehaviour
     void UpdateMailCount()
     {  
         MailCount.GetComponent<Text>().text =
-            "Letters Collected: " + GlobalControl.Instance.lettersCollected + "/" + MailCount1;
+            ": " + GlobalControl.Instance.lettersCollected + "/" + MailCount1;
     }
 }
