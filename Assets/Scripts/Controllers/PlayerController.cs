@@ -83,7 +83,7 @@ public class PlayerController : MonoBehaviour
             //the player will be in one of 4 states defined by the snailOrient
             if (orientPlayer == SnailOrient.UP) {
             transform.rotation = Quaternion.Euler(0, 0, 0);
-            snailFlip(moveBy.x, true);
+                snailFlip(moveBy.x, true);
                 if (!isRolling) {  //Standard Snail Movement
                     if (isGrounded)
                     {
@@ -349,15 +349,32 @@ public class PlayerController : MonoBehaviour
                     } else {
                         rb.velocity = new Vector2(moveBy.x * moveFactor1, rb.velocity.y);
                     }
-
-                    if (newOrientDelayDone){
-                        //if airborne, reorient to UP
-                        newOrientDelayDone = false;
-                        rb.gravityScale = 2.0f;
-                        orientPlayer = SnailOrient.UP;
-                        StartCoroutine(newOrient(.1f));
-                        Jumped = false;
-                    }
+                    if (orientPlayer == SnailOrient.LEFT) {
+                        if (moveBy.x < 0) {
+                            if (newOrientDelayDone){
+                                //if airborne, reorient to UP
+                                rb.gravityScale = 2.0f;
+                                orientPlayer = SnailOrient.UP;
+                                Jumped = false;
+                            }
+                        }
+                    } else if (orientPlayer == SnailOrient.RIGHT) {
+                        if (moveBy.x > 0) {
+                            if (newOrientDelayDone){
+                                //if airborne, reorient to UP
+                                rb.gravityScale = 2.0f;
+                                orientPlayer = SnailOrient.UP;
+                                Jumped = false;
+                            }
+                        }
+                    } else {
+                        if (newOrientDelayDone){
+                                //if airborne, reorient to UP
+                                rb.gravityScale = 2.0f;
+                                orientPlayer = SnailOrient.UP;
+                                Jumped = false;
+                            }
+                        }
                 }
             } else{
                 rb.velocity = new Vector2(0,rb.velocity.y);
