@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
     public bool isShelled, isRolling;
 
     public bool isJumping = false;
-    private bool newOrientDelayDone = true;
+    private bool reorientDD = true;
 
     //jumping and rolling float values
 
@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
 
     private float surroundCheckRadius;
 
-    private bool oneJFlag, Jumped;
+    private bool oneJFlag;
 
     void Start()
     {
@@ -54,7 +54,6 @@ public class PlayerController : MonoBehaviour
         rb.gravityScale = 2.0f;
         surroundCheckRadius = .125f;
         orientPlayer = SnailOrient.UP;
-        Jumped = false;
     }
 
 //this handles the player inputs, and sets the appropriate flags to trigger the physics in the FixedUpdate
@@ -88,9 +87,8 @@ public class PlayerController : MonoBehaviour
                     if (isGrounded)
                     {
                         //If grounded and player clicks to jump, set Jump Flags
-                        if (Input.GetKeyDown(KeyCode.X) && !Jumped)
+                        if (Input.GetKeyDown(KeyCode.X) && !oneJFlag)
                         {
-                            Jumped = true;
                             oneJFlag = true;
                         }
 
@@ -121,34 +119,34 @@ public class PlayerController : MonoBehaviour
                     if (Input.GetKeyUp(KeyCode.X))
                         {
                             isJumping = false; 
-                            Jumped = false;
+                            oneJFlag = false;
                         }
 
 
                     //Change the snail orientation state conditions: 
                     //If the reorient delay is over
-                    if (newOrientDelayDone){
+                    if (reorientDD){
                         //flip upside down
                         if (isStickingTop && Input.GetKey(KeyCode.UpArrow)) {
-                            newOrientDelayDone = false;
+                            reorientDD = false;
                             orientPlayer = SnailOrient.DOWN;
-                            StartCoroutine(newOrient(.35f));
+                            StartCoroutine(reorient(.35f));
                         }
 
                         //flip upside right
                         if (Input.GetKey(KeyCode.LeftArrow) && isStickingRight)
                         {
-                            newOrientDelayDone = false;
+                            reorientDD = false;
                             orientPlayer = SnailOrient.RIGHT;
-                            StartCoroutine(newOrient(.35f));
+                            StartCoroutine(reorient(.35f));
                         }
 
                         //flip upside left
                         if (Input.GetKey(KeyCode.RightArrow) && isStickingRight)
                         {
-                            newOrientDelayDone = false;
+                            reorientDD = false;
                             orientPlayer = SnailOrient.LEFT;
-                            StartCoroutine(newOrient(.35f));
+                            StartCoroutine(reorient(.35f));
                         }
                     }
                 } else {        
@@ -172,9 +170,8 @@ public class PlayerController : MonoBehaviour
                     if (isGrounded)
                     {
                         //If grounded and player clicks to jump, set Jump Flags
-                        if (Input.GetKeyDown(KeyCode.X) && !Jumped)
+                        if (Input.GetKeyDown(KeyCode.X) && !oneJFlag)
                         {
-                            Jumped = true;
                             oneJFlag = true;
                         }
                     }
@@ -185,25 +182,25 @@ public class PlayerController : MonoBehaviour
                 snailFlip(moveBy.x, false);         
 
                 //adjust the snail orientation states
-                if (newOrientDelayDone){
+                if (reorientDD){
                     if (Input.GetKey(KeyCode.LeftArrow) && isStickingRight)
                         {
-                        newOrientDelayDone = false;
+                        reorientDD = false;
                         orientPlayer = SnailOrient.RIGHT;
-                        StartCoroutine(newOrient(.35f));
+                        StartCoroutine(reorient(.35f));
                         }
                     if (Input.GetKey(KeyCode.RightArrow) && isStickingRight)
                         {
-                        newOrientDelayDone = false;
+                        reorientDD = false;
                         orientPlayer = SnailOrient.LEFT;
-                        StartCoroutine(newOrient(.35f));
+                        StartCoroutine(reorient(.35f));
                         }
             
                     if (Input.GetKey(KeyCode.DownArrow) && isStickingTop)
                         {
-                        newOrientDelayDone = false;
+                        reorientDD = false;
                         orientPlayer = SnailOrient.UP;
-                        StartCoroutine(newOrient(.35f));
+                        StartCoroutine(reorient(.35f));
                         }
                 }
                 
@@ -212,30 +209,29 @@ public class PlayerController : MonoBehaviour
                 snailFlip(moveBy.y, false);    
 
                 //snail walljumping
-                if (Input.GetKey(KeyCode.X) && isGrounded && !Jumped)
+                if (Input.GetKey(KeyCode.X) && isGrounded && !oneJFlag)
                 {
                     oneJFlag = true;
-                    Jumped = true;
                 }
 
-                if (newOrientDelayDone){
+                if (reorientDD){
                     if ((Input.GetKey(KeyCode.DownArrow) ||Input.GetKey(KeyCode.RightArrow)) 
                         &&
                         isStickingRight)
                     {
-                        newOrientDelayDone = false;
+                        reorientDD = false;
                         orientPlayer = SnailOrient.UP;
-                        StartCoroutine(newOrient(.35f));
+                        StartCoroutine(reorient(.35f));
                     }
                     if (Input.GetKey(KeyCode.UpArrow) && isStickingRight) {
-                        newOrientDelayDone = false;
+                        reorientDD = false;
                         orientPlayer = SnailOrient.DOWN;
-                        StartCoroutine(newOrient(.35f));
+                        StartCoroutine(reorient(.35f));
                     }
                     if (Input.GetKey(KeyCode.RightArrow) && isStickingTop) {
-                        newOrientDelayDone = false;
+                        reorientDD = false;
                         orientPlayer = SnailOrient.LEFT;
-                        StartCoroutine(newOrient(.35f));
+                        StartCoroutine(reorient(.35f));
                     }
                 }
             } else if (orientPlayer == SnailOrient.LEFT) {
@@ -243,32 +239,31 @@ public class PlayerController : MonoBehaviour
                 snailFlip(moveBy.y, true);  
 
                 //snail walljumping
-                if (Input.GetKey(KeyCode.X) && isGrounded && !Jumped)
+                if (Input.GetKey(KeyCode.X) && isGrounded && !oneJFlag)
                 {
                     oneJFlag = true;
-                    Jumped = true;
                 }
             
-                if (newOrientDelayDone){
+                if (reorientDD){
                     if ((Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.LeftArrow)) 
                         &&
                         isStickingRight)
                     {
-                        newOrientDelayDone = false;
+                        reorientDD = false;
                         orientPlayer = SnailOrient.UP;
-                        StartCoroutine(newOrient(.35f));
+                        StartCoroutine(reorient(.35f));
                     }
                     if (Input.GetKey(KeyCode.UpArrow) && isStickingRight)
                     {
-                        newOrientDelayDone = false;
+                        reorientDD = false;
                         orientPlayer = SnailOrient.DOWN;
-                        StartCoroutine(newOrient(.35f));
+                        StartCoroutine(reorient(.35f));
                     }
                     if (Input.GetKey(KeyCode.LeftArrow) && isStickingTop)
                     {
-                        newOrientDelayDone = false;
+                        reorientDD = false;
                         orientPlayer = SnailOrient.RIGHT;
-                        StartCoroutine(newOrient(.35f));
+                        StartCoroutine(reorient(.35f));
                     }
                 }
             }
@@ -349,32 +344,12 @@ public class PlayerController : MonoBehaviour
                     } else {
                         rb.velocity = new Vector2(moveBy.x * moveFactor1, rb.velocity.y);
                     }
-                    if (orientPlayer == SnailOrient.LEFT) {
-                        if (moveBy.x < 0) {
-                            if (newOrientDelayDone){
-                                //if airborne, reorient to UP
-                                rb.gravityScale = 2.0f;
-                                orientPlayer = SnailOrient.UP;
-                                Jumped = false;
-                            }
-                        }
-                    } else if (orientPlayer == SnailOrient.RIGHT) {
-                        if (moveBy.x > 0) {
-                            if (newOrientDelayDone){
-                                //if airborne, reorient to UP
-                                rb.gravityScale = 2.0f;
-                                orientPlayer = SnailOrient.UP;
-                                Jumped = false;
-                            }
-                        }
-                    } else {
-                        if (newOrientDelayDone){
-                                //if airborne, reorient to UP
-                                rb.gravityScale = 2.0f;
-                                orientPlayer = SnailOrient.UP;
-                                Jumped = false;
-                            }
-                        }
+
+                    if (reorientDD){
+                            //if airborne, reorient to UP
+                            rb.gravityScale = 2.0f;
+                            orientPlayer = SnailOrient.UP;
+                    }
                 }
             } else{
                 rb.velocity = new Vector2(0,rb.velocity.y);
@@ -410,9 +385,8 @@ public class PlayerController : MonoBehaviour
         isJumping = false;
     }
 
-    IEnumerator newOrient(float waitTime) {
+    IEnumerator reorient(float waitTime) {
         yield return new WaitForSeconds(waitTime);
-        newOrientDelayDone = true;
-        Jumped = false;
+        reorientDD = true;
     }
 }
