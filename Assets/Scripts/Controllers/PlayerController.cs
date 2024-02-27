@@ -2,15 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//this script controls the player movement. 
+//this script controls the player movement across 4 orientations and one substate of rolling
 public enum SnailOrient{UP, DOWN, LEFT, RIGHT}
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rb;
-
     private BoxCollider2D snailBoxCollider;
     private CircleCollider2D snailCircleColliderLeft;
-
     private Vector2 moveBy;
     private float moveFactor1 = 4f;
     private float moveFactor2 = 10f;
@@ -18,14 +16,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Animator myAnimationController;
 
     //snail movement booleans
-    public bool isGrounded = true;
+    [SerializeField] private bool isGrounded = true;
 
-    public bool isShelled;
+    public bool isShelled, isRolling;
 
     public bool isJumping = false;
-
-    public bool isRolling;
-
     private bool newOrientDelayDone = true;
 
     //jumping and rolling float values
@@ -37,9 +32,7 @@ public class PlayerController : MonoBehaviour
 
     public SnailOrient orientPlayer; 
 
-    public bool isStickingRight;
-
-    public bool isStickingTop;
+    private bool isStickingRight, isStickingTop;
 
     //snail-to-tile sticking state checks
     [SerializeField] private LayerMask whatIsGround;
@@ -50,8 +43,7 @@ public class PlayerController : MonoBehaviour
 
     private float surroundCheckRadius;
 
-    private bool fJumpTrigger;
-
+    private bool oneJFlag, Jumped;
 
     void Start()
     {
@@ -62,40 +54,12 @@ public class PlayerController : MonoBehaviour
         rb.gravityScale = 2.0f;
         surroundCheckRadius = .125f;
         orientPlayer = SnailOrient.UP;
+        Jumped = false;
     }
 
-    void snailFlip() {
-        //flip the snail sprite based on movement
-        if (moveBy.x < 0) {
-            transform.localScale = new Vector3(-1, 1, 1);
-        } else if (moveBy.x > 0) {
-            transform.localScale = new Vector3(1, 1, 1);
-        }
-    }
-
-    IEnumerator shellToRollDelay(){
-        yield return new WaitForSeconds(1.5f);
-        GlobalControl.Instance.canMove = true;
-    }
-
-    IEnumerator VariableJump() {
-        rb.velocity = Vector2.up * jumpHeight;
-        yield return new WaitForSeconds(0.25f);
-        isJumping = false;
-    }
-
-    IEnumerator newOrient(float waitTime) {
-        yield return new WaitForSeconds(waitTime);
-        newOrientDelayDone = true;
-    }
-
-    IEnumerator stickDelay() {
-        yield return new WaitForSeconds(.100f);
-        isStickingTop = false;
-    }
-
-//this handles the player inputs
+//this handles the player inputs, and sets the appropriate flags to trigger the physics in the FixedUpdate
     public void Update() {
+
         //if the character can move and moves, then they have moved. 
         if (!GlobalControl.Instance.hasMoved)
         {
@@ -113,45 +77,32 @@ public class PlayerController : MonoBehaviour
             }
         }
         
-        if (!GlobalControl.Instance.pause){
-            if (GlobalControl.Instance.canMove){
-                moveBy.x = Input.GetAxisRaw("Horizontal");
-                moveBy.y = Input.GetAxisRaw("Vertical");
-                //the player will be in one of 4 states defined by the snailOrient
-                if (orientPlayer == SnailOrient.UP) {
-                transform.rotation = Quaternion.Euler(0, 0, 0);
-                    if (!isRolling) {
-                        snailFlip();
-
-                        //Update Jump Inputs
-                        //this jumping script allows for variable jump heights
-                        if (Input.GetKey(KeyCode.X) && isJumping) {
-                            StartCoroutine(VariableJump());
-                        }
-                    
-                        if (Input.GetKeyUp(KeyCode.X))
-                            {
-                                isJumping = false; 
-                            }
-
-                        if (isGrounded)
+        if (!GlobalControl.Instance.pause && GlobalControl.Instance.canMove){
+            moveBy.x = Input.GetAxisRaw("Horizontal");
+            moveBy.y = Input.GetAxisRaw("Vertical");
+            //the player will be in one of 4 states defined by the snailOrient
+            if (orientPlayer == SnailOrient.UP) {
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+            snailFlip(moveBy.x, true);
+                if (!isRolling) {  //Standard Snail Movement
+                    if (isGrounded)
+                    {
+                        //If grounded and player clicks to jump, set Jump Flags
+                        if (Input.GetKeyDown(KeyCode.X) && !Jumped)
                         {
-                            //snail jumping
-                            if (Input.GetKeyDown(KeyCode.X))
-                            {
-                                fJumpTrigger = true;
-                            }
+                            Jumped = true;
+                            oneJFlag = true;
+                        }
 
-                            //snail retreating
-                            if (Input.GetKey(KeyCode.S))
-                            {
-                                myAnimationController.SetBool("RollUp", true);
-                                isShelled = true;
-                                snailBoxCollider.enabled = false;
-                                snailCircleColliderLeft.enabled = true;
-                                GlobalControl.Instance.canMove = false;
-                                StartCoroutine(shellToRollDelay());
-                            }
+                        //If grounded and player clicks to retreat, change Snail State
+                        if (Input.GetKey(KeyCode.S))
+                        {
+                            myAnimationController.SetBool("RollUp", true);
+                            isShelled = true;
+                            snailBoxCollider.enabled = false;
+                            snailCircleColliderLeft.enabled = true;
+                            GlobalControl.Instance.canMove = false;
+                            StartCoroutine(shellToRollDelay());
                         }
 
                         //snail start rolling
@@ -159,47 +110,49 @@ public class PlayerController : MonoBehaviour
                             myAnimationController.SetBool("Moving", true);
                             isRolling = true;
                         }
-
-                        //change the snail orientation states
-                        //flip upside down
-                        if (newOrientDelayDone){
-                            if (isStickingTop)
-                            {
-                                Debug.Log("canGrab " +  Time.deltaTime);
-                                if (Input.GetKey(KeyCode.UpArrow)) {
-                                    Debug.Log("didGrab " +  Time.deltaTime);
-                                    newOrientDelayDone = false;
-                                    orientPlayer = SnailOrient.DOWN;
-                                    StartCoroutine(newOrient(.35f));
-                                }
-                            }
-
-                            //flip upside right
-                            if (Input.GetKey(KeyCode.LeftArrow) && isStickingRight)
-                            {
-                                newOrientDelayDone = false;
-                                orientPlayer = SnailOrient.RIGHT;
-                                StartCoroutine(newOrient(.35f));
-                            }
-
-                            //flip upside left
-                            if (Input.GetKey(KeyCode.RightArrow) && isStickingRight)
-                            {
-                                newOrientDelayDone = false;
-                                orientPlayer = SnailOrient.LEFT;
-                                StartCoroutine(newOrient(.35f));
-                            }
+                    }
+                    
+                    //Update Jump Inputs
+                    //these jumping scripts allows for variable jump heights
+                    if (Input.GetKey(KeyCode.X) && isJumping) {
+                        StartCoroutine(VariableJump());
+                    }
+                
+                    if (Input.GetKeyUp(KeyCode.X))
+                        {
+                            isJumping = false; 
+                            Jumped = false;
                         }
 
-                }
-                else //if rolling
-                {
-                    snailFlip();
-                    
-                    if (Input.GetKey(KeyCode.X) && isGrounded)
-                    {
-                        fJumpTrigger = true;
+
+                    //Change the snail orientation state conditions: 
+                    //If the reorient delay is over
+                    if (newOrientDelayDone){
+                        //flip upside down
+                        if (isStickingTop && Input.GetKey(KeyCode.UpArrow)) {
+                            newOrientDelayDone = false;
+                            orientPlayer = SnailOrient.DOWN;
+                            StartCoroutine(newOrient(.35f));
+                        }
+
+                        //flip upside right
+                        if (Input.GetKey(KeyCode.LeftArrow) && isStickingRight)
+                        {
+                            newOrientDelayDone = false;
+                            orientPlayer = SnailOrient.RIGHT;
+                            StartCoroutine(newOrient(.35f));
+                        }
+
+                        //flip upside left
+                        if (Input.GetKey(KeyCode.RightArrow) && isStickingRight)
+                        {
+                            newOrientDelayDone = false;
+                            orientPlayer = SnailOrient.LEFT;
+                            StartCoroutine(newOrient(.35f));
+                        }
                     }
+                } else {        
+                    //if you stop moving in the rolling state and are holding down no keys, return to base state
                     if (
                         moveBy.x == 0 &&
                         (
@@ -215,23 +168,24 @@ public class PlayerController : MonoBehaviour
                         snailBoxCollider.enabled = true;
                         snailCircleColliderLeft.enabled = false;
                     }
+
+                    if (isGrounded)
+                    {
+                        //If grounded and player clicks to jump, set Jump Flags
+                        if (Input.GetKeyDown(KeyCode.X) && !Jumped)
+                        {
+                            Jumped = true;
+                            oneJFlag = true;
+                        }
+                    }
                 }
-            }
-            else if (orientPlayer == SnailOrient.DOWN)
-            {
+            } else if (orientPlayer == SnailOrient.DOWN) {
                 transform.rotation = Quaternion.Euler(0, 0, 180);
                 // flip the snail sprite based on movement
-                if (moveBy.x < 0)
-                {
-                    transform.localScale = new Vector3(1, 1, 1);
-                }
-                if (moveBy.x > 0)
-                {
-                    transform.localScale = new Vector3(-1, 1, 1);
-                }            
+                snailFlip(moveBy.x, false);         
 
+                //adjust the snail orientation states
                 if (newOrientDelayDone){
-                    //adjust the snail orientation states
                     if (Input.GetKey(KeyCode.LeftArrow) && isStickingRight)
                         {
                         newOrientDelayDone = false;
@@ -253,23 +207,15 @@ public class PlayerController : MonoBehaviour
                         }
                 }
                 
-            }
-            else if (orientPlayer == SnailOrient.RIGHT)
-            {
+            } else if (orientPlayer == SnailOrient.RIGHT) {
                 transform.rotation = Quaternion.Euler(0, 0, 270);
-                if (moveBy.y < 0)
-                {
-                    transform.localScale = new Vector3(1, 1, 1);
-                }
-                if (moveBy.y > 0)
-                {
-                    transform.localScale = new Vector3(-1, 1, 1);
-                }
+                snailFlip(moveBy.y, false);    
 
                 //snail walljumping
-                if (Input.GetKey(KeyCode.X) && isGrounded)
+                if (Input.GetKey(KeyCode.X) && isGrounded && !Jumped)
                 {
-                    fJumpTrigger = true;
+                    oneJFlag = true;
+                    Jumped = true;
                 }
 
                 if (newOrientDelayDone){
@@ -292,24 +238,17 @@ public class PlayerController : MonoBehaviour
                         StartCoroutine(newOrient(.35f));
                     }
                 }
-            }
-            else if (orientPlayer == SnailOrient.LEFT) {
+            } else if (orientPlayer == SnailOrient.LEFT) {
                 transform.rotation = Quaternion.Euler(0, 0, 90);
-                if (moveBy.y < 0)
-                {
-                    transform.localScale = new Vector3(-1, 1, 1);
-                }
-                if (moveBy.y > 0)
-                {
-                    transform.localScale = new Vector3(1, 1, 1);
-                }
+                snailFlip(moveBy.y, true);  
 
                 //snail walljumping
-                if (Input.GetKey(KeyCode.X) && isGrounded)
+                if (Input.GetKey(KeyCode.X) && isGrounded && !Jumped)
                 {
-                    fJumpTrigger = true;
+                    oneJFlag = true;
+                    Jumped = true;
                 }
-                
+            
                 if (newOrientDelayDone){
                     if ((Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.LeftArrow)) 
                         &&
@@ -331,7 +270,6 @@ public class PlayerController : MonoBehaviour
                         orientPlayer = SnailOrient.RIGHT;
                         StartCoroutine(newOrient(.35f));
                     }
-                    }
                 }
             }
         }
@@ -351,105 +289,74 @@ public class PlayerController : MonoBehaviour
             isStickingTop =
                 Physics2D.OverlapCircle(topCheck.position, surroundCheckRadius * 2.5f, whatIsGround);
             if (GlobalControl.Instance.canMove){
-                //the player will be in one of 4 states defined by the snailOrient
-                if (orientPlayer == SnailOrient.UP) {
-                transform.rotation = Quaternion.Euler(0, 0, 0);
-                rb.gravityScale = 2.0f;
-                    if (!isRolling) {
-                        rb.velocity = new Vector2(moveBy.x * moveFactor1, rb.velocity.y);
-                        if (isGrounded)
-                        {
+                if (isGrounded) {
+                    //the player will be in one of 4 states defined by the snailOrient
+                    if (orientPlayer == SnailOrient.UP) {
+                        transform.rotation = Quaternion.Euler(0, 0, 0);
+                        rb.gravityScale = 2.0f;
+                        if (!isRolling) {
                             //snail jumping
-                            if (fJumpTrigger)
+                            if (oneJFlag)
                             {
-                                rb.velocity = Vector2.up * jumpHeight;
+                                oneJFlag = false;
+                                rb.velocity = new Vector2(moveBy.x * moveFactor1, jumpHeight);
                                 isJumping = true;
-                                fJumpTrigger = false;
+                            } else {
+                                rb.velocity = new Vector2(moveBy.x * moveFactor1, rb.velocity.y);
+                            }
+                        } else {    //if rolling
+                            isGrounded = Physics2D.OverlapCircle(groundCheck3.position, surroundCheckRadius, whatIsGround);
+                            if (oneJFlag)
+                            {
+                                oneJFlag = false;
+                                rb.velocity = new Vector2(moveBy.x * moveFactor2, rolljumpHeight); 
+                                isGrounded = false;
+                            } else {
+                                rb.velocity = new Vector2(moveBy.x * moveFactor2, rb.velocity.y);
                             }
                         }
-                    }
-                    else //if rolling
-                    {
-                        rb.velocity = new Vector2(moveBy.x * moveFactor2, rb.velocity.y);
-                        isGrounded = Physics2D.OverlapCircle(groundCheck3.position, surroundCheckRadius, whatIsGround);
-                        if (fJumpTrigger)
+
+                    } else if (orientPlayer == SnailOrient.DOWN) {
+                        rb.velocity = new Vector2(moveBy.x * moveFactor1, moveBy.y);
+                        rb.gravityScale = 0.0f;
+
+                    } else if (orientPlayer == SnailOrient.RIGHT) {     //RIGHT
+                        rb.gravityScale = 2.0f;
+
+                        //snail walljumping
+                        if (oneJFlag)  //Walljump motion
                         {
-                            rb.velocity = Vector2.up * rolljumpHeight;
-                            isGrounded = false;
-                            fJumpTrigger = false;
+                            oneJFlag = false;
+                            rb.velocity = new Vector2(24, 12);
+                        } else {           //Standard motion
+                            rb.velocity = new Vector2(moveBy.x * moveFactor1, moveBy.y * moveFactor1);
+                        }
+
+                    } else if (orientPlayer == SnailOrient.LEFT) {      //LEFT
+
+                        rb.gravityScale = 2.0f;
+                        //snail walljumping
+                        if (oneJFlag) {  //Walljump motion
+                            oneJFlag = false;
+                            rb.velocity = new Vector2(-24, 12);
+                        } else {             //Standard motion
+                            rb.velocity = new Vector2(moveBy.x * moveFactor1, moveBy.y * moveFactor1);
                         }
                     }
-                }
-                else if (orientPlayer == SnailOrient.DOWN)
-                {
-                    rb.velocity =
-                        new Vector2(moveBy.x * moveFactor1, moveBy.y);
-                    rb.gravityScale = 0.0f;
-                    // flip the snail sprite based on movement
-                    if (moveBy.x < 0)
-                    {
-                        transform.localScale = new Vector3(1, 1, 1);
-                    }
-                    if (moveBy.x > 0)
-                    {
-                        transform.localScale = new Vector3(-1, 1, 1);
-                    }          
-                }
-                else if (orientPlayer == SnailOrient.RIGHT)
-                {
-                    rb.velocity =
-                        new Vector2(moveBy.x * moveFactor1, moveBy.y * moveFactor1);
-                    rb.gravityScale = 2.0f;
-                    if (moveBy.y < 0)
-                    {
-                        transform.localScale = new Vector3(1, 1, 1);
-                    }
-                    if (moveBy.y > 0)
-                    {
-                        transform.localScale = new Vector3(-1, 1, 1);
+                } else { 
+                    if (isRolling) {
+                        rb.velocity = new Vector2(moveBy.x * moveFactor2, rb.velocity.y);
+                    } else {
+                        rb.velocity = new Vector2(moveBy.x * moveFactor1, rb.velocity.y);
                     }
 
-                    //snail walljumping
-                    if (fJumpTrigger)
-                    {
-                        rb.velocity = new Vector2(80, 15);
-                        isGrounded = false;
-                        fJumpTrigger = false;
-                    }
-
-                } else if (orientPlayer == SnailOrient.LEFT) {
-                    rb.velocity =
-                        new Vector2(moveBy.x * moveFactor1, moveBy.y * moveFactor1);
-                    rb.gravityScale = 2.0f;
-                    if (moveBy.y < 0)
-                    {
-                        transform.localScale = new Vector3(-1, 1, 1);
-                    }
-                    if (moveBy.y > 0)
-                    {
-                        transform.localScale = new Vector3(1, 1, 1);
-                    }
-
-                    //snail walljumping
-                    if (fJumpTrigger)
-                    {
-                        rb.velocity = new Vector2(-80, 15);
-                        isGrounded = false;
-                        fJumpTrigger = false;
-                    }
-                }
-                
-                if (!isGrounded)
-                { 
                     if (newOrientDelayDone){
                         //if airborne, reorient to UP
                         newOrientDelayDone = false;
-                        rb.velocity =
-                            new Vector2(moveBy.x * moveFactor1 + rb.velocity.x/2,
-                                rb.velocity.y);
                         rb.gravityScale = 2.0f;
                         orientPlayer = SnailOrient.UP;
                         StartCoroutine(newOrient(.1f));
+                        Jumped = false;
                     }
                 }
             } else{
@@ -457,4 +364,38 @@ public class PlayerController : MonoBehaviour
             }
         }
     }    
+
+    void snailFlip(float movement, bool pos) {
+        //flip the snail sprite based on movement
+        if (pos) {
+            if (movement < 0) {
+                transform.localScale = new Vector3(-1, 1, 1);
+            } else if (movement > 0) {
+                transform.localScale = new Vector3(1, 1, 1);
+            }
+        } else {
+            if (movement < 0) {
+                transform.localScale = new Vector3(1, 1, 1);
+            } else if (movement > 0) {
+                transform.localScale = new Vector3(-1, 1, 1);
+            }
+        }
+    }
+
+    IEnumerator shellToRollDelay(){
+        yield return new WaitForSeconds(1.5f);
+        GlobalControl.Instance.canMove = true;
+    }
+
+    IEnumerator VariableJump() {
+        rb.velocity = Vector2.up * jumpHeight;
+        yield return new WaitForSeconds(0.25f);
+        isJumping = false;
+    }
+
+    IEnumerator newOrient(float waitTime) {
+        yield return new WaitForSeconds(waitTime);
+        newOrientDelayDone = true;
+        Jumped = false;
+    }
 }
