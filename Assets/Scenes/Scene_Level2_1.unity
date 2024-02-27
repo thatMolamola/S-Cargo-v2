@@ -46435,7 +46435,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4466283553201821835, guid: d4731258d7295421ea33598b90543ec8, type: 3}
       propertyPath: cutsceneEnabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4466283553201821835, guid: d4731258d7295421ea33598b90543ec8, type: 3}
       propertyPath: snailAnims.Array.size

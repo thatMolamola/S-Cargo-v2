@@ -1491,7 +1491,7 @@ MonoBehaviour:
   musicState: 1
   musicTrack: 0
   lettersCollected: 0
-  snailChoice: 1
+  snailChoice: 0
   allMailCollected: 0
   finishedDelivery: 0
   lowestTime1: 1e+26
