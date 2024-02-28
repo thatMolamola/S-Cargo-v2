@@ -59,21 +59,6 @@ TextureImporter:
   - first:
       213: 3816822387235401781
     second: Musho_18
-  - first:
-      213: 8158102074154616090
-    second: Musho_19
-  - first:
-      213: 802223070550419426
-    second: Musho_20
-  - first:
-      213: 6321687844859090409
-    second: Musho_21
-  - first:
-      213: -7466322756761241822
-    second: Musho_22
-  - first:
-      213: 1053724440878515052
-    second: Musho_23
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -118,7 +103,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 24
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -167,9 +152,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 320
-        width: 120
-        height: 80
+        y: 144
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,10 +172,10 @@ TextureImporter:
       name: Musho_1
       rect:
         serializedVersion: 2
-        x: 120
-        y: 320
-        width: 120
-        height: 80
+        x: 48
+        y: 144
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -208,10 +193,10 @@ TextureImporter:
       name: Musho_2
       rect:
         serializedVersion: 2
-        x: 240
-        y: 320
-        width: 120
-        height: 80
+        x: 96
+        y: 144
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -229,10 +214,10 @@ TextureImporter:
       name: Musho_3
       rect:
         serializedVersion: 2
-        x: 360
-        y: 320
-        width: 120
-        height: 80
+        x: 144
+        y: 144
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -250,10 +235,10 @@ TextureImporter:
       name: Musho_4
       rect:
         serializedVersion: 2
-        x: 480
-        y: 320
-        width: 120
-        height: 80
+        x: 192
+        y: 144
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -272,9 +257,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 240
-        width: 120
-        height: 80
+        y: 96
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -292,10 +277,10 @@ TextureImporter:
       name: Musho_6
       rect:
         serializedVersion: 2
-        x: 120
-        y: 240
-        width: 120
-        height: 80
+        x: 48
+        y: 96
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -313,10 +298,10 @@ TextureImporter:
       name: Musho_7
       rect:
         serializedVersion: 2
-        x: 240
-        y: 240
-        width: 120
-        height: 80
+        x: 96
+        y: 96
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -334,10 +319,10 @@ TextureImporter:
       name: Musho_8
       rect:
         serializedVersion: 2
-        x: 360
-        y: 240
-        width: 120
-        height: 80
+        x: 144
+        y: 96
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -355,10 +340,10 @@ TextureImporter:
       name: Musho_9
       rect:
         serializedVersion: 2
-        x: 480
-        y: 240
-        width: 120
-        height: 80
+        x: 192
+        y: 96
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -377,9 +362,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 160
-        width: 120
-        height: 80
+        y: 48
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -397,10 +382,10 @@ TextureImporter:
       name: Musho_11
       rect:
         serializedVersion: 2
-        x: 120
-        y: 160
-        width: 120
-        height: 80
+        x: 48
+        y: 48
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -418,10 +403,10 @@ TextureImporter:
       name: Musho_12
       rect:
         serializedVersion: 2
-        x: 240
-        y: 160
-        width: 120
-        height: 80
+        x: 96
+        y: 48
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -439,10 +424,10 @@ TextureImporter:
       name: Musho_13
       rect:
         serializedVersion: 2
-        x: 360
-        y: 160
-        width: 120
-        height: 80
+        x: 144
+        y: 48
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -460,10 +445,10 @@ TextureImporter:
       name: Musho_14
       rect:
         serializedVersion: 2
-        x: 480
-        y: 160
-        width: 120
-        height: 80
+        x: 192
+        y: 48
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -481,10 +466,10 @@ TextureImporter:
       name: Musho_15
       rect:
         serializedVersion: 2
-        x: 600
-        y: 160
-        width: 120
-        height: 80
+        x: 0
+        y: 0
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -502,10 +487,10 @@ TextureImporter:
       name: Musho_16
       rect:
         serializedVersion: 2
-        x: 0
-        y: 80
-        width: 120
-        height: 80
+        x: 48
+        y: 0
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -523,10 +508,10 @@ TextureImporter:
       name: Musho_17
       rect:
         serializedVersion: 2
-        x: 120
-        y: 80
-        width: 120
-        height: 80
+        x: 96
+        y: 0
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -544,10 +529,10 @@ TextureImporter:
       name: Musho_18
       rect:
         serializedVersion: 2
-        x: 240
-        y: 80
-        width: 120
-        height: 80
+        x: 144
+        y: 0
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -557,111 +542,6 @@ TextureImporter:
       bones: []
       spriteID: 530bce12db318f430800000000000000
       internalID: 3816822387235401781
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Musho_19
-      rect:
-        serializedVersion: 2
-        x: 360
-        y: 80
-        width: 120
-        height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a150d5bec96673170800000000000000
-      internalID: 8158102074154616090
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Musho_20
-      rect:
-        serializedVersion: 2
-        x: 480
-        y: 80
-        width: 120
-        height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2e7e7ced1a1122b00800000000000000
-      internalID: 802223070550419426
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Musho_21
-      rect:
-        serializedVersion: 2
-        x: 600
-        y: 80
-        width: 120
-        height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9e51bb5e9952bb750800000000000000
-      internalID: 6321687844859090409
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Musho_22
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 120
-        height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 227b4d0d20b426890800000000000000
-      internalID: -7466322756761241822
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Musho_23
-      rect:
-        serializedVersion: 2
-        x: 120
-        y: 0
-        width: 120
-        height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c6306bdcbc49f9e00800000000000000
-      internalID: 1053724440878515052
       vertices: []
       indices: 
       edges: []

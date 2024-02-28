@@ -217,7 +217,7 @@ GameObject:
   m_Layer: 5
   m_Name: LaylaChoice
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -731,7 +731,7 @@ GameObject:
   m_Layer: 5
   m_Name: 'FernChoice '
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -910,6 +910,7 @@ MonoBehaviour:
   lettersCollected: 0
   snailChoice: 0
   allMailCollected: 0
+  finishedDelivery: 0
   lowestTime1: 0
   lowestTime2: 0
   lowestTime3: 0
@@ -918,7 +919,7 @@ MonoBehaviour:
   instructionsStep: 0
   canMove: 1
   hasMoved: 0
-  pause: 0
+  paused: 0
   snailAnims:
   - {fileID: 9100000, guid: 2190c6144c8954c4ab583a3830f32e4e, type: 2}
   - {fileID: 9100000, guid: d3b6453538d0c48298c1630a22c2c881, type: 2}
@@ -1048,7 +1049,7 @@ RectTransform:
   m_GameObject: {fileID: 490165492}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 125, y: 125, z: 1}
+  m_LocalScale: {x: 85, y: 85, z: 1}
   m_Children: []
   m_Father: {fileID: 1768319300}
   m_RootOrder: 3
@@ -2070,7 +2071,7 @@ Transform:
   m_GameObject: {fileID: 1107344722}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -240, y: -100, z: 0}
-  m_LocalScale: {x: 670, y: 670, z: 1}
+  m_LocalScale: {x: 106, y: 106, z: 1}
   m_Children: []
   m_Father: {fileID: 1768319300}
   m_RootOrder: 1
@@ -2102,14 +2103,14 @@ RectTransform:
   m_GameObject: {fileID: 1119443527}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 125, y: 125, z: 1}
+  m_LocalScale: {x: 85, y: 85, z: 1}
   m_Children: []
   m_Father: {fileID: 1768319300}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 375.6, y: -116.7}
+  m_AnchoredPosition: {x: 375.6, y: -120}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &1119443529
@@ -2276,7 +2277,7 @@ GameObject:
   m_Layer: 5
   m_Name: HerbChoice
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -2744,7 +2745,7 @@ Transform:
   m_GameObject: {fileID: 1542609512}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 360, y: 50, z: 0}
-  m_LocalScale: {x: 125, y: 125, z: 1}
+  m_LocalScale: {x: 85, y: 85, z: 1}
   m_Children: []
   m_Father: {fileID: 1768319300}
   m_RootOrder: 0
