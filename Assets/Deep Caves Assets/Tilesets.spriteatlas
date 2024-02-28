@@ -50,7 +50,7 @@ SpriteAtlas:
     - {fileID: 2800000, guid: 2ace9a8ac6dbf3844b983378e71a3cc4, type: 3}
     - {fileID: 2800000, guid: 1e29dc1887f02a5478b197771bdac0a2, type: 3}
     - {fileID: 2800000, guid: 9f976424af012ca48a576b675ea521a9, type: 3}
-    totalSpriteSurfaceArea: 133952
+    totalSpriteSurfaceArea: 135232
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -302,18 +302,23 @@ SpriteAtlas:
   - {fileID: 437882810954316013, guid: f8a21848725da8d4882c1c04f9c54bba, type: 3}
   - {fileID: 4163142847983794871, guid: 2ace9a8ac6dbf3844b983378e71a3cc4, type: 3}
   - {fileID: 3019686993695206323, guid: 2ace9a8ac6dbf3844b983378e71a3cc4, type: 3}
+  - {fileID: 602560749159745806, guid: 2ace9a8ac6dbf3844b983378e71a3cc4, type: 3}
   - {fileID: -8985492416262467987, guid: 2ace9a8ac6dbf3844b983378e71a3cc4, type: 3}
   - {fileID: -6513672390613658537, guid: 2ace9a8ac6dbf3844b983378e71a3cc4, type: 3}
   - {fileID: 6836113293257146129, guid: 2ace9a8ac6dbf3844b983378e71a3cc4, type: 3}
+  - {fileID: -8617621938839218430, guid: 2ace9a8ac6dbf3844b983378e71a3cc4, type: 3}
   - {fileID: -8126557810117300204, guid: 2ace9a8ac6dbf3844b983378e71a3cc4, type: 3}
   - {fileID: -5092222008106049128, guid: 2ace9a8ac6dbf3844b983378e71a3cc4, type: 3}
+  - {fileID: -1185058422356801348, guid: 2ace9a8ac6dbf3844b983378e71a3cc4, type: 3}
   - {fileID: 4156639155126674466, guid: 2ace9a8ac6dbf3844b983378e71a3cc4, type: 3}
   - {fileID: -6422173260775411953, guid: 2ace9a8ac6dbf3844b983378e71a3cc4, type: 3}
+  - {fileID: 6489881598700724317, guid: 2ace9a8ac6dbf3844b983378e71a3cc4, type: 3}
   - {fileID: 4601657823231255212, guid: 2ace9a8ac6dbf3844b983378e71a3cc4, type: 3}
   - {fileID: -8580919816251061032, guid: 2ace9a8ac6dbf3844b983378e71a3cc4, type: 3}
   - {fileID: -2634329561772428816, guid: 2ace9a8ac6dbf3844b983378e71a3cc4, type: 3}
   - {fileID: -7696343828350786998, guid: 2ace9a8ac6dbf3844b983378e71a3cc4, type: 3}
   - {fileID: -3907503814847003811, guid: 2ace9a8ac6dbf3844b983378e71a3cc4, type: 3}
+  - {fileID: 1197186698962473393, guid: 2ace9a8ac6dbf3844b983378e71a3cc4, type: 3}
   - {fileID: 6475587336914886065, guid: 2ace9a8ac6dbf3844b983378e71a3cc4, type: 3}
   - {fileID: 2865564486905253866, guid: 2ace9a8ac6dbf3844b983378e71a3cc4, type: 3}
   - {fileID: 6580702969984057022, guid: 2ace9a8ac6dbf3844b983378e71a3cc4, type: 3}
@@ -805,18 +810,23 @@ SpriteAtlas:
   - Cave_Biome2_10
   - Cave_Biome2Decs_18
   - Cave_Biome2Decs_74
+  - Cave_Biome2Decs_98
   - Cave_Biome2Decs_19
   - Cave_Biome2Decs_75
   - Cave_Biome2Decs_69
+  - Cave_Biome2Decs_99
   - Cave_Biome2Decs_76
   - Cave_Biome2Decs_68
+  - Cave_Biome2Decs_96
   - Cave_Biome2Decs_77
   - Cave_Biome2Decs_67
+  - Cave_Biome2Decs_97
   - Cave_Biome2Decs_70
   - Cave_Biome2Decs_66
   - Cave_Biome2Decs_94
   - Cave_Biome2Decs_71
   - Cave_Biome2Decs_65
+  - Cave_Biome2Decs_95
   - Cave_Biome2Decs_72
   - Cave_Biome2Decs_64
   - Cave_Biome2Decs_92

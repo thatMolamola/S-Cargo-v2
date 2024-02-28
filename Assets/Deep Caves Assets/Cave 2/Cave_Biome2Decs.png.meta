@@ -3,150 +3,6 @@ guid: 2ace9a8ac6dbf3844b983378e71a3cc4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5027509340213622084
-    second: 0
-  - first:
-      213: -2374222918679686493
-    second: 1
-  - first:
-      213: -761933863725385812
-    second: 2
-  - first:
-      213: -5906598218874874896
-    second: 3
-  - first:
-      213: -1816755548282093316
-    second: 4
-  - first:
-      213: 2008176328888099268
-    second: 5
-  - first:
-      213: 6967745887157389618
-    second: 6
-  - first:
-      213: 6501298950303736333
-    second: 7
-  - first:
-      213: -3181606171480048652
-    second: 8
-  - first:
-      213: -7010260848350730462
-    second: 9
-  - first:
-      213: -8655818156195654838
-    second: 10
-  - first:
-      213: 6346318911325233748
-    second: 11
-  - first:
-      213: 1840059084634729652
-    second: 12
-  - first:
-      213: 1127223760459724062
-    second: 13
-  - first:
-      213: 2450565909728410856
-    second: 14
-  - first:
-      213: -3165705482850905674
-    second: 15
-  - first:
-      213: -5774996654182199871
-    second: 16
-  - first:
-      213: 4443897450750874535
-    second: 17
-  - first:
-      213: 5661049957185019681
-    second: 18
-  - first:
-      213: 8474981341611232960
-    second: 19
-  - first:
-      213: 6836142153017594085
-    second: 20
-  - first:
-      213: 2185498278340178504
-    second: 21
-  - first:
-      213: 430984766625829748
-    second: 22
-  - first:
-      213: -1317986280940093683
-    second: 23
-  - first:
-      213: -8326724806951850010
-    second: 24
-  - first:
-      213: 8914089594741642868
-    second: 25
-  - first:
-      213: 276181914589855336
-    second: 26
-  - first:
-      213: 588497054336764479
-    second: 27
-  - first:
-      213: -540048619370252142
-    second: 28
-  - first:
-      213: -3511060238418154924
-    second: 29
-  - first:
-      213: -6691012767228139306
-    second: 30
-  - first:
-      213: 8251907811329543855
-    second: 31
-  - first:
-      213: -8946788012438720712
-    second: 32
-  - first:
-      213: -3538851436377425636
-    second: 33
-  - first:
-      213: 5837620518785745679
-    second: 34
-  - first:
-      213: 735763825654373507
-    second: 35
-  - first:
-      213: -6766607325196344940
-    second: 36
-  - first:
-      213: 7123294266852565953
-    second: 37
-  - first:
-      213: 1812952166184403864
-    second: 38
-  - first:
-      213: 765628930423093814
-    second: 39
-  - first:
-      213: 3140112598110723769
-    second: 40
-  - first:
-      213: -1761356356439173420
-    second: 41
-  - first:
-      213: -4344009131248462207
-    second: 42
-  - first:
-      213: 9089047170882561291
-    second: 43
-  - first:
-      213: -8699157891823377207
-    second: 44
-  - first:
-      213: 1744244361374601134
-    second: 45
-  - first:
-      213: 2612548079664777360
-    second: 46
-  - first:
-      213: 3221110418805894947
-    second: other
-  - first:
       213: -1122433292391177826
     second: Cave_Biome2Decs_0
   - first:
@@ -431,6 +287,21 @@ TextureImporter:
   - first:
       213: -2634329561772428816
     second: Cave_Biome2Decs_94
+  - first:
+      213: 1197186698962473393
+    second: Cave_Biome2Decs_95
+  - first:
+      213: -1185058422356801348
+    second: Cave_Biome2Decs_96
+  - first:
+      213: 6489881598700724317
+    second: Cave_Biome2Decs_97
+  - first:
+      213: 602560749159745806
+    second: Cave_Biome2Decs_98
+  - first:
+      213: -8617621938839218430
+    second: Cave_Biome2Decs_99
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -506,18 +377,6 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -1648,7 +1507,7 @@ TextureImporter:
       name: Cave_Biome2Decs_53
       rect:
         serializedVersion: 2
-        x: 64
+        x: 48
         y: 64
         width: 16
         height: 16
@@ -1669,7 +1528,7 @@ TextureImporter:
       name: Cave_Biome2Decs_54
       rect:
         serializedVersion: 2
-        x: 80
+        x: 64
         y: 64
         width: 16
         height: 16
@@ -1690,7 +1549,7 @@ TextureImporter:
       name: Cave_Biome2Decs_55
       rect:
         serializedVersion: 2
-        x: 96
+        x: 80
         y: 64
         width: 16
         height: 16
@@ -1711,7 +1570,7 @@ TextureImporter:
       name: Cave_Biome2Decs_56
       rect:
         serializedVersion: 2
-        x: 112
+        x: 96
         y: 64
         width: 16
         height: 16
@@ -1732,7 +1591,7 @@ TextureImporter:
       name: Cave_Biome2Decs_57
       rect:
         serializedVersion: 2
-        x: 128
+        x: 112
         y: 64
         width: 16
         height: 16
@@ -1753,7 +1612,7 @@ TextureImporter:
       name: Cave_Biome2Decs_58
       rect:
         serializedVersion: 2
-        x: 144
+        x: 128
         y: 64
         width: 16
         height: 16
@@ -1774,8 +1633,8 @@ TextureImporter:
       name: Cave_Biome2Decs_59
       rect:
         serializedVersion: 2
-        x: 16
-        y: 48
+        x: 144
+        y: 64
         width: 16
         height: 16
       alignment: 0
@@ -1795,7 +1654,7 @@ TextureImporter:
       name: Cave_Biome2Decs_60
       rect:
         serializedVersion: 2
-        x: 48
+        x: 0
         y: 48
         width: 16
         height: 16
@@ -1816,7 +1675,7 @@ TextureImporter:
       name: Cave_Biome2Decs_61
       rect:
         serializedVersion: 2
-        x: 64
+        x: 16
         y: 48
         width: 16
         height: 16
@@ -1837,7 +1696,7 @@ TextureImporter:
       name: Cave_Biome2Decs_62
       rect:
         serializedVersion: 2
-        x: 80
+        x: 32
         y: 48
         width: 16
         height: 16
@@ -1858,7 +1717,7 @@ TextureImporter:
       name: Cave_Biome2Decs_63
       rect:
         serializedVersion: 2
-        x: 96
+        x: 48
         y: 48
         width: 16
         height: 16
@@ -1879,7 +1738,7 @@ TextureImporter:
       name: Cave_Biome2Decs_64
       rect:
         serializedVersion: 2
-        x: 112
+        x: 64
         y: 48
         width: 16
         height: 16
@@ -1900,7 +1759,7 @@ TextureImporter:
       name: Cave_Biome2Decs_65
       rect:
         serializedVersion: 2
-        x: 128
+        x: 80
         y: 48
         width: 16
         height: 16
@@ -1921,7 +1780,7 @@ TextureImporter:
       name: Cave_Biome2Decs_66
       rect:
         serializedVersion: 2
-        x: 144
+        x: 96
         y: 48
         width: 16
         height: 16
@@ -1942,8 +1801,8 @@ TextureImporter:
       name: Cave_Biome2Decs_67
       rect:
         serializedVersion: 2
-        x: 0
-        y: 32
+        x: 112
+        y: 48
         width: 16
         height: 16
       alignment: 0
@@ -1963,8 +1822,8 @@ TextureImporter:
       name: Cave_Biome2Decs_68
       rect:
         serializedVersion: 2
-        x: 16
-        y: 32
+        x: 128
+        y: 48
         width: 16
         height: 16
       alignment: 0
@@ -1984,8 +1843,8 @@ TextureImporter:
       name: Cave_Biome2Decs_69
       rect:
         serializedVersion: 2
-        x: 32
-        y: 32
+        x: 144
+        y: 48
         width: 16
         height: 16
       alignment: 0
@@ -2005,7 +1864,7 @@ TextureImporter:
       name: Cave_Biome2Decs_70
       rect:
         serializedVersion: 2
-        x: 48
+        x: 0
         y: 32
         width: 16
         height: 16
@@ -2026,7 +1885,7 @@ TextureImporter:
       name: Cave_Biome2Decs_71
       rect:
         serializedVersion: 2
-        x: 64
+        x: 16
         y: 32
         width: 16
         height: 16
@@ -2047,7 +1906,7 @@ TextureImporter:
       name: Cave_Biome2Decs_72
       rect:
         serializedVersion: 2
-        x: 96
+        x: 32
         y: 32
         width: 16
         height: 16
@@ -2068,7 +1927,7 @@ TextureImporter:
       name: Cave_Biome2Decs_73
       rect:
         serializedVersion: 2
-        x: 112
+        x: 48
         y: 32
         width: 16
         height: 16
@@ -2089,7 +1948,7 @@ TextureImporter:
       name: Cave_Biome2Decs_74
       rect:
         serializedVersion: 2
-        x: 128
+        x: 64
         y: 32
         width: 16
         height: 16
@@ -2110,7 +1969,7 @@ TextureImporter:
       name: Cave_Biome2Decs_75
       rect:
         serializedVersion: 2
-        x: 144
+        x: 80
         y: 32
         width: 16
         height: 16
@@ -2131,8 +1990,8 @@ TextureImporter:
       name: Cave_Biome2Decs_76
       rect:
         serializedVersion: 2
-        x: 0
-        y: 16
+        x: 96
+        y: 32
         width: 16
         height: 16
       alignment: 0
@@ -2152,8 +2011,8 @@ TextureImporter:
       name: Cave_Biome2Decs_77
       rect:
         serializedVersion: 2
-        x: 16
-        y: 16
+        x: 112
+        y: 32
         width: 16
         height: 16
       alignment: 0
@@ -2173,8 +2032,8 @@ TextureImporter:
       name: Cave_Biome2Decs_78
       rect:
         serializedVersion: 2
-        x: 32
-        y: 16
+        x: 128
+        y: 32
         width: 16
         height: 16
       alignment: 0
@@ -2194,8 +2053,8 @@ TextureImporter:
       name: Cave_Biome2Decs_79
       rect:
         serializedVersion: 2
-        x: 48
-        y: 16
+        x: 144
+        y: 32
         width: 16
         height: 16
       alignment: 0
@@ -2215,7 +2074,7 @@ TextureImporter:
       name: Cave_Biome2Decs_80
       rect:
         serializedVersion: 2
-        x: 64
+        x: 0
         y: 16
         width: 16
         height: 16
@@ -2236,7 +2095,7 @@ TextureImporter:
       name: Cave_Biome2Decs_81
       rect:
         serializedVersion: 2
-        x: 80
+        x: 16
         y: 16
         width: 16
         height: 16
@@ -2257,7 +2116,7 @@ TextureImporter:
       name: Cave_Biome2Decs_82
       rect:
         serializedVersion: 2
-        x: 96
+        x: 32
         y: 16
         width: 16
         height: 16
@@ -2278,7 +2137,7 @@ TextureImporter:
       name: Cave_Biome2Decs_83
       rect:
         serializedVersion: 2
-        x: 112
+        x: 48
         y: 16
         width: 16
         height: 16
@@ -2299,7 +2158,7 @@ TextureImporter:
       name: Cave_Biome2Decs_84
       rect:
         serializedVersion: 2
-        x: 128
+        x: 64
         y: 16
         width: 16
         height: 16
@@ -2320,7 +2179,7 @@ TextureImporter:
       name: Cave_Biome2Decs_85
       rect:
         serializedVersion: 2
-        x: 144
+        x: 80
         y: 16
         width: 16
         height: 16
@@ -2341,8 +2200,8 @@ TextureImporter:
       name: Cave_Biome2Decs_86
       rect:
         serializedVersion: 2
-        x: 16
-        y: 0
+        x: 96
+        y: 16
         width: 16
         height: 16
       alignment: 0
@@ -2362,8 +2221,8 @@ TextureImporter:
       name: Cave_Biome2Decs_87
       rect:
         serializedVersion: 2
-        x: 32
-        y: 0
+        x: 112
+        y: 16
         width: 16
         height: 16
       alignment: 0
@@ -2383,8 +2242,8 @@ TextureImporter:
       name: Cave_Biome2Decs_88
       rect:
         serializedVersion: 2
-        x: 48
-        y: 0
+        x: 128
+        y: 16
         width: 16
         height: 16
       alignment: 0
@@ -2404,8 +2263,8 @@ TextureImporter:
       name: Cave_Biome2Decs_89
       rect:
         serializedVersion: 2
-        x: 64
-        y: 0
+        x: 144
+        y: 16
         width: 16
         height: 16
       alignment: 0
@@ -2425,7 +2284,7 @@ TextureImporter:
       name: Cave_Biome2Decs_90
       rect:
         serializedVersion: 2
-        x: 80
+        x: 0
         y: 0
         width: 16
         height: 16
@@ -2446,7 +2305,7 @@ TextureImporter:
       name: Cave_Biome2Decs_91
       rect:
         serializedVersion: 2
-        x: 96
+        x: 16
         y: 0
         width: 16
         height: 16
@@ -2467,7 +2326,7 @@ TextureImporter:
       name: Cave_Biome2Decs_92
       rect:
         serializedVersion: 2
-        x: 112
+        x: 32
         y: 0
         width: 16
         height: 16
@@ -2488,7 +2347,7 @@ TextureImporter:
       name: Cave_Biome2Decs_93
       rect:
         serializedVersion: 2
-        x: 128
+        x: 48
         y: 0
         width: 16
         height: 16
@@ -2509,7 +2368,7 @@ TextureImporter:
       name: Cave_Biome2Decs_94
       rect:
         serializedVersion: 2
-        x: 144
+        x: 64
         y: 0
         width: 16
         height: 16
@@ -2522,6 +2381,111 @@ TextureImporter:
       bones: []
       spriteID: 0f17e39883bf07bd0800000000000000
       internalID: -2634329561772428816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Biome2Decs_95
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b11b71b5f24d9010800000000000000
+      internalID: 1197186698962473393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Biome2Decs_96
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb88651c4a3dd8fe0800000000000000
+      internalID: -1185058422356801348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Biome2Decs_97
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d50a6ecdde0b01a50800000000000000
+      internalID: 6489881598700724317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Biome2Decs_98
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0982411fc9bc5800800000000000000
+      internalID: 602560749159745806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Biome2Decs_99
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20710e6318e086880800000000000000
+      internalID: -8617621938839218430
       vertices: []
       indices: 
       edges: []
