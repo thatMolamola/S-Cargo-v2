@@ -307,10 +307,10 @@ TextureImporter:
       name: Gopher_0
       rect:
         serializedVersion: 2
-        x: 54
-        y: 1503
-        width: 180
-        height: 108
+        x: 0
+        y: 1440
+        width: 288
+        height: 288
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -328,10 +328,10 @@ TextureImporter:
       name: Gopher_1
       rect:
         serializedVersion: 2
-        x: 333
-        y: 1494
-        width: 198
-        height: 162
+        x: 288
+        y: 1440
+        width: 288
+        height: 288
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -349,10 +349,10 @@ TextureImporter:
       name: Gopher_2
       rect:
         serializedVersion: 2
-        x: 603
-        y: 1449
-        width: 243
-        height: 243
+        x: 576
+        y: 1440
+        width: 288
+        height: 288
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -370,10 +370,10 @@ TextureImporter:
       name: Gopher_3
       rect:
         serializedVersion: 2
-        x: 27
-        y: 1161
-        width: 243
-        height: 243
+        x: 0
+        y: 1152
+        width: 288
+        height: 288
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -391,10 +391,10 @@ TextureImporter:
       name: Gopher_4
       rect:
         serializedVersion: 2
-        x: 333
-        y: 1206
-        width: 198
-        height: 162
+        x: 288
+        y: 1152
+        width: 288
+        height: 288
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -412,10 +412,10 @@ TextureImporter:
       name: Gopher_5
       rect:
         serializedVersion: 2
-        x: 630
-        y: 1215
-        width: 180
-        height: 108
+        x: 576
+        y: 1152
+        width: 288
+        height: 288
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -433,10 +433,10 @@ TextureImporter:
       name: Gopher_6
       rect:
         serializedVersion: 2
-        x: 27
-        y: 873
-        width: 243
-        height: 243
+        x: 0
+        y: 864
+        width: 288
+        height: 288
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -454,10 +454,10 @@ TextureImporter:
       name: Gopher_7
       rect:
         serializedVersion: 2
-        x: 315
-        y: 873
-        width: 243
-        height: 243
+        x: 288
+        y: 864
+        width: 288
+        height: 288
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -475,10 +475,10 @@ TextureImporter:
       name: Gopher_8
       rect:
         serializedVersion: 2
-        x: 603
-        y: 873
-        width: 243
-        height: 243
+        x: 576
+        y: 864
+        width: 288
+        height: 288
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -496,10 +496,10 @@ TextureImporter:
       name: Gopher_9
       rect:
         serializedVersion: 2
-        x: 891
-        y: 873
-        width: 243
-        height: 243
+        x: 864
+        y: 864
+        width: 288
+        height: 288
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -517,10 +517,10 @@ TextureImporter:
       name: Gopher_10
       rect:
         serializedVersion: 2
-        x: 1179
-        y: 873
-        width: 243
-        height: 243
+        x: 1152
+        y: 864
+        width: 288
+        height: 288
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -538,10 +538,10 @@ TextureImporter:
       name: Gopher_11
       rect:
         serializedVersion: 2
-        x: 27
-        y: 585
-        width: 243
-        height: 243
+        x: 0
+        y: 576
+        width: 288
+        height: 288
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -559,10 +559,10 @@ TextureImporter:
       name: Gopher_12
       rect:
         serializedVersion: 2
-        x: 315
-        y: 585
-        width: 243
-        height: 225
+        x: 288
+        y: 576
+        width: 288
+        height: 288
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -580,10 +580,10 @@ TextureImporter:
       name: Gopher_13
       rect:
         serializedVersion: 2
-        x: 603
-        y: 585
-        width: 243
-        height: 243
+        x: 576
+        y: 576
+        width: 288
+        height: 288
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -601,10 +601,10 @@ TextureImporter:
       name: Gopher_14
       rect:
         serializedVersion: 2
-        x: 891
-        y: 585
-        width: 243
-        height: 225
+        x: 864
+        y: 576
+        width: 288
+        height: 288
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -622,10 +622,10 @@ TextureImporter:
       name: Gopher_15
       rect:
         serializedVersion: 2
-        x: 1179
-        y: 585
-        width: 243
-        height: 243
+        x: 1152
+        y: 576
+        width: 288
+        height: 288
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -643,10 +643,10 @@ TextureImporter:
       name: Gopher_16
       rect:
         serializedVersion: 2
-        x: 27
-        y: 297
-        width: 243
-        height: 243
+        x: 0
+        y: 288
+        width: 288
+        height: 288
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -664,10 +664,10 @@ TextureImporter:
       name: Gopher_17
       rect:
         serializedVersion: 2
-        x: 315
-        y: 297
-        width: 243
-        height: 243
+        x: 288
+        y: 288
+        width: 288
+        height: 288
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -685,10 +685,10 @@ TextureImporter:
       name: Gopher_18
       rect:
         serializedVersion: 2
-        x: 594
-        y: 297
-        width: 243
-        height: 225
+        x: 576
+        y: 288
+        width: 288
+        height: 288
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -706,10 +706,10 @@ TextureImporter:
       name: Gopher_19
       rect:
         serializedVersion: 2
-        x: 882
-        y: 297
-        width: 243
-        height: 243
+        x: 864
+        y: 288
+        width: 288
+        height: 288
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -727,10 +727,10 @@ TextureImporter:
       name: Gopher_20
       rect:
         serializedVersion: 2
-        x: 1170
-        y: 297
-        width: 243
-        height: 225
+        x: 1152
+        y: 288
+        width: 288
+        height: 288
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -748,10 +748,10 @@ TextureImporter:
       name: Gopher_21
       rect:
         serializedVersion: 2
-        x: 27
-        y: 9
-        width: 243
-        height: 243
+        x: 0
+        y: 0
+        width: 288
+        height: 288
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -769,10 +769,10 @@ TextureImporter:
       name: Gopher_22
       rect:
         serializedVersion: 2
-        x: 315
-        y: 9
-        width: 243
-        height: 243
+        x: 288
+        y: 0
+        width: 288
+        height: 288
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

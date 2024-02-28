@@ -94598,7 +94598,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 277771233110954167, guid: 156b055a12731421dabd8e69d0ffca39, type: 3}
       propertyPath: m_PresetInfoIsWorld
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 836923343640442628, guid: 156b055a12731421dabd8e69d0ffca39, type: 3}
       propertyPath: rb
@@ -94630,7 +94630,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3218169054208624727, guid: 156b055a12731421dabd8e69d0ffca39, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3375120336885991352, guid: 156b055a12731421dabd8e69d0ffca39, type: 3}
       propertyPath: m_Enabled
