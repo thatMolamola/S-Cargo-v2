@@ -129,6 +129,7 @@ public class PlayerController : MonoBehaviour
                         //flip upside down
                         if (isStickingTop && Input.GetKey(KeyCode.UpArrow)) {
                             reorientDD = false;
+                            upsideOrient();
                             orientPlayer = SnailOrient.DOWN;
                             StartCoroutine(reorient(.35f));
                         }
@@ -195,13 +196,6 @@ public class PlayerController : MonoBehaviour
                         orientPlayer = SnailOrient.LEFT;
                         StartCoroutine(reorient(.35f));
                         }
-            
-                    if (Input.GetKey(KeyCode.DownArrow) && isStickingTop)
-                        {
-                        reorientDD = false;
-                        orientPlayer = SnailOrient.UP;
-                        StartCoroutine(reorient(.35f));
-                        }
                 }
                 
             } else if (orientPlayer == SnailOrient.RIGHT) {
@@ -228,11 +222,6 @@ public class PlayerController : MonoBehaviour
                         orientPlayer = SnailOrient.DOWN;
                         StartCoroutine(reorient(.35f));
                     }
-                    if (Input.GetKey(KeyCode.RightArrow) && isStickingTop) {
-                        reorientDD = false;
-                        orientPlayer = SnailOrient.LEFT;
-                        StartCoroutine(reorient(.35f));
-                    }
                 }
             } else if (orientPlayer == SnailOrient.LEFT) {
                 transform.rotation = Quaternion.Euler(0, 0, 90);
@@ -257,12 +246,6 @@ public class PlayerController : MonoBehaviour
                     {
                         reorientDD = false;
                         orientPlayer = SnailOrient.DOWN;
-                        StartCoroutine(reorient(.35f));
-                    }
-                    if (Input.GetKey(KeyCode.LeftArrow) && isStickingTop)
-                    {
-                        reorientDD = false;
-                        orientPlayer = SnailOrient.RIGHT;
                         StartCoroutine(reorient(.35f));
                     }
                 }
@@ -348,6 +331,9 @@ public class PlayerController : MonoBehaviour
                     if (reorientDD){
                             //if airborne, reorient to UP
                             rb.gravityScale = 2.0f;
+                            if (orientPlayer == SnailOrient.DOWN ) {
+                                upsideOrient();
+                            }
                             orientPlayer = SnailOrient.UP;
                     }
                 }
@@ -372,6 +358,12 @@ public class PlayerController : MonoBehaviour
                 transform.localScale = new Vector3(-1, 1, 1);
             }
         }
+    }
+
+    void upsideOrient() {
+        Vector3 theScale = transform.localScale;
+        theScale.x *= -1;
+        transform.localScale = theScale;
     }
 
     IEnumerator shellToRollDelay(){
