@@ -152,21 +152,7 @@ public class PlayerController : MonoBehaviour
                     }
                 } else {        
                     //if you stop moving in the rolling state and are holding down no keys, return to base state
-                    if (
-                        moveBy.x == 0 &&
-                        (
-                        !Input.GetKey(KeyCode.LeftArrow) &&
-                        !Input.GetKey(KeyCode.RightArrow)
-                        )
-                    )
-                    {
-                        myAnimationController.SetBool("Moving", false);
-                        myAnimationController.SetBool("RollUp", false);
-                        isRolling = false;
-                        isShelled = false;
-                        snailBoxCollider.enabled = true;
-                        snailCircleColliderLeft.enabled = false;
-                    }
+
 
                     if (isGrounded)
                     {
@@ -323,7 +309,11 @@ public class PlayerController : MonoBehaviour
                     }
                 } else { 
                     if (isRolling) {
-                        rb.velocity = new Vector2(moveBy.x * moveFactor2, rb.velocity.y);
+                        if (moveBy.y < 0) {
+                            rb.velocity = new Vector2(moveBy.x * moveFactor2, moveBy.y * moveFactor2);
+                        } else {
+                            rb.velocity = new Vector2(moveBy.x * moveFactor2, rb.velocity.y);
+                        }
                     } else {
                         rb.velocity = new Vector2(moveBy.x * moveFactor1, rb.velocity.y);
                     }
