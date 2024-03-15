@@ -430,7 +430,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 16
@@ -1681,7 +1681,8 @@ TextureImporter:
       outline: []
       physicsShape:
       - - {x: 5, y: 8}
-        - {x: -3, y: 3}
+        - {x: -1, y: 6}
+        - {x: -6, y: 1}
         - {x: -8, y: -4}
         - {x: -8, y: -8}
         - {x: 8, y: -8}
@@ -1711,7 +1712,8 @@ TextureImporter:
         - {x: -8, y: -8}
         - {x: 8, y: -8}
         - {x: 8, y: -4}
-        - {x: 3, y: 3}
+        - {x: 6, y: 1}
+        - {x: 1, y: 6}
         - {x: -4, y: 8}
       tessellationDetail: 0
       bones: []
@@ -1945,8 +1947,8 @@ TextureImporter:
       physicsShape:
       - - {x: -8, y: 8}
         - {x: -8, y: 4}
-        - {x: -3, y: -3}
-        - {x: -3, y: -3}
+        - {x: -6, y: -1}
+        - {x: -1, y: -6}
         - {x: 4, y: -8}
         - {x: 8, y: -8}
         - {x: 8, y: 8}
@@ -1980,7 +1982,8 @@ TextureImporter:
       - - {x: -8, y: 8}
         - {x: -8, y: -8}
         - {x: -4, y: -8}
-        - {x: 3, y: -3}
+        - {x: 0, y: -6}
+        - {x: 6, y: -1}
         - {x: 8, y: 4}
         - {x: 8, y: 8}
       tessellationDetail: 0

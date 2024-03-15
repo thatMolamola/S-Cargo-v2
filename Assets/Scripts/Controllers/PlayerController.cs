@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //this script controls the player movement across 4 orientations and one substate of rolling
+// the movement variables depend on whether a player is in the rolling state or the clinging state
 public enum SnailOrient{UP, DOWN, LEFT, RIGHT}
 public class PlayerController : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class PlayerController : MonoBehaviour
     private Vector2 moveBy;
     private float moveFactor1 = 4f;
     private float moveFactor2 = 10f;
+
+    private float runSpeedMax = 40f;
 
     [SerializeField] private Animator myAnimationController;
 
@@ -162,6 +165,17 @@ public class PlayerController : MonoBehaviour
                             oneJFlag = true;
                         }
                     }
+
+                    //If grounded and player clicks to retreat, change Snail State
+                    if (Input.GetKey(KeyCode.S))
+                    {
+                        myAnimationController.SetBool("Moving", false);
+                        myAnimationController.SetBool("RollUp", false);
+                        isShelled = false;
+                        isRolling = false;
+                        snailBoxCollider.enabled = true;
+                        snailCircleColliderLeft.enabled = false;
+                    }
                 }
             } else if (orientPlayer == SnailOrient.DOWN) {
                 transform.rotation = Quaternion.Euler(0, 0, 180);
@@ -273,10 +287,12 @@ public class PlayerController : MonoBehaviour
                             if (oneJFlag)
                             {
                                 oneJFlag = false;
-                                rb.velocity = new Vector2(moveBy.x * moveFactor2, rolljumpHeight); 
+                                rb.AddForce(transform.up * rolljumpHeight * 300f); 
                                 isGrounded = false;
                             } else {
-                                rb.velocity = new Vector2(moveBy.x * moveFactor2, rb.velocity.y);
+                                float currentSpeed = rb.velocity.magnitude;
+                                float actualForce = moveFactor2 * 10f * (1 - currentSpeed / runSpeedMax);
+                                rb.AddForce(moveBy * actualForce);
                             }
                         }
 
@@ -309,10 +325,12 @@ public class PlayerController : MonoBehaviour
                     }
                 } else { 
                     if (isRolling) {
+                        float currentSpeed = rb.velocity.magnitude;
+                        float actualForce = moveFactor2 * 10f * (1 - currentSpeed / runSpeedMax);
                         if (moveBy.y < 0) {
-                            rb.velocity = new Vector2(moveBy.x * moveFactor2, moveBy.y * moveFactor2);
+                            rb.AddForce(moveBy * actualForce);
                         } else {
-                            rb.velocity = new Vector2(moveBy.x * moveFactor2, rb.velocity.y);
+                            rb.AddForce(moveBy * actualForce);
                         }
                     } else {
                         rb.velocity = new Vector2(moveBy.x * moveFactor1, rb.velocity.y);
