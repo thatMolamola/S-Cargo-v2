@@ -921,12 +921,12 @@ MonoBehaviour:
   hasMoved: 0
   paused: 0
   snailAnims:
-  - {fileID: 9100000, guid: 2190c6144c8954c4ab583a3830f32e4e, type: 2}
-  - {fileID: 9100000, guid: d3b6453538d0c48298c1630a22c2c881, type: 2}
-  - {fileID: 9100000, guid: ba9a2d9ae9d4845bba90792aee836fec, type: 2}
-  - {fileID: 9100000, guid: 90ec60403a01b4e1aadefa8fdf3d449c, type: 2}
-  - {fileID: 9100000, guid: 1a4147ca3f690409599523b99efd42cb, type: 2}
-  - {fileID: 9100000, guid: 73b00947968834713b6f0ed0191dff08, type: 2}
+  - {fileID: 9100000, guid: a9ab53e82341d4307863626647439e3a, type: 2}
+  - {fileID: 9100000, guid: 7df848865187c440ba32e7df07c44d00, type: 2}
+  - {fileID: 9100000, guid: 1921d50c4ff504008b1197571a320f38, type: 2}
+  - {fileID: 9100000, guid: 54b79ead0ae284e5aa42b63719a1eda4, type: 2}
+  - {fileID: 9100000, guid: 5f57975a0c58444a4baa9962de32c757, type: 2}
+  - {fileID: 9100000, guid: 2c43e8194f4c8470bbd1251d2ef70d76, type: 2}
 --- !u!82 &418650692
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1620,7 +1620,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 110
-  m_Sprite: {fileID: 6051407540708825976, guid: 4684c9a55bc1045b9968d1c6a747e9d9, type: 3}
+  m_Sprite: {fileID: 6051407540708825976, guid: 28b57f3336313495ba9d7057a3572876, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
