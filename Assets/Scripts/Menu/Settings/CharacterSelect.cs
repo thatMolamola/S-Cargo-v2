@@ -30,17 +30,17 @@ public class CharacterSelect : MonoBehaviour
                 Door.SetBool("charChange", true);
                 SnailContainer.SetBool("charChange", true);
                 if (playerAnim.GetBool("RollUp")) {
-                    playerAnim.SetBool("ImRoll", true);
+                    playerAnim.SetBool("Moving", true);
                 }
             }
         }
     }
 
     IEnumerator SnailSwitch() {
-        playerAnim.gameObject.GetComponent<Transform>().localScale = new Vector3(-100, 100, 1);
+        playerAnim.gameObject.GetComponent<Transform>().localScale = new Vector3(-85, 85, 1);
         yield return new WaitForSeconds(1.8f);
         if (!changed) {
-                playerAnim.gameObject.GetComponent<Transform>().localScale = new Vector3(100, 100, 1);
+                playerAnim.gameObject.GetComponent<Transform>().localScale = new Vector3(85, 85, 1);
                 playerAnim.runtimeAnimatorController = GlobalControl.Instance.snailAnims[privSnailChoice];
                 changed = true;
         }
@@ -49,7 +49,6 @@ public class CharacterSelect : MonoBehaviour
         SnailContainer.SetBool("charChange", false);
         Door.SetBool("charChange", false);
         playerAnim.SetBool("RollUp", false);
-        playerAnim.SetBool("ImRoll", false);
         choosing = false;
     }
 
