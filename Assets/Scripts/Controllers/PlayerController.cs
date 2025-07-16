@@ -86,7 +86,8 @@ public class PlayerController : MonoBehaviour
             if (orientPlayer == SnailOrient.UP) {
             transform.rotation = Quaternion.Euler(0, 0, 0);
                 snailFlip(moveBy.x, true);
-                if (!isRolling) {  //Standard Snail Movement
+                if (!isRolling)
+                {  //Standard Snail Movement
                     if (isGrounded)
                     {
                         //If grounded and player clicks to jump, set Jump Flags
@@ -107,30 +108,34 @@ public class PlayerController : MonoBehaviour
                         }
 
                         //snail start rolling
-                        if ((Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow)) && isShelled) {
+                        if ((Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow)) && isShelled)
+                        {
                             myAnimationController.SetBool("Moving", true);
                             isRolling = true;
                         }
                     }
-                    
+
                     //Update Jump Inputs
                     //these jumping scripts allows for variable jump heights
-                    if (Input.GetKey(KeyCode.X) && isJumping) {
+                    if (Input.GetKey(KeyCode.X) && isJumping)
+                    {
                         StartCoroutine(VariableJump());
                     }
-                
+
                     if (Input.GetKeyUp(KeyCode.X))
-                        {
-                            isJumping = false; 
-                            oneJFlag = false;
-                        }
+                    {
+                        isJumping = false;
+                        oneJFlag = false;
+                    }
 
 
                     //Change the snail orientation state conditions: 
                     //If the reorient delay is over
-                    if (reorientDD){
+                    if (reorientDD)
+                    {
                         //flip upside down
-                        if (isStickingTop && Input.GetKey(KeyCode.UpArrow)) {
+                        if (isStickingTop && Input.GetKey(KeyCode.UpArrow))
+                        {
                             reorientDD = false;
                             upsideOrient();
                             orientPlayer = SnailOrient.DOWN;
@@ -153,9 +158,10 @@ public class PlayerController : MonoBehaviour
                             StartCoroutine(reorient(.35f));
                         }
                     }
-                } else {        
+                }
+                else
+                {
                     //if you stop moving in the rolling state and are holding down no keys, return to base state
-
 
                     if (isGrounded)
                     {
@@ -167,7 +173,12 @@ public class PlayerController : MonoBehaviour
                     }
 
                     //If grounded and player clicks to retreat, change Snail State
-                    if (Input.GetKey(KeyCode.S))
+                    if (
+                        moveBy.x == 0 &&
+                        (
+                        !Input.GetKey(KeyCode.LeftArrow) &&
+                        !Input.GetKey(KeyCode.RightArrow)
+                        ))
                     {
                         myAnimationController.SetBool("Moving", false);
                         myAnimationController.SetBool("RollUp", false);
@@ -176,6 +187,7 @@ public class PlayerController : MonoBehaviour
                         snailBoxCollider.enabled = true;
                         snailCircleColliderLeft.enabled = false;
                     }
+                    
                 }
             } else if (orientPlayer == SnailOrient.DOWN) {
                 transform.rotation = Quaternion.Euler(0, 0, 180);
