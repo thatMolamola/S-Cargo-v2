@@ -11,7 +11,7 @@ public class SceneLoader : MonoBehaviour
     
     public void LoadMenu()
     {
-        SceneManager.LoadScene("Scene_Menu");
+        SceneManager.LoadScene("MainMenu");
     }
 
     public void LoadPlayLevel1_1()
@@ -20,7 +20,7 @@ public class SceneLoader : MonoBehaviour
         GlobalControl.Instance.lettersCollected = 0;
         GlobalControl.Instance.hasMoved = false;
         GlobalControl.Instance.canMove = true; 
-        SceneManager.LoadScene("Scene_Level1_1"); 
+        SceneManager.LoadScene("Level1_1"); 
     }
 
     public void LoadPlayLevel1_2()
@@ -29,7 +29,7 @@ public class SceneLoader : MonoBehaviour
         GlobalControl.Instance.lettersCollected = 0;
         GlobalControl.Instance.hasMoved = false;
         GlobalControl.Instance.canMove = true;  
-        SceneManager.LoadScene("Scene_Level1_2"); 
+        SceneManager.LoadScene("Level1_2"); 
     }
 
     public void LoadPlayLevel2()
@@ -38,7 +38,7 @@ public class SceneLoader : MonoBehaviour
         GlobalControl.Instance.lettersCollected = 0;
         GlobalControl.Instance.hasMoved = false;
         GlobalControl.Instance.canMove = true;
-        SceneManager.LoadScene("Scene_Level2_1");
+        SceneManager.LoadScene("Level2_1");
     }
 
      public void LoadPlayLevel3()
@@ -47,17 +47,17 @@ public class SceneLoader : MonoBehaviour
         GlobalControl.Instance.lettersCollected = 0;
         GlobalControl.Instance.hasMoved = false;
         GlobalControl.Instance.canMove = true;
-        SceneManager.LoadScene("Scene_Level3_1");
+        SceneManager.LoadScene("Level3_1");
     }
 
     public void LoadRollChar()
     {
-        SceneManager.LoadScene("Scene_Char_Select");
+        SceneManager.LoadScene("Char_Select");
     }
 
     public void LoadSettings()
     {
-        SceneManager.LoadScene("Scene_Settings");
+        SceneManager.LoadScene("SettingsMenu");
     }
 
     public void LoadAbout()
@@ -71,7 +71,7 @@ public class SceneLoader : MonoBehaviour
         GlobalControl.Instance.lettersCollected = 0;
         GlobalControl.Instance.hasMoved = false;
         GlobalControl.Instance.canMove = true;
-        SceneManager.LoadScene("Scene_LevelSelect");
+        SceneManager.LoadScene("LevelSelect");
     }
 
     public void ReloadThisScene(){
