@@ -59,9 +59,9 @@ MonoBehaviour:
   hasMoved: 0
   paused: 0
   snailAnims:
-  - {fileID: 9100000, guid: 2190c6144c8954c4ab583a3830f32e4e, type: 2}
-  - {fileID: 9100000, guid: d3b6453538d0c48298c1630a22c2c881, type: 2}
-  - {fileID: 9100000, guid: ba9a2d9ae9d4845bba90792aee836fec, type: 2}
-  - {fileID: 9100000, guid: 90ec60403a01b4e1aadefa8fdf3d449c, type: 2}
-  - {fileID: 9100000, guid: 1a4147ca3f690409599523b99efd42cb, type: 2}
-  - {fileID: 9100000, guid: 73b00947968834713b6f0ed0191dff08, type: 2}
+  - {fileID: 9100000, guid: a9ab53e82341d4307863626647439e3a, type: 2}
+  - {fileID: 9100000, guid: 7df848865187c440ba32e7df07c44d00, type: 2}
+  - {fileID: 9100000, guid: 1921d50c4ff504008b1197571a320f38, type: 2}
+  - {fileID: 9100000, guid: 54b79ead0ae284e5aa42b63719a1eda4, type: 2}
+  - {fileID: 9100000, guid: 5f57975a0c58444a4baa9962de32c757, type: 2}
+  - {fileID: 9100000, guid: 2c43e8194f4c8470bbd1251d2ef70d76, type: 2}
