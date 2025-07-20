@@ -2,16 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 //this script is designed to update the timer in the HUD 
 // and the Level Complete panel in the first level
 public class TimerScript : MonoBehaviour 
 {
-    [SerializeField] private Text timerText;
-    [SerializeField] private Text highScore;
+    [SerializeField] private TMP_Text timerText;
+    [SerializeField] private TMP_Text  highScore;
 
-    [SerializeField] private Text LCtimerText;
-    [SerializeField] private Text LChighscore;
+    [SerializeField] private TMP_Text  LCtimerText;
+    [SerializeField] private TMP_Text  LChighscore;
     [SerializeField] private int levelNum;
     private int minutes, seconds, milliseconds;
     private float startTime;
