@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
 
     //jumping and rolling float values
 
-    private float jumpHeight = 9.5f;
+    private float jumpHeight = 10f;
     private float rolljumpHeight = 7f;
 
     //snail orientation booleans

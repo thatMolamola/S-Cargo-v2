@@ -133,7 +133,11 @@ PrefabInstance:
     - target: {fileID: 6051241773526577072, guid: 154c1527c5b954607a7b8dbb9a1dd2ea, type: 3}
       propertyPath: MailCount
       value: 
-      objectReference: {fileID: 537487343}
+      objectReference: {fileID: 0}
+    - target: {fileID: 6051241773526577072, guid: 154c1527c5b954607a7b8dbb9a1dd2ea, type: 3}
+      propertyPath: MailDisplay
+      value: 
+      objectReference: {fileID: 1450540903}
     - target: {fileID: 6051241773526577074, guid: 154c1527c5b954607a7b8dbb9a1dd2ea, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -399,6 +403,10 @@ PrefabInstance:
     - target: {fileID: 336274302781810265, guid: d4d9a19a9cc69434aa46c5e9c8017f8f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5331621125342938739, guid: d4d9a19a9cc69434aa46c5e9c8017f8f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4d9a19a9cc69434aa46c5e9c8017f8f, type: 3}
@@ -44620,7 +44628,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 277771233110954167, guid: 156b055a12731421dabd8e69d0ffca39, type: 3}
       propertyPath: m_PresetInfoIsWorld
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 836923343640442628, guid: 156b055a12731421dabd8e69d0ffca39, type: 3}
       propertyPath: rb
@@ -44644,7 +44652,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3218169054208624727, guid: 156b055a12731421dabd8e69d0ffca39, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3375120335148636629, guid: 156b055a12731421dabd8e69d0ffca39, type: 3}
       propertyPath: m_IsActive
@@ -44774,19 +44782,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8053414517998470817, guid: 156b055a12731421dabd8e69d0ffca39, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 156b055a12731421dabd8e69d0ffca39, type: 3}
---- !u!114 &537487343 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6691206051996709801, guid: 156b055a12731421dabd8e69d0ffca39, type: 3}
-  m_PrefabInstance: {fileID: 537487342}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &537487344 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6691206050841613062, guid: 156b055a12731421dabd8e69d0ffca39, type: 3}
@@ -44807,7 +44808,11 @@ PrefabInstance:
     - target: {fileID: 6051241773526577072, guid: 154c1527c5b954607a7b8dbb9a1dd2ea, type: 3}
       propertyPath: MailCount
       value: 
-      objectReference: {fileID: 537487343}
+      objectReference: {fileID: 0}
+    - target: {fileID: 6051241773526577072, guid: 154c1527c5b954607a7b8dbb9a1dd2ea, type: 3}
+      propertyPath: MailDisplay
+      value: 
+      objectReference: {fileID: 1469174890}
     - target: {fileID: 6051241773526577074, guid: 154c1527c5b954607a7b8dbb9a1dd2ea, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -44915,6 +44920,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.5961467}
   m_EdgeRadius: 0
+--- !u!114 &767441180 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1861710237560888322, guid: 156b055a12731421dabd8e69d0ffca39, type: 3}
+  m_PrefabInstance: {fileID: 537487342}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1137504154
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -44969,6 +44985,10 @@ PrefabInstance:
     - target: {fileID: 7658599042624353272, guid: 411bf7851784b4435a272363590044d6, type: 3}
       propertyPath: m_Name
       value: Camera Setup
+      objectReference: {fileID: 0}
+    - target: {fileID: 7658599042624353272, guid: 411bf7851784b4435a272363590044d6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8054876729612291223, guid: 411bf7851784b4435a272363590044d6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -45513,6 +45533,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 1898989463}
+--- !u!114 &1450540903 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 793146728284556238, guid: 156b055a12731421dabd8e69d0ffca39, type: 3}
+  m_PrefabInstance: {fileID: 537487342}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1469174890 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 294665106366921922, guid: 156b055a12731421dabd8e69d0ffca39, type: 3}
+  m_PrefabInstance: {fileID: 537487342}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1476646916
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -45523,7 +45565,11 @@ PrefabInstance:
     - target: {fileID: 6051241773526577072, guid: 154c1527c5b954607a7b8dbb9a1dd2ea, type: 3}
       propertyPath: MailCount
       value: 
-      objectReference: {fileID: 537487343}
+      objectReference: {fileID: 0}
+    - target: {fileID: 6051241773526577072, guid: 154c1527c5b954607a7b8dbb9a1dd2ea, type: 3}
+      propertyPath: MailDisplay
+      value: 
+      objectReference: {fileID: 767441180}
     - target: {fileID: 6051241773526577074, guid: 154c1527c5b954607a7b8dbb9a1dd2ea, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -45534,7 +45580,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6051241773526577074, guid: 154c1527c5b954607a7b8dbb9a1dd2ea, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 14.1
+      value: 18.8
       objectReference: {fileID: 0}
     - target: {fileID: 6051241773526577074, guid: 154c1527c5b954607a7b8dbb9a1dd2ea, type: 3}
       propertyPath: m_LocalPosition.z
@@ -45917,7 +45963,7 @@ PrefabInstance:
     - target: {fileID: 4466283553201821835, guid: d4731258d7295421ea33598b90543ec8, type: 3}
       propertyPath: snailAnims.Array.data[0]
       value: 
-      objectReference: {fileID: 9100000, guid: 2190c6144c8954c4ab583a3830f32e4e, type: 2}
+      objectReference: {fileID: 9100000, guid: a9ab53e82341d4307863626647439e3a, type: 2}
     - target: {fileID: 4466283553201821835, guid: d4731258d7295421ea33598b90543ec8, type: 3}
       propertyPath: snailAnims.Array.data[1]
       value: 
