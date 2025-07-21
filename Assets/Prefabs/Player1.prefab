@@ -83,7 +83,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 9
-  m_Sprite: {fileID: 6051407540708825976, guid: 4684c9a55bc1045b9968d1c6a747e9d9, type: 3}
+  m_Sprite: {fileID: 6051407540708825976, guid: 28b57f3336313495ba9d7057a3572876, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -104,7 +104,7 @@ Animator:
   m_GameObject: {fileID: 336274302781810264}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 2190c6144c8954c4ab583a3830f32e4e, type: 2}
+  m_Controller: {fileID: 9100000, guid: a9ab53e82341d4307863626647439e3a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -151,7 +151,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.3333334, y: 1.3333334}
+    oldSize: {x: 2, y: 1.5}
     newSize: {x: 1.3333334, y: 1.3333334}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -175,11 +175,9 @@ MonoBehaviour:
   myAnimationController: {fileID: 336274302781810267}
   isGrounded: 0
   isShelled: 0
-  isJumping: 0
   isRolling: 0
+  isJumping: 0
   orientPlayer: 0
-  isStickingRight: 0
-  isStickingTop: 0
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64

@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 //this script is designed to allow the player to collect mail upon 
 // a collision between the player and the mail.
 public class CollectMail : MonoBehaviour
 {
-    [SerializeField] private Text MailCount;
+    //[SerializeField] private TMP_Text MailCount;
 
     //this MailCount is the same throughout all three levels, 
     //as all the levels have 3 pieces of mail
@@ -28,7 +29,7 @@ public class CollectMail : MonoBehaviour
 
     void UpdateMailCount()
     {  
-        MailCount.GetComponent<Text>().text =
-            ": " + GlobalControl.Instance.lettersCollected + "/" + MailCount1;
+        //MailCount.GetComponent<Text>().text =
+        //    ": " + GlobalControl.Instance.lettersCollected + "/" + MailCount1;
     }
 }
