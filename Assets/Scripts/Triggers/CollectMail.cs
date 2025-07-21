@@ -8,7 +8,7 @@ using TMPro;
 // a collision between the player and the mail.
 public class CollectMail : MonoBehaviour
 {
-    //[SerializeField] private TMP_Text MailCount;
+    [SerializeField] private Image MailDisplay;
 
     //this MailCount is the same throughout all three levels, 
     //as all the levels have 3 pieces of mail
@@ -28,8 +28,7 @@ public class CollectMail : MonoBehaviour
     }
 
     void UpdateMailCount()
-    {  
-        //MailCount.GetComponent<Text>().text =
-        //    ": " + GlobalControl.Instance.lettersCollected + "/" + MailCount1;
+    {
+        MailDisplay.color = Color.white;
     }
 }
