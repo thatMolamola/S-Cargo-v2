@@ -11,6 +11,6 @@ public class SplashScript : MonoBehaviour
 
     IEnumerator Splash() {
         yield return new WaitForSeconds(3.5f);
-        SceneManager.LoadScene("Scene_Menu");
+        SceneManager.LoadScene("MainMenu");
     }
 }
