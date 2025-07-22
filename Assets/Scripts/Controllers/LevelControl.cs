@@ -34,46 +34,54 @@ public class LevelControl : MonoBehaviour
         if (Input.GetKey(KeyCode.I) && canOpenClose)
         {
             instructions();
-        }   
+        }
         if (!canOpenClose)
+        {
+            timerI += Time.deltaTime;
+            timerP += Time.deltaTime;
+            if (timerI > .5 || timerP > .5)
             {
-                timerI += Time.deltaTime;
-                timerP += Time.deltaTime;
-                if (timerI > .5 || timerP > .5)
-                {
-                    canOpenClose = true;
-                    timerI = 0;
-                    timerP = 0;
-                }
-            }     
-    }
-    private void unpause() {
-        canOpenClose = false; 
-            if(GlobalControl.Instance.paused) {
-                GlobalControl.Instance.paused = false;
-                pausePanel.SetActive(false);
-                instructionsPanel.SetActive(false);
-                rb.bodyType = RigidbodyType2D.Dynamic;
-            } else {
-                GlobalControl.Instance.paused = true;
-                instructionsPanel.SetActive(false);
-                pausePanel.SetActive(true);
-                rb.bodyType = RigidbodyType2D.Static;
+                canOpenClose = true;
+                timerI = 0;
+                timerP = 0;
             }
+        }
+    }
+    private void unpause()
+    {
+        canOpenClose = false;
+        if (GlobalControl.Instance.paused)
+        {
+            GlobalControl.Instance.paused = false;
+            pausePanel.SetActive(false);
+            instructionsPanel.SetActive(false);
+            rb.bodyType = RigidbodyType2D.Dynamic;
+        }
+        else
+        {
+            GlobalControl.Instance.paused = true;
+            instructionsPanel.SetActive(false);
+            pausePanel.SetActive(true);
+            rb.bodyType = RigidbodyType2D.Static;
+        }
     }
 
-    private void instructions() {
-        canOpenClose = false; 
-            if(GlobalControl.Instance.paused) {
-                GlobalControl.Instance.paused = false;   
-                instructionsPanel.SetActive(false);
-                pausePanel.SetActive(false);
-                rb.bodyType = RigidbodyType2D.Dynamic;
-            } else {
-                GlobalControl.Instance.paused = true;
-                instructionsPanel.SetActive(true);
-                pausePanel.SetActive(false);
-                rb.bodyType = RigidbodyType2D.Static;
-            }
+    private void instructions()
+    {
+        canOpenClose = false;
+        if (GlobalControl.Instance.paused)
+        {
+            GlobalControl.Instance.paused = false;
+            instructionsPanel.SetActive(false);
+            pausePanel.SetActive(false);
+            rb.bodyType = RigidbodyType2D.Dynamic;
+        }
+        else
+        {
+            GlobalControl.Instance.paused = true;
+            instructionsPanel.SetActive(true);
+            pausePanel.SetActive(false);
+            rb.bodyType = RigidbodyType2D.Static;
+        }
     }
 }

@@ -21,7 +21,7 @@ public class CollectMail : MonoBehaviour
             GlobalControl.Instance.lettersCollected++;
             UpdateMailCount();
             if (GlobalControl.Instance.lettersCollected == MailCount1) {
-            GlobalControl.Instance.allMailCollected = true;
+                GlobalControl.Instance.allMailCollected = true;
             }
             Destroy (this.gameObject);
         }
