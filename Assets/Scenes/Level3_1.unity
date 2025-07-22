@@ -772,7 +772,6 @@ GameObject:
   - component: {fileID: 333364926}
   - component: {fileID: 333364925}
   - component: {fileID: 333364924}
-  - component: {fileID: 333364928}
   - component: {fileID: 333364929}
   - component: {fileID: 333364931}
   m_Layer: 0
@@ -830,21 +829,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &333364928
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 333364923}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 424b5fdfde65e410f91cf483078f9570, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pausePanel: {fileID: 1910187319330198798}
-  instructionsPanel: {fileID: 1910187321086692199}
-  rb: {fileID: 761063365}
 --- !u!114 &333364929
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58588,7 +58572,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4466283553201821835, guid: d4731258d7295421ea33598b90543ec8, type: 3}
       propertyPath: snailChoice
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4466283553201821835, guid: d4731258d7295421ea33598b90543ec8, type: 3}
       propertyPath: weightClassInt
@@ -58621,7 +58605,7 @@ PrefabInstance:
     - target: {fileID: 4466283553201821835, guid: d4731258d7295421ea33598b90543ec8, type: 3}
       propertyPath: snailAnims.Array.data[4]
       value: 
-      objectReference: {fileID: 9100000, guid: 1a4147ca3f690409599523b99efd42cb, type: 2}
+      objectReference: {fileID: 9100000, guid: 5f57975a0c58444a4baa9962de32c757, type: 2}
     - target: {fileID: 4466283553201821835, guid: d4731258d7295421ea33598b90543ec8, type: 3}
       propertyPath: snailAnims.Array.data[5]
       value: 
@@ -58980,7 +58964,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.7418087, y: 1.6643384}
+  m_Size: {x: 8, y: 2}
   m_EdgeRadius: 0
 --- !u!114 &1840237057
 MonoBehaviour:
@@ -73364,19 +73348,9 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2059679912955967427, guid: 92e99a6d3af6c4e06961225f270820bf, type: 3}
   m_PrefabInstance: {fileID: 311678774}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1910187319330198798 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3375120336885991356, guid: 156b055a12731421dabd8e69d0ffca39, type: 3}
-  m_PrefabInstance: {fileID: 3770796222146187954}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1910187321018980563 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3375120335214086753, guid: 156b055a12731421dabd8e69d0ffca39, type: 3}
-  m_PrefabInstance: {fileID: 3770796222146187954}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1910187321086692199 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3375120335148636629, guid: 156b055a12731421dabd8e69d0ffca39, type: 3}
   m_PrefabInstance: {fileID: 3770796222146187954}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &3417331558464118315 stripped
@@ -73405,6 +73379,10 @@ PrefabInstance:
       propertyPath: m_PresetInfoIsWorld
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 836923343640442628, guid: 156b055a12731421dabd8e69d0ffca39, type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 761063365}
     - target: {fileID: 1806623744740319208, guid: 156b055a12731421dabd8e69d0ffca39, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0.5
@@ -73532,7 +73510,7 @@ PrefabInstance:
     - target: {fileID: 3375120336848238061, guid: 156b055a12731421dabd8e69d0ffca39, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 333364928}
+      objectReference: {fileID: 0}
     - target: {fileID: 5045281430968376709, guid: 156b055a12731421dabd8e69d0ffca39, type: 3}
       propertyPath: m_SizeDelta.x
       value: 2080
@@ -73669,6 +73647,18 @@ PrefabInstance:
       propertyPath: m_Text
       value: Thanks for the mail, jerk.
       objectReference: {fileID: 0}
+    - target: {fileID: 6691206050719392970, guid: 156b055a12731421dabd8e69d0ffca39, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6691206050719392970, guid: 156b055a12731421dabd8e69d0ffca39, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6691206050719392970, guid: 156b055a12731421dabd8e69d0ffca39, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -10
+      objectReference: {fileID: 0}
     - target: {fileID: 6691206050719392971, guid: 156b055a12731421dabd8e69d0ffca39, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -73701,6 +73691,10 @@ PrefabInstance:
       propertyPath: m_Text
       value: I watched you the whole time
       objectReference: {fileID: 0}
+    - target: {fileID: 7377883135423570506, guid: 156b055a12731421dabd8e69d0ffca39, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -4404002380301250355, guid: f62f571444c2e4e0a999bf46237200bb, type: 3}
     m_RemovedComponents:
     - {fileID: 6691206051483849730, guid: 156b055a12731421dabd8e69d0ffca39, type: 3}
     - {fileID: 5570761709395007150, guid: 156b055a12731421dabd8e69d0ffca39, type: 3}
