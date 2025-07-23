@@ -11,8 +11,8 @@ public class TimerScript : MonoBehaviour
     [SerializeField] private TMP_Text timerText;
     [SerializeField] private TMP_Text  highScore;
 
-    [SerializeField] private TMP_Text  LCtimerText;
-    [SerializeField] private TMP_Text  LChighscore;
+    [SerializeField] private Text  LCtimerText;
+    [SerializeField] private Text  LChighscore;
     [SerializeField] private int levelNum;
     private int minutes, seconds, milliseconds;
     private float startTime;
@@ -109,7 +109,7 @@ public class TimerScript : MonoBehaviour
                 {
                     if (levelNum == 1) {
                         if (GlobalControl.Instance.lowestTime1 < 10000000000000){
-                        highScore.text =
+                            highScore.text =
                                 "Best time: " +
                                 (int)(GlobalControl.Instance.lowestTime1 / 60f) +
                                 ":" +

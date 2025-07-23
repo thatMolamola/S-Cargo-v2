@@ -45,7 +45,6 @@ public class CutsceneControl : MonoBehaviour
 
     public IEnumerator MailboxCutscene() {
         GlobalControl.Instance.canMove = false;
-        GlobalControl.Instance.paused = true;
         mailboxTrigger = true;
         if (GlobalControl.Instance.cutsceneEnabled){
             speechBubble.SetActive (true);
@@ -67,6 +66,7 @@ public class CutsceneControl : MonoBehaviour
         }
         LevelComplete.SetActive(true); 
         yield return new WaitForSeconds(.25f); 
+        GlobalControl.Instance.paused = true;
         mailboxTrigger = false;
     }
 }
