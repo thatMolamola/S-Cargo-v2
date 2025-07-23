@@ -65,6 +65,11 @@ public class SceneLoader : MonoBehaviour
         SceneManager.LoadScene("Scene_About");
     }
 
+    public void LoadCredits()
+    {
+        SceneManager.LoadScene("Credits");
+    }
+
     public void LoadLevelSelect()
     {
         GlobalControl.Instance.allMailCollected = false;
