@@ -58589,19 +58589,19 @@ PrefabInstance:
     - target: {fileID: 4466283553201821835, guid: d4731258d7295421ea33598b90543ec8, type: 3}
       propertyPath: snailAnims.Array.data[0]
       value: 
-      objectReference: {fileID: 9100000, guid: 2190c6144c8954c4ab583a3830f32e4e, type: 2}
+      objectReference: {fileID: 9100000, guid: a9ab53e82341d4307863626647439e3a, type: 2}
     - target: {fileID: 4466283553201821835, guid: d4731258d7295421ea33598b90543ec8, type: 3}
       propertyPath: snailAnims.Array.data[1]
       value: 
-      objectReference: {fileID: 9100000, guid: d3b6453538d0c48298c1630a22c2c881, type: 2}
+      objectReference: {fileID: 9100000, guid: 7df848865187c440ba32e7df07c44d00, type: 2}
     - target: {fileID: 4466283553201821835, guid: d4731258d7295421ea33598b90543ec8, type: 3}
       propertyPath: snailAnims.Array.data[2]
       value: 
-      objectReference: {fileID: 9100000, guid: ba9a2d9ae9d4845bba90792aee836fec, type: 2}
+      objectReference: {fileID: 9100000, guid: 1921d50c4ff504008b1197571a320f38, type: 2}
     - target: {fileID: 4466283553201821835, guid: d4731258d7295421ea33598b90543ec8, type: 3}
       propertyPath: snailAnims.Array.data[3]
       value: 
-      objectReference: {fileID: 9100000, guid: 90ec60403a01b4e1aadefa8fdf3d449c, type: 2}
+      objectReference: {fileID: 9100000, guid: 54b79ead0ae284e5aa42b63719a1eda4, type: 2}
     - target: {fileID: 4466283553201821835, guid: d4731258d7295421ea33598b90543ec8, type: 3}
       propertyPath: snailAnims.Array.data[4]
       value: 
@@ -58609,7 +58609,7 @@ PrefabInstance:
     - target: {fileID: 4466283553201821835, guid: d4731258d7295421ea33598b90543ec8, type: 3}
       propertyPath: snailAnims.Array.data[5]
       value: 
-      objectReference: {fileID: 9100000, guid: 73b00947968834713b6f0ed0191dff08, type: 2}
+      objectReference: {fileID: 9100000, guid: 2c43e8194f4c8470bbd1251d2ef70d76, type: 2}
     - target: {fileID: 4466283553201821844, guid: d4731258d7295421ea33598b90543ec8, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -73695,6 +73695,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -4404002380301250355, guid: f62f571444c2e4e0a999bf46237200bb, type: 3}
+    - target: {fileID: 8053414517998470817, guid: 156b055a12731421dabd8e69d0ffca39, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6691206051483849730, guid: 156b055a12731421dabd8e69d0ffca39, type: 3}
     - {fileID: 5570761709395007150, guid: 156b055a12731421dabd8e69d0ffca39, type: 3}
