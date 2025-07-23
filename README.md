@@ -14,7 +14,7 @@ In terms of tools players have at their disposal to achieve this, they have two 
 
 In my opinion, the success of this game hinges on having levels that leverages the advantages and disadvantages of these two movement options in interesting, yet intuitive ways. 
 
-Currently, there are 6 playable characters implemented with 3 distinct levels. 
+Currently, there are 7 playable characters implemented with 3 distinct levels. 
 I intend to continue making levels for the game, and eventually publish it. 
 
 In terms of where to take this game in the future, here's my wishlist: 
