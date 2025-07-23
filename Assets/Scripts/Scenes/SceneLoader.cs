@@ -2,12 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 //this script is designed to load scenes for whatever buttons may be trying to do so
 public class SceneLoader : MonoBehaviour
 {
-    private CutsceneControl cutsceneScript;
     
     public void LoadMenu()
     {
@@ -41,7 +39,7 @@ public class SceneLoader : MonoBehaviour
         SceneManager.LoadScene("Level2_1");
     }
 
-     public void LoadPlayLevel3()
+    public void LoadPlayLevel3()
     {
         GlobalControl.Instance.allMailCollected = false;
         GlobalControl.Instance.lettersCollected = 0;
@@ -84,6 +82,7 @@ public class SceneLoader : MonoBehaviour
         GlobalControl.Instance.lettersCollected = 0;
         GlobalControl.Instance.hasMoved = false;
         GlobalControl.Instance.canMove = true;
+        GlobalControl.Instance.paused = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 

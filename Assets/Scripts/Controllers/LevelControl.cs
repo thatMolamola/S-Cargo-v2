@@ -12,6 +12,7 @@ public class LevelControl : MonoBehaviour
     [SerializeField] private GameObject pausePanel, instructionsPanel;
 
     private float timerP, timerI;
+    private float timerLength = 0.5f;
     private bool canOpenClose = true;
     [SerializeField] private Rigidbody2D rb;
 
@@ -26,6 +27,7 @@ public class LevelControl : MonoBehaviour
             GlobalControl.Instance.allMailCollected = false;
             GlobalControl.Instance.hasMoved = false;
             GlobalControl.Instance.canMove = true;
+            GlobalControl.Instance.paused = false;
         }
         if (Input.GetKey(KeyCode.P) && canOpenClose)
         {
@@ -39,7 +41,7 @@ public class LevelControl : MonoBehaviour
         {
             timerI += Time.deltaTime;
             timerP += Time.deltaTime;
-            if (timerI > .5 || timerP > .5)
+            if (timerI > timerLength || timerP > timerLength)
             {
                 canOpenClose = true;
                 timerI = 0;
